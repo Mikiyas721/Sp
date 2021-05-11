@@ -15,4 +15,6 @@ extension SpacingExtension on num {
 extension BuildContextExtension on BuildContext {
   TextStyle get headline6 => Theme.of(this).textTheme.headline6;
   TextStyle get caption => Theme.of(this).textTheme.caption;
+
+  Color get primaryColor => Theme.of(this).primaryColor;
 }

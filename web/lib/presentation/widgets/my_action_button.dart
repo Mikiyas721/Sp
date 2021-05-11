@@ -6,15 +6,17 @@ class MyActionButton extends StatelessWidget {
   final bool isLoading;
   final double width;
   final double height;
+  final double radius;
   final VoidCallback onPressed;
 
   const MyActionButton({
     Key key,
     @required this.label,
-    @required this.isLoading,
     @required this.onPressed,
+    this.isLoading = false,
     this.width = double.infinity,
     this.height = 35,
+    this.radius = 20
   }) : super(key: key);
 
   @override
@@ -24,11 +26,14 @@ class MyActionButton extends StatelessWidget {
       height: height,
       child: RaisedButton(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+              borderRadius: BorderRadius.all(Radius.circular(radius))),
           color: Color(0xFF0080FF),
           onPressed: onPressed,
           child: isLoading
-              ? SpinKitFadingCircle(size: 30,color: Colors.white,)
+              ? SpinKitFadingCircle(
+                  size: 30,
+                  color: Colors.white,
+                )
               : Text(
                   label,
                   style: TextStyle(color: Colors.white),

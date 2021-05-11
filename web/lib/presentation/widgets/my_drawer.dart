@@ -3,9 +3,12 @@ import 'package:sp_web/presentation/widgets/my_list_tile.dart';
 import '../../common/extensions.dart';
 
 class MyDrawer extends StatefulWidget {
-  final void Function(int index) onItemSelected;
+  final int index;
 
-  const MyDrawer({Key key, @required this.onItemSelected}) : super(key: key);
+  const MyDrawer({
+    Key key,
+    @required this.index,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MyDrawer();
@@ -16,8 +19,22 @@ class _MyDrawer extends State<MyDrawer> {
 
   @override
   void initState() {
-    activeIndex = 0;
+    activeIndex = widget.index;
     super.initState();
+  }
+
+  void onItemSelected(int index) {
+    if (index == 0)
+      Navigator.pushReplacementNamed(context, '/dashboard');
+    else if (index == 1)
+      Navigator.pushReplacementNamed(context, '/employees');
+    else if (index == 2)
+      Navigator.pushReplacementNamed(context, '/admins');
+    else if (index == 3)
+      Navigator.pushReplacementNamed(context, '/clients');
+    else if (index == 4)
+      Navigator.pushReplacementNamed(context, '/products');
+    else if (index == 5) Navigator.pushReplacementNamed(context, '/feedback');
   }
 
   @override
@@ -58,7 +75,7 @@ class _MyDrawer extends State<MyDrawer> {
                 setState(() {
                   if (activeIndex != 0) {
                     activeIndex = 0;
-                    widget.onItemSelected(activeIndex);
+                    onItemSelected(activeIndex);
                   }
                 });
               },
@@ -71,7 +88,7 @@ class _MyDrawer extends State<MyDrawer> {
                 setState(() {
                   if (activeIndex != 1) {
                     activeIndex = 1;
-                    widget.onItemSelected(activeIndex);
+                    onItemSelected(activeIndex);
                   }
                 });
               },
@@ -84,7 +101,7 @@ class _MyDrawer extends State<MyDrawer> {
                 setState(() {
                   if (activeIndex != 2) {
                     activeIndex = 2;
-                    widget.onItemSelected(activeIndex);
+                    onItemSelected(activeIndex);
                   }
                 });
               },
@@ -97,7 +114,7 @@ class _MyDrawer extends State<MyDrawer> {
                 setState(() {
                   if (activeIndex != 3) {
                     activeIndex = 3;
-                    widget.onItemSelected(activeIndex);
+                    onItemSelected(activeIndex);
                   }
                 });
               },
@@ -110,7 +127,7 @@ class _MyDrawer extends State<MyDrawer> {
                 setState(() {
                   if (activeIndex != 4) {
                     activeIndex = 4;
-                    widget.onItemSelected(activeIndex);
+                    onItemSelected(activeIndex);
                   }
                 });
               },
@@ -123,7 +140,7 @@ class _MyDrawer extends State<MyDrawer> {
                 setState(() {
                   if (activeIndex != 5) {
                     activeIndex = 5;
-                    widget.onItemSelected(activeIndex);
+                    onItemSelected(activeIndex);
                   }
                 });
               },

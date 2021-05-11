@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
                   LoginView(
                     loginViewModel: LoginViewModel(),
                     onLogin: () {
-                      Navigator.pushNamed(context, '/homePage');
+                      Navigator.pushNamed(context, '/dashboard');
                     },
                   )
                 ],
@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget {
                 child: LoginView(
                   loginViewModel: LoginViewModel(),
                   onLogin: () {
-                    Navigator.pushNamed(context, '/homePage');
+                    Navigator.pushNamed(context, '/dashboard');
                   },
                 ),
               );

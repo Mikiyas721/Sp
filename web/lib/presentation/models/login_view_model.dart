@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
+import 'package:sp_web/common/view_model.dart';
 
-class LoginViewModel extends Equatable {
+class LoginViewModel extends ViewModel {
   final String email;
   final String emailError;
   final String password;
