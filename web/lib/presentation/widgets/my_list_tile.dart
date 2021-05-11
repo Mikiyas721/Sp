@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 
 class MyListTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final bool isActive;
+
+  MyListTile({
+    @required this.icon,
+    @required this.label,
+    this.onTap,
+    this.isActive = false,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 10,
-          color: Color(0xFF0080FF),
-        ),
-        ListTile(
-          leading: Icon(Icons.extension),
-          title: Text('Dashboard'),
-        )
-      ],
-    ));
+      color: isActive ? Color(0x550080FF) : Colors.white.withOpacity(0),
+      child: ListTile(
+        onTap: onTap,
+        leading: Icon(icon),
+        title: Text(label),
+      ),
+    );
   }
 }
