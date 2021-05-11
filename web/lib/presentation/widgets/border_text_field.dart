@@ -10,8 +10,10 @@ class BorderTextField extends StatelessWidget {
   final double height;
   final double width;
   final Widget suffix;
+  final bool readOnly;
   final void Function(String value) onChanged;
   final void Function(String value) onSubmitted;
+  final VoidCallback onTap;
 
   const BorderTextField({
     Key key,
@@ -24,8 +26,10 @@ class BorderTextField extends StatelessWidget {
     this.height = 45,
     this.width,
     this.suffix,
+    this.readOnly = false,
     this.keyBoardType = TextInputType.text,
     this.onSubmitted,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -34,8 +38,15 @@ class BorderTextField extends StatelessWidget {
       height: height,
       width: width,
       child: TextField(
+        readOnly: readOnly,
+        enabled: !readOnly,
         obscureText: obscureText,
         decoration: InputDecoration(
+            suffix: suffix,
+            labelText: labelText,
+            hintText: hintText,
+            hintStyle: TextStyle(color: Colors.grey),
+            errorText: errorMessage,
             prefixIcon: icon == null
                 ? null
                 : Icon(
@@ -43,14 +54,11 @@ class BorderTextField extends StatelessWidget {
                     size: 18,
                     color: Color(0xFF707070),
                   ),
-            suffix: suffix,
-            labelText: labelText,
-            hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey),
-            errorText: errorMessage,
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)))),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            )),
         onChanged: onChanged,
+        onTap: onTap,
         onSubmitted: onSubmitted,
         keyboardType: keyBoardType,
       ),

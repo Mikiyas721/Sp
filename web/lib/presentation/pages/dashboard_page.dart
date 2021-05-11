@@ -7,11 +7,7 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
             child: Row(
-      children: [
-        MyDrawer(
-          index: 0,
-        ),
-      ],
+      children: [MyDrawer(index: 0)],
     )));
   }
 }
