@@ -1,0 +1,4 @@
+Week 1 - Presentation
+Week 2 - Domain
+Week 3 - Infrastructure and API
+Week 4 - Application
