@@ -1,4 +1,6 @@
-Week 1 - Presentation
-Week 2 - Domain
-Week 3 - Infrastructure and API
-Week 4 - Application
+We are going to use DDD for our project. This design pattern structures the project into four layers.We have assigned a single layer for each of the weeks.
+
+Week 1 - Presentation Layer
+Week 2 - Domain Layer
+Week 3 - Infrastructure Layer and API
+Week 4 - Application Layer
