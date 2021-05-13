@@ -1,20 +1,19 @@
 import 'package:sp_web/common/view_model.dart';
 
-class EmployeesViewModel extends SimpleListViewModel {
-  final String listFilter;
-  final String searchFilter;
-
+class EmployeesViewModel extends PaginatedDataTableViewModel {
   EmployeesViewModel({
+    String error,
+    List<Object> data, // TODO replace with employee
     bool isLoading,
-    String loadingMessage,
-    this.listFilter,
-    this.searchFilter,
+    String listFilter,
+    String searchFilter,
+    bool isPerformingQuery,
   }) : super(
+          error: error,
+          data: data,
           isLoading: isLoading,
-          error: loadingMessage,
+          listFilter: listFilter,
+          searchFilter: searchFilter,
+          isPerformingQuery: isPerformingQuery,
         );
-
-  @override
-  List<Object> get props =>
-      [super.isLoading, super.error, listFilter, searchFilter];
 }

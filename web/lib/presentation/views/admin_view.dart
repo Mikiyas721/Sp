@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sp_web/common/widgets/list_view.dart';
-import 'package:sp_web/presentation/models/employees_view_model.dart';
+import 'package:sp_web/presentation/models/admin_view_model.dart';
 import '../../common/extensions.dart';
 
-class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
-  EmployeesView({
-    EmployeesViewModel employeesViewModel,
+class AdminView extends PaginatedDataTableView<AdminViewModel> {
+  AdminView({
+    AdminViewModel adminViewModel,
     void Function(String filter) onFilterChanged,
     void Function(String filter) onSearchFilterChanged,
     void Function(String filter) onSearch,
@@ -13,8 +13,8 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
     void Function(String filter) onEdit,
     void Function(String filter) onDelete,
     void Function(String filter) onAdd,
-  }) : super(columns:
-          [
+  }) : super(
+          columns: [
             DataColumn(label: Text('#')),
             DataColumn(label: Text('Picture')),
             DataColumn(label: Text('Name')),
@@ -23,37 +23,33 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
             DataColumn(label: Text('Registered')),
             DataColumn(label: Text('Actions')),
           ],
-          filters:['Current', 'All'],
-          source:EmployeeDataTableSource(
+          filters: ['Current', 'All'],// Use different privileges for admin
+          source: AdminDataTableSource(
             onOpen: onOpen,
             onEdit: onEdit,
             onDelete: onDelete,
-            onAdd: onAdd,
           ),
-          headerTitle:'Employees',
-          viewModel:employeesViewModel,
-          onFilterChanged:onFilterChanged,
-          onSearchFilterChanged:onSearchFilterChanged,
-          onSearch:onSearch,
-          onAction1:onOpen,
-          onAction2:onEdit,
-          onAction3:onDelete,
-          onAction4:onAdd,
+          headerTitle: 'Admins',
+          viewModel: adminViewModel,
+          onFilterChanged: onFilterChanged,
+          onSearchFilterChanged: onSearchFilterChanged,
+          onSearch: onSearch,
+          onAction1: onOpen,
+          onAction2: onEdit,
+          onAction3: onDelete,
         );
 }
 
-class EmployeeDataTableSource extends DataTableSource {
+class AdminDataTableSource extends DataTableSource {
   final void Function(Object entity) onOpen;
   final void Function(Object entity) onEdit;
   final void Function(Object entity) onDelete;
-  final void Function(Object entity) onAdd;
   final List<Object> data;
 
-  EmployeeDataTableSource({
+  AdminDataTableSource({
     this.onOpen,
     this.onEdit,
     this.onDelete,
-    this.onAdd,
     this.data,
   });
 
@@ -133,16 +129,6 @@ class EmployeeDataTableSource extends DataTableSource {
                 ),
                 onPressed: () {
                   onDelete(data[index]);
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.add,
-                  color: Color(0xFF707070),
-                  size: 18,
-                ),
-                onPressed: () {
-                  onAdd(data[index]);
                 },
               ),
             ]))

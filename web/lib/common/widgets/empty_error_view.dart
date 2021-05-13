@@ -26,7 +26,7 @@ class EmptyErrorView extends StatelessWidget {
     VoidCallback onAction,
   }) {
     return EmptyErrorView(
-      image: image ?? 'assets/images/empty.png',
+      image: image ?? 'images/empty.png',
       title: title ?? 'No Data',
       description: description ?? 'You have no data in this section',
       actionLabel: actionLabel ?? 'Reload',
@@ -42,7 +42,7 @@ class EmptyErrorView extends StatelessWidget {
     VoidCallback onAction,
   }) {
     return EmptyErrorView(
-      image: image ??'assets/images/error.png',
+      image: image ??'images/error.png',
       title: title ?? 'Error',
       description: description ?? 'An error occurred while loading',
       actionLabel: actionLabel ?? 'Retry',
