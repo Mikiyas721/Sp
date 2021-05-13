@@ -3,29 +3,110 @@ import 'package:sp_web/common/widgets/empty_error_view.dart';
 import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/common/widgets/my_loading_view.dart';
 import 'package:sp_web/presentation/models/product_view_model.dart';
+import 'package:sp_web/presentation/widgets/border_text_field.dart';
+import 'package:sp_web/presentation/widgets/my_action_button.dart';
+import 'package:sp_web/presentation/widgets/my_dropdown.dart';
 import '../../common/extensions.dart';
 
 class ProductListView extends StatelessWidget {
   final ProductListViewModel productListViewModel;
   final VoidCallback onReload;
+  final void Function(String value) onSearch;
+  final void Function(String value) onFilterChanged;
+  final void Function(String value) onCategoryChanged;
+  final VoidCallback onAddProduct;
 
-  const ProductListView({Key key, this.productListViewModel, this.onReload})
-      : super(key: key);
+  const ProductListView({
+    Key key,
+    @required this.productListViewModel,
+    this.onReload,
+    this.onSearch,
+    this.onFilterChanged,
+    this.onCategoryChanged,
+    this.onAddProduct,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SimpleGridView<ProductViewModel>(
-      model: productListViewModel,
-      itemBuilder: (BuildContext context, ProductViewModel model) {
-        return ProductView(productViewModel: model);
-      },
-      errorView: Center(
-          child: EmptyErrorView.defaultError(
-        onAction: onReload,
-      )),
-      loadingView: Center(child: MyLoadingView()),
-      emptyView: Center(
-        child: EmptyErrorView.defaultEmpty(),
+    return Card(
+      elevation: 5,
+      margin: EdgeInsets.only(top:60),
+      child: Container(
+        padding: EdgeInsets.only(left: 20,right: 15,top: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Products',
+                  style: context.headline6,
+                ),
+                Spacer(),
+                Container(
+                  width: 20,
+                  height: 20,
+                  child: productListViewModel.isPerformingQuery
+                      ? CircularProgressIndicator()
+                      : Container(
+                    height: 0,
+                    width: 0,
+                  ),
+                ),
+                5.hSpace,
+                BorderTextField(
+                  onChanged: onSearch,
+                  width: 300,
+                  hintText: 'Search',
+                ),
+                10.hSpace,
+                MyDropdown(
+                  hint: 'filter',
+                  items: [
+                    'in stock',
+                    'most sold',
+                    'running low',
+                    'near expiration',
+                  ],
+                  currentItem: productListViewModel.filter,
+                  onChanged: onFilterChanged,
+                ),
+                10.hSpace,
+                MyDropdown(
+                  hint: 'category',
+                  items: [
+                    'Food',
+                    'Utility',
+                    'Beverage',
+                    'Cosmetics',
+                  ],
+                  currentItem: productListViewModel.category,
+                  onChanged: onCategoryChanged,
+                ),
+              ],
+            ),
+            15.vSpace,
+            Container(
+              width: (MediaQuery.of(context).size.width) * 0.78,
+              child: SimpleGridView<ProductViewModel>(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                model: productListViewModel,
+                itemBuilder: (BuildContext context, ProductViewModel model) {
+                  return ProductView(productViewModel: model);
+                },
+                errorView: Center(
+                    child: EmptyErrorView.defaultError(
+                      onAction: onReload,
+                    )),
+                loadingView: Center(child: MyLoadingView()),
+                emptyView: Center(
+                  child: EmptyErrorView.defaultEmpty(),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

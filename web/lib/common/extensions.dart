@@ -18,4 +18,5 @@ extension BuildContextExtension on BuildContext {
   TextStyle get caption => Theme.of(this).textTheme.caption;
 
   Color get primaryColor => Theme.of(this).primaryColor;
+  Color get scaffoldBackgroundColor => Theme.of(this).scaffoldBackgroundColor;
 }

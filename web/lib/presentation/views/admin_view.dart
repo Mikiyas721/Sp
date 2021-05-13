@@ -30,6 +30,7 @@ class AdminView extends PaginatedDataTableView<AdminViewModel> {
             onDelete: onDelete,
           ),
           headerTitle: 'Admins',
+          hint: 'filter',
           viewModel: adminViewModel,
           onFilterChanged: onFilterChanged,
           onSearchFilterChanged: onSearchFilterChanged,

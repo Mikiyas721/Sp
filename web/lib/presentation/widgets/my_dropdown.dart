@@ -5,6 +5,7 @@ class MyDropdown extends StatelessWidget {
   final List<String> items;
   final String currentItem;
   final double width;
+  final String hint;
   final void Function(String selectedValue) onChanged;
 
   const MyDropdown({
@@ -12,20 +13,26 @@ class MyDropdown extends StatelessWidget {
     this.items,
     this.currentItem,
     this.width,
+    this.hint,
     this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: 10.allPadding,
+      padding: 9.allPadding,
       width: width,
       decoration: BoxDecoration(
           border: Border.all(color: Colors.black54),
           borderRadius: BorderRadius.all(Radius.circular(8))),
-      child: DropdownButtonFormField<String>(
-          decoration: InputDecoration.collapsed(hintText: 'Filter'),
-          value: currentItem??items[0],
+      child: DropdownButton<String>(
+          iconSize: 18,
+          isDense: true,
+          value: currentItem,
+          underline: Container(
+            width: 0,
+            height: 0,
+          ),
           items: items
               .map<DropdownMenuItem<String>>((String value) =>
                   DropdownMenuItem<String>(

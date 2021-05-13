@@ -19,6 +19,7 @@ class ClientPage extends StatelessWidget {
                 isLoading: false,
                 isPerformingQuery: false,
               ),
+              onFilterChanged: (String filter){},
             ),
           ))
         ],

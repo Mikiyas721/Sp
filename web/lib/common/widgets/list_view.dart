@@ -99,7 +99,7 @@ class SimpleGridView<T> extends StatelessWidget {
   final EdgeInsets padding;
   final bool shrinkWrap;
   final ScrollPhysics physics;
-  final double maxCrossAxisExtent;
+  final int maxCrossAxisExtent;
 
   const SimpleGridView({
     Key key,
@@ -131,8 +131,11 @@ class SimpleGridView<T> extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return itemBuilder(context, data[index]);
           },
-          gridDelegate:
-              SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: maxCrossAxisExtent),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: maxCrossAxisExtent,
+              childAspectRatio: 25 / 35,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 20),
         );
       },
     );
@@ -146,6 +149,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
   final List<String> filters;
   final DataTableSource source;
   final String headerTitle;
+  final String hint;
   final void Function(String filter) onFilterChanged;
   final void Function(String filter) onSearchFilterChanged;
   final void Function(String text) onSearch;
@@ -159,6 +163,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
       this.filters,
       this.source,
       this.headerTitle,
+      this.hint,
       this.viewModel,
       this.onFilterChanged,
       this.onSearchFilterChanged,
@@ -216,6 +221,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
                 currentItem: viewModel.listFilter,
                 items: filters,
                 width: 100,
+                hint: hint,
               )
             ],
             rowsPerPage: 10,

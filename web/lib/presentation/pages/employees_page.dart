@@ -29,7 +29,8 @@ class EmployeesPage extends StatelessWidget {
                       children: [
                         40.vSpace,
                         EmployeesView(
-                          employeesViewModel: EmployeesViewModel(isLoading: false,isPerformingQuery: false),
+                          employeesViewModel: EmployeesViewModel(
+                              isLoading: false, isPerformingQuery: false),
                           onFilterChanged: (String filter) {},
                           onSearchFilterChanged: (String filter) {},
                           onSearch: (String text) {},
@@ -45,21 +46,7 @@ class EmployeesPage extends StatelessWidget {
                   width: 150,
                   radius: 8,
                   onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AddEmployeeView(
-                            addEmployeeViewModel: AddEmployeeViewModel(),
-                            onFirstName: (String firstName) {},
-                            onLastName: (String firstName) {},
-                            onPhoneNumberName: (String firstName) {},
-                            onEmailName: (String firstName) {},
-                            onDobName: (String firstName) {},
-                            onImage: () {},
-                            onDocument: () {},
-                            onAdd: () {},
-                          );
-                        });
+                    Navigator.pushNamed(context, '/addEmployee');
                   },
                 ),
               ),

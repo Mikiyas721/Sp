@@ -27,6 +27,7 @@ class ClientView extends PaginatedDataTableView<ClientViewModel> {
             onBlock: onBlock,
           ),
           headerTitle: 'Clients',
+          hint: 'filter',
           viewModel: clientViewModel,
           onFilterChanged: onFilterChanged,
           onSearchFilterChanged: onSearchFilterChanged,

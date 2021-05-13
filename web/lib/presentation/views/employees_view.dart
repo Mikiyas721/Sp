@@ -31,6 +31,7 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
             onAdd: onAdd,
           ),
           headerTitle:'Employees',
+          hint: 'filter',
           viewModel:employeesViewModel,
           onFilterChanged:onFilterChanged,
           onSearchFilterChanged:onSearchFilterChanged,
