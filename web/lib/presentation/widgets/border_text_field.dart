@@ -11,6 +11,7 @@ class BorderTextField extends StatelessWidget {
   final double width;
   final Widget suffix;
   final bool readOnly;
+  final int maxLines;
   final void Function(String value) onChanged;
   final void Function(String value) onSubmitted;
   final VoidCallback onTap;
@@ -23,10 +24,11 @@ class BorderTextField extends StatelessWidget {
     @required this.onChanged,
     this.obscureText = false,
     this.hintText,
-    this.height = 45,
-    this.width,
+    this.height = 50,
+    this.width = 250,
     this.suffix,
     this.readOnly = false,
+    this.maxLines = 1,
     this.keyBoardType = TextInputType.text,
     this.onSubmitted,
     this.onTap,
@@ -40,6 +42,7 @@ class BorderTextField extends StatelessWidget {
       child: TextField(
         readOnly: readOnly,
         enabled: !readOnly,
+        maxLines: maxLines,
         obscureText: obscureText,
         decoration: InputDecoration(
             suffix: suffix,

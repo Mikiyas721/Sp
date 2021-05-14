@@ -29,6 +29,7 @@ class MyDropdown extends StatelessWidget {
           iconSize: 18,
           isDense: true,
           value: currentItem,
+          hint: Text(hint, style: context.subtitle2,),
           underline: Container(
             width: 0,
             height: 0,

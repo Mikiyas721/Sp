@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             headline6: GoogleFonts.poppins(color: Colors.black, fontSize: 30),
             headline5: GoogleFonts.poppins(color: Colors.black, fontSize: 18),
+            subtitle2: GoogleFonts.montserrat(color: Colors.grey, fontSize: 14),
             caption: GoogleFonts.montserrat(color: Colors.grey, fontSize: 12),
           )),
     );

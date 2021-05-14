@@ -4,9 +4,8 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/common/widgets/my_loading_view.dart';
 import 'package:sp_web/presentation/models/product_view_model.dart';
 import 'package:sp_web/presentation/widgets/border_text_field.dart';
-import 'package:sp_web/presentation/widgets/my_action_button.dart';
 import 'package:sp_web/presentation/widgets/my_dropdown.dart';
-import '../../common/extensions.dart';
+import '../../common/common.dart';
 
 class ProductListView extends StatelessWidget {
   final ProductListViewModel productListViewModel;
@@ -74,12 +73,7 @@ class ProductListView extends StatelessWidget {
                 10.hSpace,
                 MyDropdown(
                   hint: 'category',
-                  items: [
-                    'Food',
-                    'Utility',
-                    'Beverage',
-                    'Cosmetics',
-                  ],
+                  items: categoryList,
                   currentItem: productListViewModel.category,
                   onChanged: onCategoryChanged,
                 ),
