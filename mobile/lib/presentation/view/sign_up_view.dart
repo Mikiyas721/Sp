@@ -51,7 +51,7 @@ class SignUpView extends StatelessWidget {
       20.0.vSpace,
       MyActionButton(
         onClick: onSignUp,
-        label: 'Sign Up',
+        label: 'Register',
       )
     ]);
   }

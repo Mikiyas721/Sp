@@ -18,7 +18,7 @@ class SignUpPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Sign Up',
+                'Create your account',
                 style: context.headline1,
               ),
               20.0.vSpace,

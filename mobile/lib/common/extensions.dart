@@ -4,6 +4,7 @@ extension SpacingExtension on num {
   EdgeInsets get padding => EdgeInsets.all(this);
   EdgeInsets get topPadding => EdgeInsets.only(top: this);
   EdgeInsets get hPadding => EdgeInsets.only(left: this, right: this);
+  EdgeInsets get margin => EdgeInsets.all(this);
 
   Widget get vSpace => SizedBox(height: this);
   Widget get hSpace => SizedBox(width: this);

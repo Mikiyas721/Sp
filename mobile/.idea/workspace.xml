@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8e6b792-1334-4ff6-bc1a-1415f47216ec" name="Default Changelist" comment="" />
+    <list default="true" id="a7d37f32-caf1-44ed-81bf-36c9204b01cb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,18 +19,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1s6dcRKZjMNrAwLrOzrT4MCrd1h" />
+  <component name="ProjectId" id="1sW4eAUNiT9MwvbYE23vMCZGXJd" />
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\meme_\AndroidStudioProjects\android-kotlin\sp_client\lib\presentation\view" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -44,16 +39,22 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c8e6b792-1334-4ff6-bc1a-1415f47216ec" name="Default Changelist" comment="" />
-      <created>1620197056345</created>
+      <changelist id="a7d37f32-caf1-44ed-81bf-36c9204b01cb" name="Default Changelist" comment="" />
+      <created>1620975104730</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1620197056345</updated>
+      <updated>1620975104730</updated>
     </task>
     <servers />
   </component>
@@ -62,9 +63,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>

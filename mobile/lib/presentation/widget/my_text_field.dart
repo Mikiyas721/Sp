@@ -12,16 +12,21 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        hintText: hintText,
-        errorText: errorText,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+    return Container(
+      height: 50,
+      child: TextField(
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          hintText: hintText,
+          errorText: errorText,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
         ),
       ),
     );

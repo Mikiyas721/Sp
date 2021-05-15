@@ -6,12 +6,14 @@ import '../model/login_view_model.dart';
 class LoginPage extends StatelessWidget {
   static const String routeName = "/login-page";
 
+  void registerHandler() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: context.screenHeight,
+          height: context.screenHeight - context.paddingTop,
           padding: 20.0.hPadding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +25,7 @@ class LoginPage extends StatelessWidget {
               ),
               20.0.vSpace,
               Text(
-                "Welcome back",
+                "Welcome",
                 style: context.headline6,
               ),
               15.0.vSpace,
@@ -39,7 +41,20 @@ class LoginPage extends StatelessWidget {
                 onPhoneNoChanged: null,
                 onPasswordChanged: null,
                 onLogin: null,
-              )
+              ),
+              15.0.vSpace,
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                Text(
+                  "Don't have an account?",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                TextButton(
+                  onPressed: registerHandler,
+                  child: Text("Register"),
+                )
+              ])
             ],
           ),
         ),
