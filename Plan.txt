@@ -1,4 +1,4 @@
-We are going to use DDD for our project. This design pattern structures the project into four layers.We have assigned a single layer for each of the weeks.
+We are going to use DDD for our project. This design pattern structures the project into four layers.We have assigned a single layer for each week.
 
 Week 1 - Presentation Layer
 Week 2 - Domain Layer

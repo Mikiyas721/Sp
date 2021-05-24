@@ -11,7 +11,7 @@ import 'package:sp_web/domain/value_objects/salary.dart';
 
 class Admin extends Entity {
   final String id;
-  final Option<PersonName> firstName; //TODO possibly use employee entity object
+  final Option<PersonName> firstName;
   final Option<PersonName> lastName;
   final Option<PhoneNumber> phoneNumber;
   final Option<Email> email;
