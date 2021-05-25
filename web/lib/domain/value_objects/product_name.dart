@@ -28,7 +28,7 @@ class ProductName {
 
   ProductName._(this.name);
 
-  Either<ProductNameFailure, ProductName> create(String productName) {
+  static Either<ProductNameFailure, ProductName> create(String productName) {
     if (productName == null || productName.isEmpty)
       return left(EmptyProductNameFailure());
     if (productName.length < 2) return left(ShortProductNameFailure());

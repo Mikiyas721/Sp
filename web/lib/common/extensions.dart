@@ -1,4 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:sp_web/common/enums/admin_privilege_type.dart';
+import 'package:sp_web/common/enums/product_category.dart';
+import 'package:sp_web/common/enums/employee_position.dart';
+import 'package:sp_web/common/enums/employee_type.dart';
 
 extension SpacingExtension on num {
   Widget get vSpace => SizedBox(height: this);
@@ -14,10 +19,89 @@ extension SpacingExtension on num {
 
 extension BuildContextExtension on BuildContext {
   TextStyle get headline6 => Theme.of(this).textTheme.headline6;
+
   TextStyle get headline5 => Theme.of(this).textTheme.headline5;
+
   TextStyle get subtitle2 => Theme.of(this).textTheme.subtitle2;
+
   TextStyle get caption => Theme.of(this).textTheme.caption;
 
   Color get primaryColor => Theme.of(this).primaryColor;
+
   Color get scaffoldBackgroundColor => Theme.of(this).scaffoldBackgroundColor;
+}
+
+extension CategoryExtension on ProductCategory {
+  Option<String> getString() {
+    if (this == ProductCategory.FOOD) return some('Food');
+    if (this == ProductCategory.UTILITY) return some('Utility');
+    if (this == ProductCategory.BEVERAGE) return some('Beverage');
+    if (this == ProductCategory.COSMETICS) return some('Cosmetics');
+    return none();
+  }
+
+  List<String> get categoryList =>
+      ProductCategory.values.map((e) => e.getString().getOrElse(() => null)).toList();
+}
+
+extension AdminPrivilegeTypeExtension on AdminPrivilegeType {
+  Option<String> getString() {
+    if (this == AdminPrivilegeType.ALL_FEATURES) return some('All_Features');
+    return none();
+  }
+
+  List<String> get adminPrivilegeTypeList => AdminPrivilegeType.values
+      .map((e) => e.getString().getOrElse(() => null))
+      .toList();
+}
+
+extension EmployeePositionExtension on EmployeePosition {
+  Option<String> getString() {
+    if (this == EmployeePosition.GENERAL_MANAGER)
+      return some('General_Manager');
+    return none();
+  }
+
+  List<String> get employeePositionList => EmployeePosition.values
+      .map((e) => e.getString().getOrElse(() => null))
+      .toList();
+}
+
+extension EmployeeTypeExtension on EmployeeType {
+  Option<String> getString() {
+    if (this == EmployeeType.FULL_TIME) return some('Full_Time');
+    if (this == EmployeeType.PART_TIME) return some('Part_Time');
+    return none();
+  }
+
+  List<String> get employeeTypeList => EmployeeType.values
+      .map((e) => e.getString().getOrElse(() => null))
+      .toList();
+}
+
+extension StringExtension on String {
+  Option<ProductCategory> toCategory() {
+    if (this == 'Food') return some(ProductCategory.FOOD);
+    if (this == 'Utility') return some(ProductCategory.UTILITY);
+    if (this == 'Beverage') return some(ProductCategory.BEVERAGE);
+    if (this == 'Cosmetics') return some(ProductCategory.COSMETICS);
+    return none();
+  }
+
+  Option<AdminPrivilegeType> toAdminPrivilegeType() {
+    if (this == 'All_Features') return some(AdminPrivilegeType.ALL_FEATURES);
+    return none();
+  }
+
+  Option<EmployeePosition> toEmployeePosition() {
+    if (this == 'General_Manager')
+      return some(EmployeePosition.GENERAL_MANAGER);
+    return none();
+  }
+
+  Option<EmployeeType> toEmployeeType() {
+    if (this == 'Full_Time') return some(EmployeeType.FULL_TIME);
+    if (this == 'Part_Time') return some(EmployeeType.PART_TIME);
+    return none();
+  }
 }

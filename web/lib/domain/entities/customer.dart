@@ -7,16 +7,16 @@ import 'package:sp_web/domain/value_objects/phone_number.dart';
 
 class Customer extends Entity {
   final String id;
-  final Option<PersonName> firstName; //TODO possibly use employee entity object
-  final Option<PhoneNumber> phoneNumber;
-  final Option<Email> email;
-  final Option<ImageUrl> photoUrl;
+  final PersonName name;
+  final PhoneNumber phoneNumber;
+  final Email email;
+  final ImageUrl photoUrl;
   final DateTime createdAt;
   final DateTime updatedAt;
 
   Customer._({
     this.id,
-    this.firstName,
+    this.name,
     this.phoneNumber,
     this.email,
     this.photoUrl,
@@ -26,23 +26,33 @@ class Customer extends Entity {
 
   static Option<Customer> create({
     String id,
-    Option<PersonName> firstName,
-    Option<PhoneNumber> phoneNumber,
-    Option<Email> email,
-    Option<ImageUrl> photoUrl,
+    String name,
+    String phoneNumber,
+    String email,
+    String photoUrl,
     DateTime createdAt,
     DateTime updatedAt,
   }) {
-    if ([id, firstName, phoneNumber, email, photoUrl, createdAt, updatedAt]
+    if ([id, name, phoneNumber, email, photoUrl, createdAt, updatedAt]
         .any((element) => element == null)) return none();
-    if ([firstName, phoneNumber, email, photoUrl]
-        .any((element) => element.isNone())) return none();
+    final nameObject = PersonName.create(name);
+    if (nameObject.isLeft()) return none();
+
+    final phoneNumberObject = PhoneNumber.create(phoneNumber);
+    if (phoneNumberObject.isLeft()) return none();
+
+    final emailObject = Email.create(email);
+    if (emailObject.isLeft()) return none();
+
+    final photoUrlObject = ImageUrl.create(photoUrl);
+    if (photoUrlObject.isLeft()) return none();
+
     return Some(Customer._(
       id: id,
-      firstName: firstName,
-      phoneNumber: phoneNumber,
-      email: email,
-      photoUrl: photoUrl,
+      name: nameObject.getOrElse(() => null),
+      phoneNumber: phoneNumberObject.getOrElse(() => null),
+      email: emailObject.getOrElse(() => null),
+      photoUrl: photoUrlObject.getOrElse(() => null),
       createdAt: createdAt,
       updatedAt: updatedAt,
     ));

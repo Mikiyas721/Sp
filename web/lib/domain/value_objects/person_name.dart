@@ -30,7 +30,7 @@ class PersonName {
 
   PersonName._(this.name);
 
-  Either<PersonNameFailure, PersonName> create(String name) {
+  static Either<PersonNameFailure, PersonName> create(String name) {
     if (name == null || name.isEmpty) return left(EmptyPersonNameFailure());
     if (name.length < 2) return left(ShortPersonNameFailure());
     if (name.length > 18) return left(LongPersonNameFailure());

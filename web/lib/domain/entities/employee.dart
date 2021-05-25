@@ -7,18 +7,19 @@ import 'package:sp_web/domain/value_objects/image_url.dart';
 import 'package:sp_web/domain/value_objects/person_name.dart';
 import 'package:sp_web/domain/value_objects/phone_number.dart';
 import 'package:sp_web/domain/value_objects/salary.dart';
+import '../../common/extensions.dart';
 
 class Employee extends Entity {
   final String id;
-  final Option<PersonName> firstName;
-  final Option<PersonName> lastName;
-  final Option<PhoneNumber> phoneNumber;
-  final Option<Email> email;
+  final PersonName firstName;
+  final PersonName lastName;
+  final PhoneNumber phoneNumber;
+  final Email email;
   final EmployeePosition employeePosition;
-  final Option<Salary> salary;
+  final Salary salary;
   final EmployeeType employeeType;
-  final Option<ImageUrl> photoUrl;
-  final Option<ImageUrl> docUrl;
+  final ImageUrl photoUrl;
+  final ImageUrl docUrl;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -39,15 +40,15 @@ class Employee extends Entity {
 
   static Option<Employee> create({
     String id,
-    Option<PersonName> firstName,
-    Option<PersonName> lastName,
-    Option<PhoneNumber> phoneNumber,
-    Option<Email> email,
-    EmployeePosition employeePosition,
-    Option<Salary> salary,
-    EmployeeType employeeType,
-    Option<ImageUrl> photoUrl,
-    Option<ImageUrl> docUrl,
+    String firstName,
+    String lastName,
+    String phoneNumber,
+    String email,
+    String employeePosition,
+    double salary,
+    String employeeType,
+    String photoUrl,
+    String docUrl,
     DateTime createdAt,
     DateTime updatedAt,
   }) {
@@ -65,21 +66,44 @@ class Employee extends Entity {
       createdAt,
       updatedAt
     ].any((element) => element == null)) return none();
-    if ([firstName, lastName, phoneNumber, email, salary, photoUrl, docUrl]
-        .any((element) => element.isNone())) return none();
+    final firstNameObject = PersonName.create(firstName);
+    if (firstNameObject.isLeft()) return none();
+    final lastNameObject = PersonName.create(lastName);
+    if (lastNameObject.isLeft()) return none();
+
+    final phoneNumberObject = PhoneNumber.create(phoneNumber);
+    if (phoneNumberObject.isLeft()) return none();
+
+    final emailObject = Email.create(email);
+    if (emailObject.isLeft()) return none();
+
+    final employeePositionObject = employeePosition.toEmployeePosition();
+    if (employeePositionObject.isNone()) return none();
+
+    final salaryObject = Salary.create(salary);
+    if (salaryObject.isLeft()) return none();
+
+    final employeeTypeObject = employeeType.toEmployeeType();
+    if (employeeTypeObject.isNone()) return none();
+
+    final photoUrlObject = ImageUrl.create(photoUrl);
+    if (photoUrlObject.isLeft()) return none();
+
+    final docUrlObject = ImageUrl.create(docUrl);
+    if (docUrlObject.isLeft()) return none();
+
     return Some(Employee._(
       id: id,
-      firstName: firstName,
-      lastName: lastName,
-      phoneNumber: phoneNumber,
-      email: email,
-      employeePosition: employeePosition,
-      salary: salary,
-      employeeType: employeeType,
-      photoUrl: photoUrl,
-      docUrl: docUrl,
+      firstName: firstNameObject.getOrElse(() => null),
+      lastName: lastNameObject.getOrElse(() => null),
+      phoneNumber: phoneNumberObject.getOrElse(() => null),
+      email: emailObject.getOrElse(() => null),
+      employeePosition: employeePositionObject.getOrElse(() => null),
+      salary: salaryObject.getOrElse(() => null),
+      employeeType: employeeTypeObject.getOrElse(() => null),
+      photoUrl: photoUrlObject.getOrElse(() => null),
+      docUrl: docUrlObject.getOrElse(() => null),
       createdAt: createdAt,
-      updatedAt: updatedAt,
     ));
   }
 }

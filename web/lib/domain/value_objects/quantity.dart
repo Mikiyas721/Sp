@@ -18,8 +18,13 @@ class Quantity {
 
   Quantity._(this.quantity);
 
-  Either<QuantityFailure, Quantity> create(String quantityString) {
+  static Either<QuantityFailure, Quantity> createFromString(String quantityString) {
     int quantity = int.tryParse(quantityString);
+    if (quantity == null) return left(InvalidQuantity());
+    if (quantity < 1) return left(InadequateQuantity());
+    return right(Quantity._(quantity));
+  }
+  static Either<QuantityFailure, Quantity> create(int quantity) {
     if (quantity == null) return left(InvalidQuantity());
     if (quantity < 1) return left(InadequateQuantity());
     return right(Quantity._(quantity));

@@ -15,7 +15,7 @@ class Email {//TODO email can be empty for employee
 
   Email._(this.email);
 
-  Either<EmailFailure, Email> create(String email) {
+  static Either<EmailFailure, Email> create(String email) {
     final match = RegExp(email);
     if (match == null) return left(InvalidEmailFailure());
     return right(Email._(email));

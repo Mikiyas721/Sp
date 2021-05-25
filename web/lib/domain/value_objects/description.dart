@@ -23,7 +23,7 @@ class Description {
 
   Description._(this.description);
 
-  Either<DescriptionFailure, Description> create(String description) {
+  static Either<DescriptionFailure, Description> create(String description) {
     if (description == null || description.isEmpty)
       return left(EmptyDescriptionFailure());
     if (description.length < 50) return left(ShortDescriptionFailure());

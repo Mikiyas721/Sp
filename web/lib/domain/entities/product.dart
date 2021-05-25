@@ -1,16 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:sp_web/common/entity.dart';
+import 'package:sp_web/common/enums/product_category.dart';
 import 'package:sp_web/domain/value_objects/description.dart';
 import 'package:sp_web/domain/value_objects/product_name.dart';
 import 'package:sp_web/domain/value_objects/quantity.dart';
+import '../../common/extensions.dart';
 
 class Product extends Entity {
   final String id;
-  final Option<ProductName> productName;
-  final Option<ProductName> brandName;
-  final String category;
-  final Option<Quantity> quantity;
-  final Option<Description> description;
+  final ProductName productName;
+  final ProductName brandName;
+  final ProductCategory category;
+  final Quantity quantity;
+  final Description description;
   final DateTime manDate;
   final DateTime expDate;
   final DateTime createdAt;
@@ -31,11 +33,11 @@ class Product extends Entity {
 
   static Option<Product> create({
     String id,
-    Option<ProductName> productName,
-    Option<ProductName> brandName,
+    String productName,
+    String brandName,
     String category,
-    Option<Quantity> quantity,
-    Option<Description> description,
+    int quantity,
+    String description,
     DateTime manDate,
     DateTime expDate,
     DateTime createdAt,
@@ -53,15 +55,27 @@ class Product extends Entity {
       createdAt,
       updatedAt
     ].any((element) => element == null)) return none();
-    if ([productName, brandName, quantity, description]
-        .any((element) => element.isNone())) return none();
+    final productNameObject = ProductName.create(productName);
+    if (productNameObject.isLeft()) return none();
+    final brandNameObject = ProductName.create(brandName);
+    if (brandNameObject.isLeft()) return none();
+
+    final categoryObject = category.toCategory();
+    if (categoryObject.isNone()) return none();
+
+    final quantityObject = Quantity.create(quantity);
+    if (quantityObject.isLeft()) return none();
+
+    final descriptionObject = Description.create(description);
+    if (descriptionObject.isLeft()) return none();
+
     return some(Product._(
       id: id,
-      productName: productName,
-      brandName: brandName,
-      category: category,
-      quantity: quantity,
-      description: description,
+      productName: productNameObject.getOrElse(() => null),
+      brandName: brandNameObject.getOrElse(() => null),
+      category: categoryObject.getOrElse(() => null),
+      quantity: quantityObject.getOrElse(() => null),
+      description: descriptionObject.getOrElse(() => null),
       manDate: manDate,
       expDate: expDate,
       createdAt: createdAt,
