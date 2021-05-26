@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './presentation/model/categories_view_item_model.dart';
 import './presentation/model/latest_view_item_model.dart';
 import './presentation/model/product_detail_view_model.dart';
+import './presentation/model/item_view_model.dart';
 
 const Dummy_Categories = const [
   CategoryViewItemModel(
@@ -54,4 +55,24 @@ var dummyProductDetails = [
           " ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate"
           "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat"
           " cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+];
+
+var dummyItems = [
+  ItemViewModel(
+      title: "Fish",
+      price: 45.5,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg'),
+  ItemViewModel(
+    title: "Spaghetti",
+    price: 50.8,
+    imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bo'
+        'lognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+  ),
+  ItemViewModel(
+      title: "Burger",
+      price: 2.50,
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg')
 ];

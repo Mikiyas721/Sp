@@ -14,15 +14,14 @@ class LatestListItem extends StatelessWidget {
     return Container(
       height: 100,
       child: Card(
-        elevation: 4,
-//        margin: EdgeInsets.symmetric(vertical: 5),
         child: LayoutBuilder(builder: (_, constraint) {
           return Row(
             children: [
               Container(
                 height: constraint.maxHeight,
                 width: constraint.maxWidth * 0.4,
-                child: Image.network(dummyLatestItems[index].imageUrl),
+                child: Image.network(dummyLatestItems[index].imageUrl,
+                    fit: BoxFit.cover),
               ),
               10.0.hSpace,
               Padding(

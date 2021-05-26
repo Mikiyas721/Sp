@@ -27,6 +27,8 @@ extension BuildContextExtenstion on BuildContext {
 
   double get screenHeight => MediaQuery.of(this).size.height;
 
+  double get screenTop => MediaQuery.of(this).padding.top;
+
   double get paddingTop => MediaQuery.of(this).padding.top;
 }
 
