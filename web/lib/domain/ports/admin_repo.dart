@@ -8,5 +8,4 @@ abstract class IAdminRepo {
   Future<Either<Failure, List<Admin>>> fetchFiltered(String privilege);
   Future<Either<Failure, List<Admin>>> searchAdmin(String prop, String value);
   Future<Either<Failure, Admin>> update(Admin admin);
-  Future<Either<Failure, Admin>> delete(Admin admin);
 }
