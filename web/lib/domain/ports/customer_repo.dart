@@ -9,5 +9,4 @@ abstract class ICustomerRepo{
   Future<Either<Failure, List<Customer>>> fetchNew();
   Future<Either<Failure, List<Customer>>> searchCustomer(String prop, String value);
   Future<Either<Failure, Customer>> update(Customer customer);
-  Future<Either<Failure, Customer>> delete(Customer customer);
 }
