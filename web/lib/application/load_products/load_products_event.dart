@@ -19,7 +19,7 @@ class LoadProductsFailedEvent extends LoadProductsEvent {
   @override
   Stream<LoadProductsState> handle(LoadProductsState currentState) async* {
     yield currentState.copyWith(
-      loadFailure: Failure.getFailureOption(loadFailure),
+      loadFailure: Failure.getOption(loadFailure),
       isLoading: false,
     );
   }
@@ -76,7 +76,7 @@ class LoadProductsFilterFailedEvent extends LoadProductsEvent {
   @override
   Stream<LoadProductsState> handle(LoadProductsState currentState) async* {
     yield currentState.copyWith(
-      filterFailure: Failure.getFailureOption(filterFailure),
+      filterFailure: Failure.getOption(filterFailure),
       isFiltering: false,
     );
   }

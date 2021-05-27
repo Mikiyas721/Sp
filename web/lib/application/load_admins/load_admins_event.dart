@@ -20,7 +20,7 @@ class LoadAdminsFailedEvent extends LoadAdminsEvent {
   @override
   Stream<LoadAdminsState> handle(LoadAdminsState currentState) async* {
     yield currentState.copyWith(
-      loadFailure: Failure.getFailureOption(loadFailure),
+      loadFailure: Failure.getOption(loadFailure),
       isLoading: false,
     );
   }
@@ -77,7 +77,7 @@ class LoadAdminsFilterFailedEvent extends LoadAdminsEvent {
   @override
   Stream<LoadAdminsState> handle(LoadAdminsState currentState) async* {
     yield currentState.copyWith(
-      filterFailure: Failure.getFailureOption(filterFailure),
+      filterFailure: Failure.getOption(filterFailure),
       isFiltering: false,
     );
   }

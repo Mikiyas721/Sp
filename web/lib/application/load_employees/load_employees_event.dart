@@ -19,7 +19,7 @@ class LoadEmployeesFailedEvent extends LoadEmployeesEvent {
   @override
   Stream<LoadEmployeesState> handle(LoadEmployeesState currentState) async* {
     yield currentState.copyWith(
-      loadFailure: Failure.getFailureOption(loadFailure),
+      loadFailure: Failure.getOption(loadFailure),
       isLoading: false,
     );
   }
@@ -76,7 +76,7 @@ class LoadEmployeesFilterFailedEvent extends LoadEmployeesEvent {
   @override
   Stream<LoadEmployeesState> handle(LoadEmployeesState currentState) async* {
     yield currentState.copyWith(
-      filterFailure: Failure.getFailureOption(filterFailure),
+      filterFailure: Failure.getOption(filterFailure),
       isFiltering: false,
     );
   }

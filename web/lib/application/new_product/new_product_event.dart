@@ -132,7 +132,7 @@ class NewProductHasRequestedFailedEvent extends NewProductEvent {
   @override
   Stream<NewProductState> handle(NewProductState currentState) async* {
     yield currentState.copyWith(
-      requestFailure: Failure.getFailureOption(requestFailure),
+      requestFailure: Failure.getOption(requestFailure),
       hasRequested: false,
     );
   }
