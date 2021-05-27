@@ -40,4 +40,34 @@ extension StringExtension on String {
     if (this == 'Cosmetics') return some(ProductCategory.COSMETICS);
     return none();
   }
+
+//  Option<AdminPrivilegeType> toAdminPrivilegeType() {
+//    if (this == 'All_Features') return some(AdminPrivilegeType.ALL_FEATURES);
+//    return none();
+//  }
+
+//  Option<EmployeePosition> toEmployeePosition() {
+//    if (this == 'General_Manager')
+//      return some(EmployeePosition.GENERAL_MANAGER);
+//    return none();
+//  }
+
+//  Option<EmployeeType> toEmployeeType() {
+//    if (this == 'Full_Time') return some(EmployeeType.FULL_TIME);
+//    if (this == 'Part_Time') return some(EmployeeType.PART_TIME);
+//    return none();
+//  }
+}
+
+extension CategoryExtension on ProductCategory {
+  Option<String> getString() {
+    if (this == ProductCategory.FOOD) return some('Food');
+    if (this == ProductCategory.UTILITY) return some('Utility');
+    if (this == ProductCategory.BEVERAGE) return some('Beverage');
+    if (this == ProductCategory.COSMETICS) return some('Cosmetics');
+    return none();
+  }
+
+  List<String> get categoryList =>
+      ProductCategory.values.map((e) => e.getString().getOrElse(() => null)).toList();
 }
