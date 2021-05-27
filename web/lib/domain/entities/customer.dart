@@ -5,8 +5,7 @@ import 'package:sp_web/domain/value_objects/image_url.dart';
 import 'package:sp_web/domain/value_objects/person_name.dart';
 import 'package:sp_web/domain/value_objects/phone_number.dart';
 
-class Customer extends Entity {
-  final String id;
+class Customer extends Entity implements TimeStampedEntity {
   final PersonName name;
   final PhoneNumber phoneNumber;
   final Email email;
@@ -15,14 +14,14 @@ class Customer extends Entity {
   final DateTime updatedAt;
 
   Customer._({
-    this.id,
+    String id,
     this.name,
     this.phoneNumber,
     this.email,
     this.photoUrl,
     this.createdAt,
     this.updatedAt,
-  });
+  }):super(id);
 
   static Option<Customer> create({
     String id,

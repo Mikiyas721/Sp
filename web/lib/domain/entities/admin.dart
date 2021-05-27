@@ -11,7 +11,6 @@ import 'package:sp_web/domain/value_objects/salary.dart';
 import '../../common/extensions.dart';
 
 class Admin extends Entity {
-  final String id;
   final PersonName firstName;
   final PersonName lastName;
   final PhoneNumber phoneNumber;
@@ -26,7 +25,7 @@ class Admin extends Entity {
   final DateTime updatedAt;
 
   Admin._({
-    this.id,
+    String id,
     this.firstName,
     this.lastName,
     this.phoneNumber,
@@ -39,7 +38,7 @@ class Admin extends Entity {
     this.privilegeType,
     this.createdAt,
     this.updatedAt,
-  });
+  }):super(id);
 
   static Option<Admin> create({
     String id,

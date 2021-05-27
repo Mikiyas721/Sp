@@ -9,8 +9,7 @@ import 'package:sp_web/domain/value_objects/phone_number.dart';
 import 'package:sp_web/domain/value_objects/salary.dart';
 import '../../common/extensions.dart';
 
-class Employee extends Entity {
-  final String id;
+class Employee extends Entity implements TimeStampedEntity {
   final PersonName firstName;
   final PersonName lastName;
   final PhoneNumber phoneNumber;
@@ -24,7 +23,7 @@ class Employee extends Entity {
   final DateTime updatedAt;
 
   Employee._({
-    this.id,
+    String id,
     this.firstName,
     this.lastName,
     this.phoneNumber,
@@ -36,7 +35,7 @@ class Employee extends Entity {
     this.docUrl,
     this.createdAt,
     this.updatedAt,
-  });
+  }):super(id);
 
   static Option<Employee> create({
     String id,
