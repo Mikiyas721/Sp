@@ -8,31 +8,36 @@ class HomePage extends StatelessWidget {
 
   void onItemTapped(int index) {}
 
+  AppBar get appBar => AppBar();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: (context.screenHeight - context.paddingTop),
-        padding: EdgeInsets.only(top: 40, left: 20, right: 20),
-        child: LayoutBuilder(builder: (ctx, constraints) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Categories",
-                style: context.headline1,
-                textAlign: TextAlign.center,
-              ),
-              CategoryWidget(constraints),
-              15.0.vSpace,
-              Text(
-                "Latest",
-                style: context.headline1,
-              ),
-              LatestList(constraints)
-            ],
-          );
-        }),
+      body: SingleChildScrollView(
+        child: Container(
+          height: context.screenHeight -
+              context.screenTop,
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+          child: LayoutBuilder(builder: (ctx, constraints) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Categories",
+                  style: context.headline1,
+                  textAlign: TextAlign.center,
+                ),
+                CategoryWidget(constraints),
+                15.0.vSpace,
+                Text(
+                  "Latest",
+                  style: context.headline1,
+                ),
+                LatestList(constraints)
+              ],
+            );
+          }),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
