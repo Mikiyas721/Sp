@@ -6,8 +6,7 @@ import '../value_objects/product_name.dart';
 import '../value_objects/quantity.dart';
 import '../../common/extensions.dart';
 
-class Product extends Entity {
-  final String id;
+class Product extends Entity implements TimeStampedEntity {
   final ProductName productName;
   final ProductName brandName;
   final ProductCategory category;
@@ -19,7 +18,7 @@ class Product extends Entity {
   final DateTime updatedAt;
 
   Product._({
-    this.id,
+    String id,
     this.productName,
     this.brandName,
     this.category,
@@ -29,7 +28,7 @@ class Product extends Entity {
     this.expDate,
     this.createdAt,
     this.updatedAt,
-  });
+  }) : super(id);
 
   static Option<Product> create({
     String id,
