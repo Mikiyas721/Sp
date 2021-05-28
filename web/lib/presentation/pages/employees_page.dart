@@ -3,8 +3,8 @@ import 'package:sp_web/presentation/models/add_employee_view_model.dart';
 import 'package:sp_web/presentation/models/employees_view_model.dart';
 import 'package:sp_web/presentation/views/add_employee_view.dart';
 import 'package:sp_web/presentation/views/employees_view.dart';
-import 'package:sp_web/presentation/widgets/my_action_button.dart';
-import 'package:sp_web/presentation/widgets/my_drawer.dart';
+import 'package:sp_web/common/widgets/my_action_button.dart';
+import 'package:sp_web/common/widgets/my_drawer.dart';
 import '../../common/extensions.dart';
 
 class EmployeesPage extends StatelessWidget {

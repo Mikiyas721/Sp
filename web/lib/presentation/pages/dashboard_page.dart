@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sp_web/presentation/widgets/my_drawer.dart';
+import 'package:sp_web/common/widgets/my_drawer.dart';
 
 class DashboardPage extends StatelessWidget {
   @override

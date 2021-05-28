@@ -10,22 +10,21 @@
     "Stamp": {}
   },
   "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
     "privilegeType": {
       "type": "string",
       "required": true
     }
   },
   "validations": [],
-  "relations": {
-    "employee": {
-      "type": "hasOne",
-      "model": "employee",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }

@@ -1,6 +1,5 @@
 part of 'load_admins_bloc.dart';
 
-@immutable
 abstract class LoadAdminsEvent extends BlocEvent<LoadAdminsState> {}
 
 class LoadAdminsIsLoadingEvent extends LoadAdminsEvent {

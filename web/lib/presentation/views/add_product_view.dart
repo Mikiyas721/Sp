@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sp_web/presentation/models/add_product_view_model.dart';
-import 'package:sp_web/presentation/widgets/border_text_field.dart';
-import 'package:sp_web/presentation/widgets/my_action_button.dart';
-import 'package:sp_web/presentation/widgets/my_dropdown.dart';
-import 'package:sp_web/presentation/widgets/picker.dart';
+import 'package:sp_web/common/widgets/border_text_field.dart';
+import 'package:sp_web/common/widgets/my_action_button.dart';
+import 'package:sp_web/common/widgets/my_dropdown.dart';
+import 'package:sp_web/common/widgets/picker.dart';
 import '../../common/common.dart';
 
 class AddProductView extends StatelessWidget {

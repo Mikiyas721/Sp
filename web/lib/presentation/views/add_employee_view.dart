@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sp_web/presentation/models/add_employee_view_model.dart';
-import 'package:sp_web/presentation/widgets/border_text_field.dart';
-import 'package:sp_web/presentation/widgets/my_action_button.dart';
+import 'package:sp_web/common/widgets/border_text_field.dart';
+import 'package:sp_web/common/widgets/my_action_button.dart';
 import '../../common/extensions.dart';
 
 class AddEmployeeView extends StatelessWidget {

@@ -7,8 +7,9 @@ import 'package:sp_web/presentation/pages/client_page.dart';
 import 'package:sp_web/presentation/pages/dashboard_page.dart';
 import 'package:sp_web/presentation/pages/employees_page.dart';
 import 'package:sp_web/presentation/pages/feedback_page.dart';
-import 'package:sp_web/presentation/pages/login_page.dart';
 import 'package:sp_web/presentation/pages/products_page.dart';
+
+import 'modules/admin/presentation/pages/login_page.dart';
 
 void main() {
   runApp(MyApp());

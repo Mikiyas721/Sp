@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sp_web/presentation/models/add_employee_view_model.dart';
 import 'package:sp_web/presentation/views/add_employee_view.dart';
-import 'package:sp_web/presentation/widgets/my_outline_button.dart';
+import 'package:sp_web/common/widgets/my_outline_button.dart';
 
 class AddEmployeePage extends StatelessWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
-import 'package:sp_web/presentation/widgets/border_text_field.dart';
-import 'package:sp_web/presentation/widgets/my_dropdown.dart';
+import 'package:sp_web/common/widgets/border_text_field.dart';
+import './my_dropdown.dart';
 
 import '../view_model.dart';
 import 'empty_error_view.dart';
