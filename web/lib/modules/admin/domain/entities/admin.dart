@@ -1,13 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:sp_web/common/entity.dart';
 import 'package:sp_web/common/enums/admin_privilege_type.dart';
-import 'package:sp_web/common/enums/employee_position.dart';
-import 'package:sp_web/common/enums/employee_type.dart';
-import 'package:sp_web/domain/value_objects/email.dart';
-import 'package:sp_web/domain/value_objects/image_url.dart';
-import 'package:sp_web/domain/value_objects/person_name.dart';
-import 'package:sp_web/domain/value_objects/phone_number.dart';
-import 'package:sp_web/domain/value_objects/salary.dart';
+import 'package:sp_web/common/domain/value_objects/phone_number.dart';
 import 'package:sp_web/modules/admin/domain/value_objects/password.dart';
 import '../../../../common/extensions.dart';
 

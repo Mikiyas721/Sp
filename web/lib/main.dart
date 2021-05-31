@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sp_web/presentation/pages/add_employee_page.dart';
-import 'package:sp_web/presentation/pages/add_product_page.dart';
-import 'package:sp_web/presentation/pages/admin_page.dart';
-import 'package:sp_web/presentation/pages/client_page.dart';
-import 'package:sp_web/presentation/pages/dashboard_page.dart';
-import 'package:sp_web/presentation/pages/employees_page.dart';
-import 'package:sp_web/presentation/pages/feedback_page.dart';
-import 'package:sp_web/presentation/pages/products_page.dart';
+import 'package:sp_web/modules/employee/presentation/pages/add_employee_page.dart';
+import 'package:sp_web/modules/admin/presentation/pages/admin_page.dart';
+import 'package:sp_web/modules/customer/presentation/pages/customer_page.dart';
+import 'package:sp_web/modules/product/presentation/pages/dashboard_page.dart';
+import 'package:sp_web/modules/employee/presentation/pages/employees_page.dart';
+import 'package:sp_web/modules/customer/presentation/pages/feedback_page.dart';
+import 'package:sp_web/modules/product/presentation/pages/products_page.dart';
 
 import 'modules/admin/presentation/pages/login_page.dart';
+import 'modules/product/presentation/pages/add_product_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,7 +38,7 @@ final routes = {
   '/dashboard': (BuildContext context) => DashboardPage(),
   '/employees': (BuildContext context) => EmployeesPage(),
   '/admins': (BuildContext context) => AdminsPage(),
-  '/clients': (BuildContext context) => ClientPage(),
+  '/clients': (BuildContext context) => CustomerPage(),
   '/products': (BuildContext context) => ProductsPage(),
   '/feedback': (BuildContext context) => FeedbackPage(),
   '/addEmployee': (BuildContext context) => AddEmployeePage(),

@@ -8,7 +8,7 @@ import 'package:sp_web/common/bloc/bloc_helpers.dart';
 import 'package:sp_web/common/failure.dart';
 import 'package:sp_web/modules/admin/domain/entities/admin.dart';
 import 'package:sp_web/modules/admin/domain/value_objects/password.dart';
-import 'package:sp_web/domain/value_objects/phone_number.dart';
+import 'package:sp_web/common/domain/value_objects/phone_number.dart';
 
 part 'login_event.dart';
 
