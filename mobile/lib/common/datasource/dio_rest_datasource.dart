@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'rest_datasource/rest_datasource.dart';
 import 'rest_datasource/rest_request.dart';
 import 'rest_datasource/rest_response.dart';
 
+@LazySingleton(as: RestDataSource)
 class DioRestDataSource implements RestDataSource {
   final Dio dio;
 
@@ -25,12 +27,12 @@ class DioRestDataSource implements RestDataSource {
     } on DioError catch (e) {
       print(e);
       switch (e.type) {
-        case DioErrorType.connectTimeout:
+        case DioErrorType.CONNECT_TIMEOUT:
           return RestResponseWithFailure(
             left(ConnectionFailure()),
           );
 
-        case DioErrorType.response:
+        case DioErrorType.RESPONSE:
           return RestResponseWithFailure(
             left(
               ErrorResponseFailure(
@@ -42,7 +44,7 @@ class DioRestDataSource implements RestDataSource {
               ),
             ),
           );
-        case DioErrorType.other:
+        case DioErrorType.DEFAULT:
           final error = e.error;
           if (error != null && error is SocketException) {
             return RestResponseWithFailure(
