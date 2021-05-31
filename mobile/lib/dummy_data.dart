@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './presentation/model/categories_view_item_model.dart';
 import './presentation/model/latest_view_item_model.dart';
-import './presentation/model/product_detail_view_model.dart';
+import 'modules/product/presentation/model/product_detail_view_model.dart';
 import './presentation/model/item_view_model.dart';
 
 const Dummy_Categories = const [

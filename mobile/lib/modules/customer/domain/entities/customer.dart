@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import '../../../../common/entity.dart';
 import '../../domain/value_objects/email.dart';
-import '../../../../domain/value_objects/image_url.dart';
+import '../../../product/domain/value_objects/image_url.dart';
 import '../value_objects/person_name.dart';
 import '../value_objects/phone_number.dart';
 import '../value_objects/password.dart';
