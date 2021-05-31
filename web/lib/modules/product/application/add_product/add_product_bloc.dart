@@ -9,18 +9,20 @@ import 'package:sp_web/common/failure.dart';
 import 'package:sp_web/modules/product/domain/value_objects/description.dart';
 import 'package:sp_web/modules/product/domain/value_objects/product_name.dart';
 import 'package:sp_web/modules/product/domain/value_objects/quantity.dart';
+import '../../../../common/extensions.dart';
 
-part 'new_product_event.dart';
-part 'new_product_state.dart';
+part 'add_product_event.dart';
 
-part 'new_product_bloc.freezed.dart';
+part 'add_product_state.dart';
 
-class NewProductBloc extends Bloc<NewProductEvent, NewProductState> {
-  NewProductBloc() : super(NewProductState.initial());
+part 'add_product_bloc.freezed.dart';
+
+class AddProductBloc extends Bloc<AddProductEvent, AddProductState> {
+  AddProductBloc() : super(AddProductState.initial());
 
   @override
-  Stream<NewProductState> mapEventToState(
-    NewProductEvent event,
+  Stream<AddProductState> mapEventToState(
+    AddProductEvent event,
   ) async* {
     yield* event.handle(state);
   }

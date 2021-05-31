@@ -105,4 +105,39 @@ class Employee extends Entity implements TimeStampedEntity {
       createdAt: createdAt,
     ));
   }
+  static Option<Employee> createForNew({
+    PersonName firstName,
+    PersonName lastName,
+    PhoneNumber phoneNumber,
+    Email email,
+    EmployeePosition employeePosition,
+    Salary salary,
+    EmployeeType employeeType,
+    ImageUrl photoUrl,
+    ImageUrl docUrl,
+  }) {
+    if ([
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      employeePosition,
+      salary,
+      employeeType,
+      photoUrl,
+      docUrl,
+    ].any((element) => element == null)) return none();
+
+    return Some(Employee._(
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      email: email,
+      employeePosition: employeePosition,
+      salary: salary,
+      employeeType: employeeType,
+      photoUrl: photoUrl,
+      docUrl: docUrl,
+    ));
+  }
 }

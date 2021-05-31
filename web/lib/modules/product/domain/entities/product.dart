@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:sp_web/common/domain/value_objects/image_url.dart';
 import 'package:sp_web/common/entity.dart';
 import 'package:sp_web/common/enums/product_category.dart';
 import 'package:sp_web/modules/product/domain/value_objects/description.dart';
@@ -7,6 +8,7 @@ import 'package:sp_web/modules/product/domain/value_objects/quantity.dart';
 import '../../../../common/extensions.dart';
 
 class Product extends Entity implements TimeStampedEntity {
+  final ImageUrl imageUrl;
   final ProductName productName;
   final ProductName brandName;
   final ProductCategory category;
@@ -19,6 +21,7 @@ class Product extends Entity implements TimeStampedEntity {
 
   Product._({
     String id,
+    this.imageUrl,
     this.productName,
     this.brandName,
     this.category,
@@ -79,6 +82,36 @@ class Product extends Entity implements TimeStampedEntity {
       expDate: expDate,
       createdAt: createdAt,
       updatedAt: updatedAt,
+    ));
+  }
+
+  static Option<Product> createForAdd({
+    ProductName productName,
+    ProductName brandName,
+    ProductCategory category,
+    Quantity quantity,
+    Description description,
+    DateTime manDate,
+    DateTime expDate,
+  }) {
+    if ([
+      productName,
+      brandName,
+      category,
+      quantity,
+      description,
+      manDate,
+      expDate,
+    ].any((element) => element == null)) return none();
+
+    return some(Product._(
+      productName: productName,
+      brandName: brandName,
+      category: category,
+      quantity: quantity,
+      description: description,
+      manDate: manDate,
+      expDate: expDate,
     ));
   }
 }

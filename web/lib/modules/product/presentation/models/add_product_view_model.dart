@@ -10,6 +10,7 @@ class AddProductViewModel extends ViewModel {
   final String description;
   final String descriptionError;
   final int quantity;
+  final String quantityError;
   final DateTime expDate;
   final DateTime manDate;
 
@@ -23,6 +24,7 @@ class AddProductViewModel extends ViewModel {
     this.description,
     this.descriptionError,
     this.quantity,
+    this.quantityError,
     this.expDate,
     this.manDate,
   });
@@ -38,6 +40,7 @@ class AddProductViewModel extends ViewModel {
         description,
         descriptionError,
         quantity,
+        quantityError,
         expDate,
         manDate,
       ];

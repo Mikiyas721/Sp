@@ -54,6 +54,20 @@ class LoadProductsFilterChangedEvent extends LoadProductsEvent {
   }
 }
 
+class LoadProductsCategoryChangedEvent extends LoadProductsEvent {
+  final String category;
+
+  LoadProductsCategoryChangedEvent(this.category);
+
+  @override
+  Stream<LoadProductsState> handle(LoadProductsState currentState) async* {
+    yield currentState.copyWith(
+      category: category,
+      isFiltering: true,
+    );
+  }
+}
+
 class LoadProductsSearchTextChanged extends LoadProductsEvent {
   final String searchString;
 

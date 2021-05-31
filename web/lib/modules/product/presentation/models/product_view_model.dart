@@ -8,12 +8,12 @@ class ProductListViewModel extends SimpleListViewModel<ProductViewModel> {
   final bool isPerformingQuery;
 
   ProductListViewModel({
-    bool isLoading,
-    String error,
-    List<ProductViewModel> data,
-    this.searchText,
-    this.filter,
-    this.category,
+    @required bool isLoading,
+    @required String error,
+    @required List<ProductViewModel> data,
+    @required this.searchText,
+    @required this.filter,
+    @required this.category,
     @required this.isPerformingQuery,
   }) : super(
           isLoading: isLoading,
@@ -23,20 +23,42 @@ class ProductListViewModel extends SimpleListViewModel<ProductViewModel> {
 }
 
 class ProductViewModel extends ViewModel {
+  final String id;
   final String imageUrl;
-  final String name;
+  final String productName;
+  final String brandName;
   final String category;
+  final String quantity;
+  final String description;
+  final String manDate;
+  final String expDate;
+  final String createdAt;
+  final String updatedAt;
 
   ProductViewModel({
+    this.id,
     this.imageUrl,
-    this.name,
+    this.productName,
+    this.brandName,
     this.category,
+    this.quantity,
+    this.description,
+    this.manDate,
+    this.expDate,
+    this.createdAt,
+    this.updatedAt,
   });
 
   @override
   List<Object> get props => [
-        imageUrl,
-        name,
+        productName,
+        brandName,
         category,
+        quantity,
+        description,
+        manDate,
+        expDate,
+        createdAt,
+        updatedAt,
       ];
 }

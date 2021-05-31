@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sp_web/modules/employee/presentation/pages/add_employee_page.dart';
+import 'package:sp_web/modules/employee/presentation/pages/new_employee_page.dart';
 import 'package:sp_web/modules/admin/presentation/pages/admin_page.dart';
 import 'package:sp_web/modules/customer/presentation/pages/customer_page.dart';
 import 'package:sp_web/modules/product/presentation/pages/dashboard_page.dart';
@@ -41,6 +41,6 @@ final routes = {
   '/clients': (BuildContext context) => CustomerPage(),
   '/products': (BuildContext context) => ProductsPage(),
   '/feedback': (BuildContext context) => FeedbackPage(),
-  '/addEmployee': (BuildContext context) => AddEmployeePage(),
+  '/addEmployee': (BuildContext context) => NewEmployeePage(),
   '/addProduct': (BuildContext context) => AddProductPage(),
 };

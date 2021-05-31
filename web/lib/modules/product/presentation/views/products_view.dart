@@ -13,7 +13,6 @@ class ProductListView extends StatelessWidget {
   final void Function(String value) onSearch;
   final void Function(String value) onFilterChanged;
   final void Function(String value) onCategoryChanged;
-  final VoidCallback onAddProduct;
 
   const ProductListView({
     Key key,
@@ -22,7 +21,6 @@ class ProductListView extends StatelessWidget {
     this.onSearch,
     this.onFilterChanged,
     this.onCategoryChanged,
-    this.onAddProduct,
   }) : super(key: key);
 
   @override
@@ -149,7 +147,7 @@ class ProductView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      productViewModel.name,
+                      productViewModel.productName,
                       style: context.headline5,
                     ),
                     Text(

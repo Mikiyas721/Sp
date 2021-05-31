@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:sp_web/modules/employee/presentation/models/add_employee_view_model.dart';
+import 'package:sp_web/modules/employee/presentation/models/new_employee_view_model.dart';
 import 'package:sp_web/common/widgets/border_text_field.dart';
 import 'package:sp_web/common/widgets/my_action_button.dart';
 import '../../../../common/extensions.dart';
 
-class AddEmployeeView extends StatelessWidget {
-  final AddEmployeeViewModel addEmployeeViewModel;
+class NewEmployeeView extends StatelessWidget {
+  final NewEmployeeViewModel addEmployeeViewModel;
   final void Function(String firstName) onFirstName;
   final void Function(String lastName) onLastName;
-  final void Function(String phoneNumber) onPhoneNumberName;
-  final void Function(String email) onEmailName;
-  final void Function(String dob) onDobName;
+  final void Function(String phoneNumber) onPhoneNumber;
+  final void Function(String email) onEmail;
+  final void Function(String employeePosition) onEmployeePosition;
+  final void Function(String salary) onSalary;
+  final void Function(String employeeType) onEmployeeType;
   final VoidCallback onImage;
   final VoidCallback onDocument;
   final VoidCallback onAdd;
 
-  const AddEmployeeView({
+  const NewEmployeeView({
     Key key,
     @required this.addEmployeeViewModel,
     @required this.onFirstName,
     @required this.onLastName,
-    @required this.onPhoneNumberName,
-    @required this.onEmailName,
-    @required this.onDobName,
+    @required this.onPhoneNumber,
+    @required this.onEmail,
+    @required this.onEmployeePosition,
+    @required this.onSalary,
+    @required this.onEmployeeType,
     @required this.onImage,
     @required this.onDocument,
     @required this.onAdd,
   }) : super(key: key);
 
+//TODO refactor ui and wire methods
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -67,14 +72,14 @@ class AddEmployeeView extends StatelessWidget {
               errorMessage: addEmployeeViewModel.phoneNumberError,
               labelText: 'phone number',
               icon: Icons.phone,
-              onChanged: onPhoneNumberName,
+              onChanged: onPhoneNumber,
             ),
             15.vSpace,
             BorderTextField(
               errorMessage: addEmployeeViewModel.emailError,
               labelText: 'email',
               icon: Icons.email,
-              onChanged: onEmailName,
+              onChanged: onEmail,
             ),
             15.vSpace,
             BorderTextField(
@@ -82,7 +87,7 @@ class AddEmployeeView extends StatelessWidget {
               labelText: 'dob',
               icon: Icons.date_range,
               readOnly: true,
-              onChanged: onEmailName,
+              onChanged: onEmail,
             ),
             15.vSpace,
             Row(

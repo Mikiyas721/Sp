@@ -4,8 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sp_web/common/bloc/bloc_helpers.dart';
+import 'package:sp_web/common/enums/product_category.dart';
 import 'package:sp_web/common/failure.dart';
 import 'package:sp_web/modules/product/domain/entities/product.dart';
+import '../../../../common/extensions.dart';
 
 part 'load_products_event.dart';
 

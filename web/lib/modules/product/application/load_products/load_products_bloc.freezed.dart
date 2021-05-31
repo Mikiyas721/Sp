@@ -18,7 +18,9 @@ class _$LoadProductsStateTearOff {
       {List<Product> products,
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
+      String category,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering}) {
@@ -26,7 +28,9 @@ class _$LoadProductsStateTearOff {
       products: products,
       loadFailure: loadFailure,
       filterFailure: filterFailure,
+      category: category,
       searchString: searchString,
+      searchFilter: searchFilter,
       filterString: filterString,
       isLoading: isLoading,
       isFiltering: isFiltering,
@@ -43,7 +47,9 @@ mixin _$LoadProductsState {
   List<Product> get products;
   Option<Failure> get loadFailure;
   Option<Failure> get filterFailure;
+  String get category;
   String get searchString;
+  String get searchFilter;
   String get filterString;
   bool get isLoading;
   bool get isFiltering;
@@ -61,7 +67,9 @@ abstract class $LoadProductsStateCopyWith<$Res> {
       {List<Product> products,
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
+      String category,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering});
@@ -81,7 +89,9 @@ class _$LoadProductsStateCopyWithImpl<$Res>
     Object products = freezed,
     Object loadFailure = freezed,
     Object filterFailure = freezed,
+    Object category = freezed,
     Object searchString = freezed,
+    Object searchFilter = freezed,
     Object filterString = freezed,
     Object isLoading = freezed,
     Object isFiltering = freezed,
@@ -95,9 +105,13 @@ class _$LoadProductsStateCopyWithImpl<$Res>
       filterFailure: filterFailure == freezed
           ? _value.filterFailure
           : filterFailure as Option<Failure>,
+      category: category == freezed ? _value.category : category as String,
       searchString: searchString == freezed
           ? _value.searchString
           : searchString as String,
+      searchFilter: searchFilter == freezed
+          ? _value.searchFilter
+          : searchFilter as String,
       filterString: filterString == freezed
           ? _value.filterString
           : filterString as String,
@@ -119,7 +133,9 @@ abstract class _$LoadProductsStateCopyWith<$Res>
       {List<Product> products,
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
+      String category,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering});
@@ -141,7 +157,9 @@ class __$LoadProductsStateCopyWithImpl<$Res>
     Object products = freezed,
     Object loadFailure = freezed,
     Object filterFailure = freezed,
+    Object category = freezed,
     Object searchString = freezed,
+    Object searchFilter = freezed,
     Object filterString = freezed,
     Object isLoading = freezed,
     Object isFiltering = freezed,
@@ -155,9 +173,13 @@ class __$LoadProductsStateCopyWithImpl<$Res>
       filterFailure: filterFailure == freezed
           ? _value.filterFailure
           : filterFailure as Option<Failure>,
+      category: category == freezed ? _value.category : category as String,
       searchString: searchString == freezed
           ? _value.searchString
           : searchString as String,
+      searchFilter: searchFilter == freezed
+          ? _value.searchFilter
+          : searchFilter as String,
       filterString: filterString == freezed
           ? _value.filterString
           : filterString as String,
@@ -174,7 +196,9 @@ class _$_LoadProductsState implements _LoadProductsState {
       {this.products,
       this.loadFailure,
       this.filterFailure,
+      this.category,
       this.searchString,
+      this.searchFilter,
       this.filterString,
       this.isLoading,
       this.isFiltering});
@@ -186,7 +210,11 @@ class _$_LoadProductsState implements _LoadProductsState {
   @override
   final Option<Failure> filterFailure;
   @override
+  final String category;
+  @override
   final String searchString;
+  @override
+  final String searchFilter;
   @override
   final String filterString;
   @override
@@ -196,7 +224,7 @@ class _$_LoadProductsState implements _LoadProductsState {
 
   @override
   String toString() {
-    return 'LoadProductsState(products: $products, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
+    return 'LoadProductsState(products: $products, loadFailure: $loadFailure, filterFailure: $filterFailure, category: $category, searchString: $searchString, searchFilter: $searchFilter, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
   }
 
   @override
@@ -212,9 +240,15 @@ class _$_LoadProductsState implements _LoadProductsState {
             (identical(other.filterFailure, filterFailure) ||
                 const DeepCollectionEquality()
                     .equals(other.filterFailure, filterFailure)) &&
+            (identical(other.category, category) ||
+                const DeepCollectionEquality()
+                    .equals(other.category, category)) &&
             (identical(other.searchString, searchString) ||
                 const DeepCollectionEquality()
                     .equals(other.searchString, searchString)) &&
+            (identical(other.searchFilter, searchFilter) ||
+                const DeepCollectionEquality()
+                    .equals(other.searchFilter, searchFilter)) &&
             (identical(other.filterString, filterString) ||
                 const DeepCollectionEquality()
                     .equals(other.filterString, filterString)) &&
@@ -232,7 +266,9 @@ class _$_LoadProductsState implements _LoadProductsState {
       const DeepCollectionEquality().hash(products) ^
       const DeepCollectionEquality().hash(loadFailure) ^
       const DeepCollectionEquality().hash(filterFailure) ^
+      const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(searchString) ^
+      const DeepCollectionEquality().hash(searchFilter) ^
       const DeepCollectionEquality().hash(filterString) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(isFiltering);
@@ -248,7 +284,9 @@ abstract class _LoadProductsState implements LoadProductsState {
       {List<Product> products,
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
+      String category,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering}) = _$_LoadProductsState;
@@ -260,7 +298,11 @@ abstract class _LoadProductsState implements LoadProductsState {
   @override
   Option<Failure> get filterFailure;
   @override
+  String get category;
+  @override
   String get searchString;
+  @override
+  String get searchFilter;
   @override
   String get filterString;
   @override

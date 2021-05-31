@@ -74,4 +74,19 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
             () => left(SimpleFailure("Unable to parse product dto")),
             (a) => right(a)));
   }
+
+  @override
+  Future<Either<Failure, List<Product>>> fetchByCategory(String value) async {
+    final response = await _availableProductsCrudDatasource.find(options: {
+      "filter": {
+        "where": {"productCategory": "$value"}
+      }
+    });
+    return response.fold(
+        (l) => left(l),
+        (r) => Dto.toDomainList<Product, ProductDto>(r).fold(
+            () =>
+                left(SimpleFailure("Error:parsing available product dto list")),
+            (a) => right(a)));
+  }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sp_web/common/controller/controller_provider.dart';
 import 'package:sp_web/common/widgets/my_action_button.dart';
 import 'package:sp_web/common/widgets/my_drawer.dart';
+import 'package:sp_web/modules/product/presentation/controller/load_products_controller.dart';
 import 'package:sp_web/modules/product/presentation/models/product_view_model.dart';
 import 'package:sp_web/modules/product/presentation/views/products_view.dart';
 
@@ -22,18 +24,19 @@ class ProductsPage extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
                     width: (MediaQuery.of(context).size.width) * 0.78,
-                    child: ProductListView(
-                      productListViewModel: ProductListViewModel(
-                          isLoading: false,
-                          isPerformingQuery: true,
-                          data: List.filled(
-                              30,
-                              ProductViewModel(
-                                imageUrl: 'images/1.png',
-                                name: 'Wrench',
-                                category: 'Utility',
-                              ))),
-                    ),
+                    child: ViewModelBuilder.withController<ProductListViewModel,
+                            LoadProductsController>(
+                        create: () => LoadProductsController(context),
+                        onInit: (controller) => controller.loadInitial(),
+                        builder: (context, controller, model) {
+                          return ProductListView(
+                            productListViewModel: model,
+                            onFilterChanged: controller.onFilterChanged,
+                            onCategoryChanged: controller.onCategoryChanged,
+                            onSearch: controller.onSearch,
+                            onReload: controller.loadInitial,
+                          );
+                        }),
                   ),
                 ),
               ),

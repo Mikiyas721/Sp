@@ -22,8 +22,8 @@ class _$NewEmployeeStateTearOff {
       Option<EmployeePosition> employeePosition,
       Either<SalaryFailure, Salary> salary,
       Option<EmployeeType> employeeType,
-      Option<String> photoUrl,
-      Option<String> docUrl,
+      Either<ImageUrlFailure, ImageUrl> photoUrl,
+      Either<ImageUrlFailure, ImageUrl> docUrl,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -59,8 +59,8 @@ mixin _$NewEmployeeState {
   Option<EmployeePosition> get employeePosition;
   Either<SalaryFailure, Salary> get salary;
   Option<EmployeeType> get employeeType;
-  Option<String> get photoUrl;
-  Option<String> get docUrl;
+  Either<ImageUrlFailure, ImageUrl> get photoUrl;
+  Either<ImageUrlFailure, ImageUrl> get docUrl;
   Option<Failure> get requestFailure;
   bool get hasSubmitted;
   bool get hasRequested;
@@ -83,8 +83,8 @@ abstract class $NewEmployeeStateCopyWith<$Res> {
       Option<EmployeePosition> employeePosition,
       Either<SalaryFailure, Salary> salary,
       Option<EmployeeType> employeeType,
-      Option<String> photoUrl,
-      Option<String> docUrl,
+      Either<ImageUrlFailure, ImageUrl> photoUrl,
+      Either<ImageUrlFailure, ImageUrl> docUrl,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -138,9 +138,12 @@ class _$NewEmployeeStateCopyWithImpl<$Res>
       employeeType: employeeType == freezed
           ? _value.employeeType
           : employeeType as Option<EmployeeType>,
-      photoUrl:
-          photoUrl == freezed ? _value.photoUrl : photoUrl as Option<String>,
-      docUrl: docUrl == freezed ? _value.docUrl : docUrl as Option<String>,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl as Either<ImageUrlFailure, ImageUrl>,
+      docUrl: docUrl == freezed
+          ? _value.docUrl
+          : docUrl as Either<ImageUrlFailure, ImageUrl>,
       requestFailure: requestFailure == freezed
           ? _value.requestFailure
           : requestFailure as Option<Failure>,
@@ -170,8 +173,8 @@ abstract class _$NewEmployeeStateCopyWith<$Res>
       Option<EmployeePosition> employeePosition,
       Either<SalaryFailure, Salary> salary,
       Option<EmployeeType> employeeType,
-      Option<String> photoUrl,
-      Option<String> docUrl,
+      Either<ImageUrlFailure, ImageUrl> photoUrl,
+      Either<ImageUrlFailure, ImageUrl> docUrl,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -227,9 +230,12 @@ class __$NewEmployeeStateCopyWithImpl<$Res>
       employeeType: employeeType == freezed
           ? _value.employeeType
           : employeeType as Option<EmployeeType>,
-      photoUrl:
-          photoUrl == freezed ? _value.photoUrl : photoUrl as Option<String>,
-      docUrl: docUrl == freezed ? _value.docUrl : docUrl as Option<String>,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl as Either<ImageUrlFailure, ImageUrl>,
+      docUrl: docUrl == freezed
+          ? _value.docUrl
+          : docUrl as Either<ImageUrlFailure, ImageUrl>,
       requestFailure: requestFailure == freezed
           ? _value.requestFailure
           : requestFailure as Option<Failure>,
@@ -276,9 +282,9 @@ class _$_NewEmployeeState implements _NewEmployeeState {
   @override
   final Option<EmployeeType> employeeType;
   @override
-  final Option<String> photoUrl;
+  final Either<ImageUrlFailure, ImageUrl> photoUrl;
   @override
-  final Option<String> docUrl;
+  final Either<ImageUrlFailure, ImageUrl> docUrl;
   @override
   final Option<Failure> requestFailure;
   @override
@@ -367,8 +373,8 @@ abstract class _NewEmployeeState implements NewEmployeeState {
       Option<EmployeePosition> employeePosition,
       Either<SalaryFailure, Salary> salary,
       Option<EmployeeType> employeeType,
-      Option<String> photoUrl,
-      Option<String> docUrl,
+      Either<ImageUrlFailure, ImageUrl> photoUrl,
+      Either<ImageUrlFailure, ImageUrl> docUrl,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -389,9 +395,9 @@ abstract class _NewEmployeeState implements NewEmployeeState {
   @override
   Option<EmployeeType> get employeeType;
   @override
-  Option<String> get photoUrl;
+  Either<ImageUrlFailure, ImageUrl> get photoUrl;
   @override
-  Option<String> get docUrl;
+  Either<ImageUrlFailure, ImageUrl> get docUrl;
   @override
   Option<Failure> get requestFailure;
   @override

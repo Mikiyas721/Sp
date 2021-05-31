@@ -55,14 +55,14 @@ class NewEmployeeEmailChangedEvent extends NewEmployeeEvent {
 }
 
 class NewEmployeeEmployeePositionChangedEvent extends NewEmployeeEvent {
-  final EmployeePosition employeePosition;
+  final String employeePosition;
 
   NewEmployeeEmployeePositionChangedEvent(this.employeePosition);
 
   @override
   Stream<NewEmployeeState> handle(NewEmployeeState currentState) async* {
     yield currentState.copyWith(
-      employeePosition: Failure.getOption(employeePosition),
+      employeePosition: employeePosition.toEmployeePosition(),
     );
   }
 }
@@ -81,14 +81,14 @@ class NewEmployeeSalaryChangedEvent extends NewEmployeeEvent {
 }
 
 class NewEmployeeEmployeeTypeChangedEvent extends NewEmployeeEvent {
-  final EmployeeType employeeType;
+  final String employeeType;
 
   NewEmployeeEmployeeTypeChangedEvent(this.employeeType);
 
   @override
   Stream<NewEmployeeState> handle(NewEmployeeState currentState) async* {
     yield currentState.copyWith(
-      employeeType: Failure.getOption(employeeType),
+      employeeType: employeeType.toEmployeeType(),
     );
   }
 }
@@ -101,7 +101,7 @@ class NewEmployeePhotoUrlChangedEvent extends NewEmployeeEvent {
   @override
   Stream<NewEmployeeState> handle(NewEmployeeState currentState) async* {
     yield currentState.copyWith(
-      photoUrl: Failure.getOption(photoUrl),
+      photoUrl: ImageUrl.create(photoUrl),
     );
   }
 }
@@ -114,7 +114,7 @@ class NewEmployeeDocUrlChangedEvent extends NewEmployeeEvent {
   @override
   Stream<NewEmployeeState> handle(NewEmployeeState currentState) async* {
     yield currentState.copyWith(
-      docUrl: Failure.getOption(docUrl),
+      docUrl: ImageUrl.create(docUrl),
     );
   }
 }
@@ -162,8 +162,8 @@ class NewEmployeeRequestSucceedEvent extends NewEmployeeEvent {
       employeePosition: none(),
       salary: Salary.create(0),
       employeeType: none(),
-      photoUrl: none(),
-      docUrl: none(),
+      photoUrl: ImageUrl.create(''),
+      docUrl: ImageUrl.create(''),
       requestFailure: none(),
       hasSubmitted: false,
       hasRequested: false,

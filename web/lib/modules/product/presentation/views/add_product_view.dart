@@ -76,6 +76,7 @@ class AddProductView extends StatelessWidget {
                 ),
                 5.hSpace,
                 BorderTextField(
+                  errorMessage: addProductViewModel.quantityError,
                   keyBoardType: TextInputType.number,
                   labelText: 'quantity',
                   onChanged: onQuantity,

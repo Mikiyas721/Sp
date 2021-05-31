@@ -1,8 +1,8 @@
-part of 'new_product_bloc.dart';
+part of 'add_product_bloc.dart';
 
 @freezed
-abstract class NewProductState extends BlocState with _$NewProductState {
-  factory NewProductState({
+abstract class AddProductState extends BlocState with _$AddProductState {
+  factory AddProductState({
     Either<ProductNameFailure, ProductName> productName,
     Either<ProductNameFailure, ProductName> brandName,
     Option<ProductCategory> productCategory,
@@ -15,9 +15,9 @@ abstract class NewProductState extends BlocState with _$NewProductState {
     bool hasSubmitted,
     bool hasRequested,
     bool hasCompletedRequest,
-  }) = _NewProductState;
+  }) = _AddProductState;
 
-  factory NewProductState.initial() => NewProductState(
+  factory AddProductState.initial() => AddProductState(
     productName: ProductName.create(''),
     brandName: ProductName.create(''),
     productCategory: none(),

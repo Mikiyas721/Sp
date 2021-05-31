@@ -1,6 +1,6 @@
 import 'package:sp_web/common/view_model.dart';
 
-class AddEmployeeViewModel extends ViewModel {
+class NewEmployeeViewModel extends ViewModel {
   final String firstName;
   final String firstNameError;
   final String lastName;
@@ -9,13 +9,16 @@ class AddEmployeeViewModel extends ViewModel {
   final String phoneNumberError;
   final String email;
   final String emailError;
-  final DateTime dob;
+  final String employeePosition;
+  final double salary;
+  final String salaryError;
+  final String employeeType;
   final String imageUrl;
   final String fileUrl;
   final bool hasSubmitted;
   final bool isAdding;
 
-  AddEmployeeViewModel({
+  NewEmployeeViewModel({
     this.firstName,
     this.firstNameError,
     this.lastName,
@@ -24,7 +27,10 @@ class AddEmployeeViewModel extends ViewModel {
     this.phoneNumberError,
     this.email,
     this.emailError,
-    this.dob,
+    this.employeePosition,
+    this.salary,
+    this.salaryError,
+    this.employeeType,
     this.imageUrl,
     this.fileUrl,
     this.hasSubmitted,
@@ -41,7 +47,10 @@ class AddEmployeeViewModel extends ViewModel {
         phoneNumberError,
         email,
         emailError,
-        dob,
+        employeePosition,
+        salary,
+        salaryError,
+        employeeType,
         imageUrl,
         fileUrl,
         hasSubmitted,

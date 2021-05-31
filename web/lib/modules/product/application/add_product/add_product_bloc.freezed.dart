@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'new_product_bloc.dart';
+part of 'add_product_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,11 +10,11 @@ part of 'new_product_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$NewProductStateTearOff {
-  const _$NewProductStateTearOff();
+class _$AddProductStateTearOff {
+  const _$AddProductStateTearOff();
 
 // ignore: unused_element
-  _NewProductState call(
+  _AddProductState call(
       {Either<ProductNameFailure, ProductName> productName,
       Either<ProductNameFailure, ProductName> brandName,
       Option<ProductCategory> productCategory,
@@ -27,7 +27,7 @@ class _$NewProductStateTearOff {
       bool hasSubmitted,
       bool hasRequested,
       bool hasCompletedRequest}) {
-    return _NewProductState(
+    return _AddProductState(
       productName: productName,
       brandName: brandName,
       productCategory: productCategory,
@@ -46,10 +46,10 @@ class _$NewProductStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $NewProductState = _$NewProductStateTearOff();
+const $AddProductState = _$AddProductStateTearOff();
 
 /// @nodoc
-mixin _$NewProductState {
+mixin _$AddProductState {
   Either<ProductNameFailure, ProductName> get productName;
   Either<ProductNameFailure, ProductName> get brandName;
   Option<ProductCategory> get productCategory;
@@ -64,14 +64,14 @@ mixin _$NewProductState {
   bool get hasCompletedRequest;
 
   @JsonKey(ignore: true)
-  $NewProductStateCopyWith<NewProductState> get copyWith;
+  $AddProductStateCopyWith<AddProductState> get copyWith;
 }
 
 /// @nodoc
-abstract class $NewProductStateCopyWith<$Res> {
-  factory $NewProductStateCopyWith(
-          NewProductState value, $Res Function(NewProductState) then) =
-      _$NewProductStateCopyWithImpl<$Res>;
+abstract class $AddProductStateCopyWith<$Res> {
+  factory $AddProductStateCopyWith(
+          AddProductState value, $Res Function(AddProductState) then) =
+      _$AddProductStateCopyWithImpl<$Res>;
   $Res call(
       {Either<ProductNameFailure, ProductName> productName,
       Either<ProductNameFailure, ProductName> brandName,
@@ -88,13 +88,13 @@ abstract class $NewProductStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewProductStateCopyWithImpl<$Res>
-    implements $NewProductStateCopyWith<$Res> {
-  _$NewProductStateCopyWithImpl(this._value, this._then);
+class _$AddProductStateCopyWithImpl<$Res>
+    implements $AddProductStateCopyWith<$Res> {
+  _$AddProductStateCopyWithImpl(this._value, this._then);
 
-  final NewProductState _value;
+  final AddProductState _value;
   // ignore: unused_field
-  final $Res Function(NewProductState) _then;
+  final $Res Function(AddProductState) _then;
 
   @override
   $Res call({
@@ -148,11 +148,11 @@ class _$NewProductStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$NewProductStateCopyWith<$Res>
-    implements $NewProductStateCopyWith<$Res> {
-  factory _$NewProductStateCopyWith(
-          _NewProductState value, $Res Function(_NewProductState) then) =
-      __$NewProductStateCopyWithImpl<$Res>;
+abstract class _$AddProductStateCopyWith<$Res>
+    implements $AddProductStateCopyWith<$Res> {
+  factory _$AddProductStateCopyWith(
+          _AddProductState value, $Res Function(_AddProductState) then) =
+      __$AddProductStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {Either<ProductNameFailure, ProductName> productName,
@@ -170,15 +170,15 @@ abstract class _$NewProductStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$NewProductStateCopyWithImpl<$Res>
-    extends _$NewProductStateCopyWithImpl<$Res>
-    implements _$NewProductStateCopyWith<$Res> {
-  __$NewProductStateCopyWithImpl(
-      _NewProductState _value, $Res Function(_NewProductState) _then)
-      : super(_value, (v) => _then(v as _NewProductState));
+class __$AddProductStateCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res>
+    implements _$AddProductStateCopyWith<$Res> {
+  __$AddProductStateCopyWithImpl(
+      _AddProductState _value, $Res Function(_AddProductState) _then)
+      : super(_value, (v) => _then(v as _AddProductState));
 
   @override
-  _NewProductState get _value => super._value as _NewProductState;
+  _AddProductState get _value => super._value as _AddProductState;
 
   @override
   $Res call({
@@ -195,7 +195,7 @@ class __$NewProductStateCopyWithImpl<$Res>
     Object hasRequested = freezed,
     Object hasCompletedRequest = freezed,
   }) {
-    return _then(_NewProductState(
+    return _then(_AddProductState(
       productName: productName == freezed
           ? _value.productName
           : productName as Either<ProductNameFailure, ProductName>,
@@ -232,8 +232,8 @@ class __$NewProductStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_NewProductState implements _NewProductState {
-  _$_NewProductState(
+class _$_AddProductState implements _AddProductState {
+  _$_AddProductState(
       {this.productName,
       this.brandName,
       this.productCategory,
@@ -274,13 +274,13 @@ class _$_NewProductState implements _NewProductState {
 
   @override
   String toString() {
-    return 'NewProductState(productName: $productName, brandName: $brandName, productCategory: $productCategory, quantity: $quantity, description: $description, manDate: $manDate, expDate: $expDate, imageUrl: $imageUrl, requestFailure: $requestFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, hasCompletedRequest: $hasCompletedRequest)';
+    return 'AddProductState(productName: $productName, brandName: $brandName, productCategory: $productCategory, quantity: $quantity, description: $description, manDate: $manDate, expDate: $expDate, imageUrl: $imageUrl, requestFailure: $requestFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, hasCompletedRequest: $hasCompletedRequest)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NewProductState &&
+        (other is _AddProductState &&
             (identical(other.productName, productName) ||
                 const DeepCollectionEquality()
                     .equals(other.productName, productName)) &&
@@ -337,12 +337,12 @@ class _$_NewProductState implements _NewProductState {
 
   @JsonKey(ignore: true)
   @override
-  _$NewProductStateCopyWith<_NewProductState> get copyWith =>
-      __$NewProductStateCopyWithImpl<_NewProductState>(this, _$identity);
+  _$AddProductStateCopyWith<_AddProductState> get copyWith =>
+      __$AddProductStateCopyWithImpl<_AddProductState>(this, _$identity);
 }
 
-abstract class _NewProductState implements NewProductState {
-  factory _NewProductState(
+abstract class _AddProductState implements AddProductState {
+  factory _AddProductState(
       {Either<ProductNameFailure, ProductName> productName,
       Either<ProductNameFailure, ProductName> brandName,
       Option<ProductCategory> productCategory,
@@ -354,7 +354,7 @@ abstract class _NewProductState implements NewProductState {
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
-      bool hasCompletedRequest}) = _$_NewProductState;
+      bool hasCompletedRequest}) = _$_AddProductState;
 
   @override
   Either<ProductNameFailure, ProductName> get productName;
@@ -382,5 +382,5 @@ abstract class _NewProductState implements NewProductState {
   bool get hasCompletedRequest;
   @override
   @JsonKey(ignore: true)
-  _$NewProductStateCopyWith<_NewProductState> get copyWith;
+  _$AddProductStateCopyWith<_AddProductState> get copyWith;
 }
