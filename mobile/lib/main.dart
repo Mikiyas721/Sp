@@ -4,7 +4,7 @@ import './presentation/pages/item_request_page.dart';
 import './presentation/pages/login_page.dart';
 import './presentation/pages/sign_up_page.dart';
 import './presentation/pages/home_page.dart';
-import './presentation/pages/product_details_page.dart';
+import 'modules/product/presentation/pages/product_details_page.dart';
 import './dummy_data.dart';
 
 void main() => runApp(MyApp());

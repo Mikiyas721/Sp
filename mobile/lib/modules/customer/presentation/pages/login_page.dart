@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../common/extensions.dart';
-import '../view/login_view.dart';
-import '../../modules/customer/presentation/models/login_view_model.dart';
+import '../../../../common/extensions.dart';
+import '../views/login_view.dart';
+import '../models/login_view_model.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routeName = "/login-page";
