@@ -29,18 +29,20 @@ class SimpleListViewModel<T> extends EmptyErrorLoadingViewModel<List<T>> {
         );
 }
 
-class PaginatedDataTableViewModel<T>
+class PaginatedDataTableViewModel<T extends ViewModel>
     extends EmptyErrorLoadingViewModel<List<T>> {
   final String listFilter;
   final String searchFilter;
+  final String searchText;
   final bool isPerformingQuery;
 
   PaginatedDataTableViewModel({
-    String error,
-    List<T> data,
+    @required String error,
+    @required List<T> data,
     bool isLoading = false,
-    this.listFilter,
-    this.searchFilter,
+    @required this.listFilter,
+    @required this.searchFilter,
+    @required this.searchText,
     this.isPerformingQuery = false,
   }) : super(
           error,
@@ -57,6 +59,7 @@ class PaginatedDataTableViewModel<T>
         isEmpty,
         listFilter,
         searchFilter,
+        searchText,
         isPerformingQuery
       ];
 }

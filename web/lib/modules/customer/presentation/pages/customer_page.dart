@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sp_web/common/controller/controller_provider.dart';
+import 'package:sp_web/modules/customer/presentation/controller/load_customers_controller.dart';
 import 'package:sp_web/modules/customer/presentation/models/customer_view_model.dart';
 import 'package:sp_web/modules/customer/presentation/views/customer_view.dart';
 import 'package:sp_web/common/widgets/my_drawer.dart';
@@ -14,13 +16,21 @@ class CustomerPage extends StatelessWidget {
           ),
           Scrollbar(
               child: SingleChildScrollView(
-            child: CustomerView(
-              clientViewModel: CustomerViewModel(
-                isLoading: false,
-                isPerformingQuery: false,
-              ),
-              onFilterChanged: (String filter){},
-            ),
+            child: ViewModelBuilder.withController<CustomersViewModel,
+                    LoadCustomersController>(
+                create: () => LoadCustomersController(context),
+                onInit: (controller)=>controller.loadInitial(),
+                builder: (context, controller, model) {
+                  return CustomersView(
+                    clientViewModel: model,
+                    onFilterChanged: controller.onFilterChanged,
+                    onSearchFilterChanged: controller.onSearchFilterChanged,
+                    onSearch: controller.onSearch,
+                    onViewComments: controller.onViewComments,
+                    onBlock: controller.onBlock,
+                    onReload: controller.loadInitial,
+                  );
+                }),
           ))
         ],
       ),

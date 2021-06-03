@@ -9,10 +9,11 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
     void Function(String filter) onFilterChanged,
     void Function(String filter) onSearchFilterChanged,
     void Function(String filter) onSearch,
-    void Function(String filter) onOpen,
-    void Function(String filter) onEdit,
-    void Function(String filter) onDelete,
-    void Function(String filter) onAdd,
+    void Function(EmployeeViewModel filter) onOpen,
+    void Function(EmployeeViewModel filter) onEdit,
+    void Function(EmployeeViewModel filter) onDelete,
+    void Function(EmployeeViewModel filter) onAdd,
+    VoidCallback onReload
   }) : super(columns:
           [
             DataColumn(label: Text('#')),
@@ -23,8 +24,9 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
             DataColumn(label: Text('Registered')),
             DataColumn(label: Text('Actions')),
           ],
-          filters:['Current', 'All'],
+          filters:EmployeePositionExtension.employeePositionList,
           source:EmployeeDataTableSource(
+            data: employeesViewModel.data,
             onOpen: onOpen,
             onEdit: onEdit,
             onDelete: onDelete,
@@ -44,11 +46,11 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
 }
 
 class EmployeeDataTableSource extends DataTableSource {
-  final void Function(Object entity) onOpen;
-  final void Function(Object entity) onEdit;
-  final void Function(Object entity) onDelete;
-  final void Function(Object entity) onAdd;
-  final List<Object> data;
+  final void Function(EmployeeViewModel entity) onOpen;
+  final void Function(EmployeeViewModel entity) onEdit;
+  final void Function(EmployeeViewModel entity) onDelete;
+  final void Function(EmployeeViewModel entity) onAdd;
+  final List<EmployeeViewModel> data;
 
   EmployeeDataTableSource({
     this.onOpen,
@@ -63,16 +65,16 @@ class EmployeeDataTableSource extends DataTableSource {
         DataCell(Text('${index + 1}')),
         DataCell(CircleAvatar(
           backgroundImage:
-              AssetImage('images/1.png'), //TODO replace with actual data
+              AssetImage('images/1.png'), //TODO replace
         )),
         DataCell(Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Mikiyas Tesfaye'),
+            Text('${data[index].firstName} ${data[index].lastName}'),
             2.vSpace,
             Text(
-              'Cashier',
+              data[index].employeePosition,
               style: TextStyle(color: Colors.grey),
             )
           ],
@@ -81,26 +83,26 @@ class EmployeeDataTableSource extends DataTableSource {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('+251 941135730'),
+            Text(data[index].phoneNumber),
             2.vSpace,
-            Text('Mikiyas721@gmail.com', style: TextStyle(color: Colors.grey))
+            Text(data[index].email, style: TextStyle(color: Colors.grey))
           ],
         )),
         DataCell(Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('3000ETB'),
+              Text(data[index].salary),
               2.vSpace,
-              Text('Full time', style: TextStyle(color: Colors.grey))
+              Text(data[index].employeeType, style: TextStyle(color: Colors.grey))
             ])),
         DataCell(Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('05/04/21'),
+              Text(data[index].createdAt),
               2.vSpace,
-              Text('05/06/21', style: TextStyle(color: Colors.grey))
+              Text(data[index].updatedAt, style: TextStyle(color: Colors.grey))
             ])),
         DataCell(Row(
             mainAxisSize: MainAxisSize.min,
@@ -153,7 +155,7 @@ class EmployeeDataTableSource extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => 50; // TODO replace with data.length
+  int get rowCount => data.length;
 
   @override
   int get selectedRowCount => 0;

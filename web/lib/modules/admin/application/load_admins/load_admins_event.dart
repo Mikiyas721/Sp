@@ -54,6 +54,19 @@ class LoadAdminsFilterChangedEvent extends LoadAdminsEvent {
   }
 }
 
+class LoadAdminsSearchFilterChanged extends LoadAdminsEvent {
+  final String filter;
+
+  LoadAdminsSearchFilterChanged(this.filter);
+
+  @override
+  Stream<LoadAdminsState> handle(LoadAdminsState currentState) async* {
+    yield currentState.copyWith(
+      searchFilter: filter,
+    );
+  }
+}
+
 class LoadAdminsSearchTextChanged extends LoadAdminsEvent {
   final String searchString;
 

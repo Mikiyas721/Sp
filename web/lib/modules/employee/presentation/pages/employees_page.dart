@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sp_web/common/controller/controller_provider.dart';
+import 'package:sp_web/modules/employee/presentation/controller/load_employees_controller.dart';
 import 'package:sp_web/modules/employee/presentation/models/employees_view_model.dart';
 import 'package:sp_web/modules/employee/presentation/views/employees_view.dart';
 import 'package:sp_web/common/widgets/my_action_button.dart';
@@ -26,13 +28,24 @@ class EmployeesPage extends StatelessWidget {
                     child: Column(
                       children: [
                         40.vSpace,
-                        EmployeesView(
-                          employeesViewModel: EmployeesViewModel(
-                              isLoading: false, isPerformingQuery: false),
-                          onFilterChanged: (String filter) {},
-                          onSearchFilterChanged: (String filter) {},
-                          onSearch: (String text) {},
-                        ),
+                        ViewModelBuilder.withController<EmployeesViewModel,
+                                LoadEmployeesController>(
+                            create: () => LoadEmployeesController(context),
+                            onInit: (controller) => controller.loadInitial(),
+                            builder: (context, controller, model) {
+                              return EmployeesView(
+                                employeesViewModel: model,
+                                onFilterChanged: controller.onFilterChanged,
+                                onSearchFilterChanged:
+                                    controller.onSearchFilterChanged,
+                                onSearch: controller.onSearch,
+                                onAdd: controller.onAdd,
+                                onDelete: controller.onDelete,
+                                onEdit: controller.onEdit,
+                                onOpen: controller.onOpen,
+                                onReload: controller.loadInitial,
+                              );
+                            }),
                       ],
                     ),
                   )),

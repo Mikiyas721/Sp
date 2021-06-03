@@ -19,6 +19,7 @@ class _$LoadAdminsStateTearOff {
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering}) {
@@ -27,6 +28,7 @@ class _$LoadAdminsStateTearOff {
       loadFailure: loadFailure,
       filterFailure: filterFailure,
       searchString: searchString,
+      searchFilter: searchFilter,
       filterString: filterString,
       isLoading: isLoading,
       isFiltering: isFiltering,
@@ -44,6 +46,7 @@ mixin _$LoadAdminsState {
   Option<Failure> get loadFailure;
   Option<Failure> get filterFailure;
   String get searchString;
+  String get searchFilter;
   String get filterString;
   bool get isLoading;
   bool get isFiltering;
@@ -62,6 +65,7 @@ abstract class $LoadAdminsStateCopyWith<$Res> {
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering});
@@ -82,6 +86,7 @@ class _$LoadAdminsStateCopyWithImpl<$Res>
     Object loadFailure = freezed,
     Object filterFailure = freezed,
     Object searchString = freezed,
+    Object searchFilter = freezed,
     Object filterString = freezed,
     Object isLoading = freezed,
     Object isFiltering = freezed,
@@ -97,6 +102,9 @@ class _$LoadAdminsStateCopyWithImpl<$Res>
       searchString: searchString == freezed
           ? _value.searchString
           : searchString as String,
+      searchFilter: searchFilter == freezed
+          ? _value.searchFilter
+          : searchFilter as String,
       filterString: filterString == freezed
           ? _value.filterString
           : filterString as String,
@@ -119,6 +127,7 @@ abstract class _$LoadAdminsStateCopyWith<$Res>
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering});
@@ -141,6 +150,7 @@ class __$LoadAdminsStateCopyWithImpl<$Res>
     Object loadFailure = freezed,
     Object filterFailure = freezed,
     Object searchString = freezed,
+    Object searchFilter = freezed,
     Object filterString = freezed,
     Object isLoading = freezed,
     Object isFiltering = freezed,
@@ -156,6 +166,9 @@ class __$LoadAdminsStateCopyWithImpl<$Res>
       searchString: searchString == freezed
           ? _value.searchString
           : searchString as String,
+      searchFilter: searchFilter == freezed
+          ? _value.searchFilter
+          : searchFilter as String,
       filterString: filterString == freezed
           ? _value.filterString
           : filterString as String,
@@ -173,6 +186,7 @@ class _$_LoadAdminsState implements _LoadAdminsState {
       this.loadFailure,
       this.filterFailure,
       this.searchString,
+      this.searchFilter,
       this.filterString,
       this.isLoading,
       this.isFiltering});
@@ -186,6 +200,8 @@ class _$_LoadAdminsState implements _LoadAdminsState {
   @override
   final String searchString;
   @override
+  final String searchFilter;
+  @override
   final String filterString;
   @override
   final bool isLoading;
@@ -194,7 +210,7 @@ class _$_LoadAdminsState implements _LoadAdminsState {
 
   @override
   String toString() {
-    return 'LoadAdminsState(admins: $admins, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
+    return 'LoadAdminsState(admins: $admins, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, searchFilter: $searchFilter, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
   }
 
   @override
@@ -212,6 +228,9 @@ class _$_LoadAdminsState implements _LoadAdminsState {
             (identical(other.searchString, searchString) ||
                 const DeepCollectionEquality()
                     .equals(other.searchString, searchString)) &&
+            (identical(other.searchFilter, searchFilter) ||
+                const DeepCollectionEquality()
+                    .equals(other.searchFilter, searchFilter)) &&
             (identical(other.filterString, filterString) ||
                 const DeepCollectionEquality()
                     .equals(other.filterString, filterString)) &&
@@ -230,6 +249,7 @@ class _$_LoadAdminsState implements _LoadAdminsState {
       const DeepCollectionEquality().hash(loadFailure) ^
       const DeepCollectionEquality().hash(filterFailure) ^
       const DeepCollectionEquality().hash(searchString) ^
+      const DeepCollectionEquality().hash(searchFilter) ^
       const DeepCollectionEquality().hash(filterString) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(isFiltering);
@@ -246,6 +266,7 @@ abstract class _LoadAdminsState implements LoadAdminsState {
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilter,
       String filterString,
       bool isLoading,
       bool isFiltering}) = _$_LoadAdminsState;
@@ -258,6 +279,8 @@ abstract class _LoadAdminsState implements LoadAdminsState {
   Option<Failure> get filterFailure;
   @override
   String get searchString;
+  @override
+  String get searchFilter;
   @override
   String get filterString;
   @override

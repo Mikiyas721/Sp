@@ -19,6 +19,7 @@ class _$LoadCustomersStateTearOff {
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilterString,
       String filterString,
       bool isLoading,
       bool isFiltering}) {
@@ -27,6 +28,7 @@ class _$LoadCustomersStateTearOff {
       loadFailure: loadFailure,
       filterFailure: filterFailure,
       searchString: searchString,
+      searchFilterString: searchFilterString,
       filterString: filterString,
       isLoading: isLoading,
       isFiltering: isFiltering,
@@ -44,6 +46,7 @@ mixin _$LoadCustomersState {
   Option<Failure> get loadFailure;
   Option<Failure> get filterFailure;
   String get searchString;
+  String get searchFilterString;
   String get filterString;
   bool get isLoading;
   bool get isFiltering;
@@ -62,6 +65,7 @@ abstract class $LoadCustomersStateCopyWith<$Res> {
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilterString,
       String filterString,
       bool isLoading,
       bool isFiltering});
@@ -82,6 +86,7 @@ class _$LoadCustomersStateCopyWithImpl<$Res>
     Object loadFailure = freezed,
     Object filterFailure = freezed,
     Object searchString = freezed,
+    Object searchFilterString = freezed,
     Object filterString = freezed,
     Object isLoading = freezed,
     Object isFiltering = freezed,
@@ -98,6 +103,9 @@ class _$LoadCustomersStateCopyWithImpl<$Res>
       searchString: searchString == freezed
           ? _value.searchString
           : searchString as String,
+      searchFilterString: searchFilterString == freezed
+          ? _value.searchFilterString
+          : searchFilterString as String,
       filterString: filterString == freezed
           ? _value.filterString
           : filterString as String,
@@ -120,6 +128,7 @@ abstract class _$LoadCustomersStateCopyWith<$Res>
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilterString,
       String filterString,
       bool isLoading,
       bool isFiltering});
@@ -142,6 +151,7 @@ class __$LoadCustomersStateCopyWithImpl<$Res>
     Object loadFailure = freezed,
     Object filterFailure = freezed,
     Object searchString = freezed,
+    Object searchFilterString = freezed,
     Object filterString = freezed,
     Object isLoading = freezed,
     Object isFiltering = freezed,
@@ -158,6 +168,9 @@ class __$LoadCustomersStateCopyWithImpl<$Res>
       searchString: searchString == freezed
           ? _value.searchString
           : searchString as String,
+      searchFilterString: searchFilterString == freezed
+          ? _value.searchFilterString
+          : searchFilterString as String,
       filterString: filterString == freezed
           ? _value.filterString
           : filterString as String,
@@ -175,6 +188,7 @@ class _$_LoadCustomersState implements _LoadCustomersState {
       this.loadFailure,
       this.filterFailure,
       this.searchString,
+      this.searchFilterString,
       this.filterString,
       this.isLoading,
       this.isFiltering});
@@ -188,6 +202,8 @@ class _$_LoadCustomersState implements _LoadCustomersState {
   @override
   final String searchString;
   @override
+  final String searchFilterString;
+  @override
   final String filterString;
   @override
   final bool isLoading;
@@ -196,7 +212,7 @@ class _$_LoadCustomersState implements _LoadCustomersState {
 
   @override
   String toString() {
-    return 'LoadCustomersState(customers: $customers, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
+    return 'LoadCustomersState(customers: $customers, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, searchFilterString: $searchFilterString, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
   }
 
   @override
@@ -215,6 +231,9 @@ class _$_LoadCustomersState implements _LoadCustomersState {
             (identical(other.searchString, searchString) ||
                 const DeepCollectionEquality()
                     .equals(other.searchString, searchString)) &&
+            (identical(other.searchFilterString, searchFilterString) ||
+                const DeepCollectionEquality()
+                    .equals(other.searchFilterString, searchFilterString)) &&
             (identical(other.filterString, filterString) ||
                 const DeepCollectionEquality()
                     .equals(other.filterString, filterString)) &&
@@ -233,6 +252,7 @@ class _$_LoadCustomersState implements _LoadCustomersState {
       const DeepCollectionEquality().hash(loadFailure) ^
       const DeepCollectionEquality().hash(filterFailure) ^
       const DeepCollectionEquality().hash(searchString) ^
+      const DeepCollectionEquality().hash(searchFilterString) ^
       const DeepCollectionEquality().hash(filterString) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(isFiltering);
@@ -249,6 +269,7 @@ abstract class _LoadCustomersState implements LoadCustomersState {
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
+      String searchFilterString,
       String filterString,
       bool isLoading,
       bool isFiltering}) = _$_LoadCustomersState;
@@ -261,6 +282,8 @@ abstract class _LoadCustomersState implements LoadCustomersState {
   Option<Failure> get filterFailure;
   @override
   String get searchString;
+  @override
+  String get searchFilterString;
   @override
   String get filterString;
   @override

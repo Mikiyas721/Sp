@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sp_web/common/controller/controller.dart';
 import 'package:sp_web/common/debouncer.dart';
+import 'package:sp_web/common/mixins/date_time_mixin.dart';
 import 'package:sp_web/common/mixins/toast_mixin.dart';
 import 'package:sp_web/injection.dart';
 import 'package:sp_web/modules/product/domain/use_cases/fetch_all_available.dart';
@@ -11,12 +12,13 @@ import 'package:sp_web/modules/product/domain/use_cases/fetch_running_low.dart';
 import 'package:sp_web/modules/product/domain/use_cases/search_product.dart';
 import 'package:sp_web/modules/product/presentation/models/product_view_model.dart';
 import '../../application/load_products/load_products_bloc.dart';
+import '../../../../common/extensions.dart';
 
 class LoadProductsController extends BlocViewModelController<
     LoadProductsBloc,
     LoadProductsEvent,
     LoadProductsState,
-    ProductListViewModel> with ToastMixin {
+    ProductListViewModel> with ToastMixin, DateTimeMixin {
   final BuildContext context;
 
   LoadProductsController(this.context)
@@ -27,7 +29,19 @@ class LoadProductsController extends BlocViewModelController<
     return ProductListViewModel(
       isLoading: s.isLoading,
       error: s.loadFailure.getOrElse(() => null)?.message,
-      data: s.products.map((e) => ProductViewModel()),
+      data: s.products.map((e) => ProductViewModel(
+            id: e.id,
+            imageUrl: e.imageUrl.imageUrl,
+            productName: e.productName.name,
+            brandName: e.brandName.name,
+            category: e.category.getString().getOrElse(() => null),
+            quantity: e.quantity.quantity.toString(),
+            description: e.description.description,
+            manDate: getShortDateString(e.manDate),
+            expDate: getShortDateString(e.expDate),
+            createdAt: getShortDateString(e.createdAt),
+            updatedAt: getShortDateString(e.updatedAt),
+          )),
       searchText: s.searchString,
       filter: s.filterString,
       category: s.category,

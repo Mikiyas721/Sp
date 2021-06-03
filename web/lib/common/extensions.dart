@@ -40,8 +40,9 @@ extension CategoryExtension on ProductCategory {
     return none();
   }
 
-  List<String> get categoryList =>
-      ProductCategory.values.map((e) => e.getString().getOrElse(() => null)).toList();
+  List<String> get categoryList => ProductCategory.values
+      .map((e) => e.getString().getOrElse(() => null))
+      .toList();
 }
 
 extension AdminPrivilegeTypeExtension on AdminPrivilegeType {
@@ -58,12 +59,12 @@ extension AdminPrivilegeTypeExtension on AdminPrivilegeType {
 extension EmployeePositionExtension on EmployeePosition {
   Option<String> getString() {
     if (this == EmployeePosition.GENERAL_MANAGER)
-      return some('General_Manager');
+      return some('General Manager');
     return none();
   }
 
-  List<String> get employeePositionList => EmployeePosition.values
-      .map((e) => e.getString().getOrElse(() => null))
+  static List<String> get employeePositionList => EmployeePosition.values
+      .map<String>((e) => e.getString().getOrElse(() => null))
       .toList();
 }
 

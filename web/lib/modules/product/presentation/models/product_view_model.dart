@@ -36,21 +36,22 @@ class ProductViewModel extends ViewModel {
   final String updatedAt;
 
   ProductViewModel({
-    this.id,
-    this.imageUrl,
-    this.productName,
-    this.brandName,
-    this.category,
-    this.quantity,
-    this.description,
-    this.manDate,
-    this.expDate,
-    this.createdAt,
-    this.updatedAt,
+    @required this.id,
+    @required this.imageUrl,
+    @required this.productName,
+    @required this.brandName,
+    @required this.category,
+    @required this.quantity,
+    @required this.description,
+    @required this.manDate,
+    @required this.expDate,
+    @required this.createdAt,
+    @required this.updatedAt,
   });
 
   @override
   List<Object> get props => [
+        id,
         productName,
         brandName,
         category,

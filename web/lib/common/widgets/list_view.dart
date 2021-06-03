@@ -157,6 +157,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
   final void Function(Object entity) onAction2;
   final void Function(Object entity) onAction3;
   final void Function(Object entity) onAction4;
+  final VoidCallback onReload;
 
   const PaginatedDataTableView(
       {this.columns,
@@ -172,6 +173,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
       this.onAction2,
       this.onAction3,
       this.onAction4,
+      this.onReload,
       Key key})
       : super(key: key);
 
@@ -184,11 +186,17 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
     if (viewModel.error != null)
       return Container(
           width: MediaQuery.of(context).size.width * 0.78,
-          child: Center(child: EmptyErrorView.defaultError()));
-    /*   if (viewModel.isEmpty)
+          child: Center(
+              child: EmptyErrorView.defaultError(
+            onAction: onReload,
+          )));
+    /*if (viewModel.isEmpty)
       return Container(
           width: MediaQuery.of(context).size.width * 0.78,
-          child: Center(child: EmptyErrorView.defaultEmpty()));*/
+          child: Center(
+              child: EmptyErrorView.defaultEmpty(
+            onAction: onReload,
+          )));*/
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(

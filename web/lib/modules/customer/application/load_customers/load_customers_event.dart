@@ -25,10 +25,10 @@ class LoadCustomersFailedEvent extends LoadCustomersEvent {
   }
 }
 
-class LoadEmployeesSucceededEvent extends LoadCustomersEvent {
+class LoadCustomersSucceededEvent extends LoadCustomersEvent {
   final List<Customer> customers;
 
-  LoadEmployeesSucceededEvent(this.customers);
+  LoadCustomersSucceededEvent(this.customers);
 
   @override
   Stream<LoadCustomersState> handle(LoadCustomersState currentState) async* {
@@ -53,7 +53,18 @@ class LoadCustomersFilterChangedEvent extends LoadCustomersEvent {
     );
   }
 }
+class LoadCustomersSearchFilterChanged extends LoadCustomersEvent {
+  final String filter;
 
+  LoadCustomersSearchFilterChanged(this.filter);
+
+  @override
+  Stream<LoadCustomersState> handle(LoadCustomersState currentState) async* {
+    yield currentState.copyWith(
+      searchFilterString: filter,
+    );
+  }
+}
 class LoadCustomersSearchTextChanged extends LoadCustomersEvent {
   final String searchString;
 

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/customer/presentation/models/customer_view_model.dart';
-import '../../../../common/extensions.dart';
 
-class CustomerView extends PaginatedDataTableView<CustomerViewModel> {
-  CustomerView({
-    CustomerViewModel clientViewModel,
-    void Function(String filter) onFilterChanged,
-    void Function(String filter) onSearchFilterChanged,
-    void Function(String filter) onSearch,
-    void Function(String filter) onViewComments,
-    void Function(String filter) onBlock,
+class CustomersView extends PaginatedDataTableView<CustomersViewModel> {
+  CustomersView({
+    @required CustomersViewModel clientViewModel,
+    @required void Function(String filter) onFilterChanged,
+    @required void Function(String filter) onSearchFilterChanged,
+    @required void Function(String filter) onSearch,
+    @required void Function(CustomerViewModel filter) onViewComments,
+    @required void Function(CustomerViewModel filter) onBlock,
+    @required VoidCallback onReload,
+
   }) : super(
           columns: [
             DataColumn(label: Text('#')),
@@ -38,9 +39,9 @@ class CustomerView extends PaginatedDataTableView<CustomerViewModel> {
 }
 
 class ClientDataTableSource extends DataTableSource {
-  final void Function(Object entity) onViewComments;
-  final void Function(Object entity) onBlock;
-  final List<Object> data;
+  final void Function(CustomerViewModel entity) onViewComments;
+  final void Function(CustomerViewModel entity) onBlock;
+  final List<CustomerViewModel> data;
 
   ClientDataTableSource({
     this.onViewComments,
@@ -53,19 +54,19 @@ class ClientDataTableSource extends DataTableSource {
         DataCell(Text('${index + 1}')),
         DataCell(CircleAvatar(
           backgroundImage:
-              AssetImage('images/1.png'), //TODO replace with actual data
+              AssetImage('images/1.png'), //TODO replace
         )),
         DataCell(
-          Text('Mikiyas Tesfaye'),
+          Text(data[index].name),
         ),
         DataCell(
-          Text('+251 941135730'),
+          Text(data[index].phoneNumber),
         ),
         DataCell(
-          Text('Mikiyas721@gmail.com'),
+          Text(data[index].email),
         ),
         DataCell(
-          Text('05/04/21'),
+          Text(data[index].createdAt),
         ),
         DataCell(Row(
             mainAxisSize: MainAxisSize.min,
@@ -98,7 +99,7 @@ class ClientDataTableSource extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => 50; // TODO replace with data.length
+  int get rowCount => data.length; // TODO replace with data.length
 
   @override
   int get selectedRowCount => 0;

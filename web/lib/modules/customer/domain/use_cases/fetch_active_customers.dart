@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sp_web/common/failure.dart';
 import 'package:sp_web/modules/customer/domain/entities/customer.dart';
 import 'package:sp_web/modules/customer/domain/ports/customer_repo.dart';
 
+@lazySingleton
 class FetchActiveCustomers {
   final ICustomerRepo _iCustomerRepo;
 

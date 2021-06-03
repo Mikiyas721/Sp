@@ -53,7 +53,18 @@ class LoadEmployeesFilterChangedEvent extends LoadEmployeesEvent {
     );
   }
 }
+class LoadEmployeesSearchFilterChangedEvent extends LoadEmployeesEvent {
+  final String filterString;
 
+  LoadEmployeesSearchFilterChangedEvent(this.filterString);
+
+  @override
+  Stream<LoadEmployeesState> handle(LoadEmployeesState currentState) async* {
+    yield currentState.copyWith(
+      searchFilterString: filterString,
+    );
+  }
+}
 class LoadEmployeesSearchTextChanged extends LoadEmployeesEvent {
   final String searchString;
 

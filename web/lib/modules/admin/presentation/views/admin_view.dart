@@ -3,49 +3,52 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/admin/presentation/models/admin_view_model.dart';
 import '../../../../common/extensions.dart';
 
-class AdminView extends PaginatedDataTableView<AdminViewModel> {
+class AdminView extends PaginatedDataTableView<AdminsViewModel> {
   AdminView({
-    AdminViewModel adminViewModel,
-    void Function(String filter) onFilterChanged,
-    void Function(String filter) onSearchFilterChanged,
-    void Function(String filter) onSearch,
-    void Function(String filter) onOpen,
-    void Function(String filter) onEdit,
-    void Function(String filter) onDelete,
-    void Function(String filter) onAdd,
+    @required AdminsViewModel adminsViewModel,
+    @required void Function(String filter) onFilterChanged,
+    @required void Function(String filter) onSearchFilterChanged,
+    @required void Function(String filter) onSearch,
+    @required void Function(AdminViewModel filter) onOpen,
+    @required void Function(AdminViewModel filter) onEdit,
+    @required void Function(AdminViewModel filter) onDelete,
+    @required void Function(AdminViewModel filter) onAdd,
+    @required VoidCallback onReload,
   }) : super(
-          columns: [
-            DataColumn(label: Text('#')),
-            DataColumn(label: Text('Picture')),
-            DataColumn(label: Text('Name')),
-            DataColumn(label: Text('Contact')),
-            DataColumn(label: Text('Salary')),
-            DataColumn(label: Text('Registered')),
-            DataColumn(label: Text('Actions')),
-          ],
-          filters: ['Current', 'All'],// Use different privileges for admin
-          source: AdminDataTableSource(
-            onOpen: onOpen,
-            onEdit: onEdit,
-            onDelete: onDelete,
-          ),
-          headerTitle: 'Admins',
-          hint: 'filter',
-          viewModel: adminViewModel,
-          onFilterChanged: onFilterChanged,
-          onSearchFilterChanged: onSearchFilterChanged,
-          onSearch: onSearch,
-          onAction1: onOpen,
-          onAction2: onEdit,
-          onAction3: onDelete,
-        );
+            columns: [
+              DataColumn(label: Text('#')),
+              DataColumn(label: Text('Contact')),
+              DataColumn(label: Text('Privilege Type')),
+              DataColumn(label: Text('Registered')),
+              DataColumn(label: Text('Actions')),
+            ],
+            filters: [
+              'Current',
+              'All'
+            ],
+            // Use different privileges for admin
+            source: AdminDataTableSource(
+              onOpen: onOpen,
+              onEdit: onEdit,
+              onDelete: onDelete,
+            ),
+            headerTitle: 'Admins',
+            hint: 'filter',
+            viewModel: adminsViewModel,
+            onFilterChanged: onFilterChanged,
+            onSearchFilterChanged: onSearchFilterChanged,
+            onSearch: onSearch,
+            onAction1: onOpen,
+            onAction2: onEdit,
+            onAction3: onDelete,
+            onReload: onReload);
 }
 
 class AdminDataTableSource extends DataTableSource {
-  final void Function(Object entity) onOpen;
-  final void Function(Object entity) onEdit;
-  final void Function(Object entity) onDelete;
-  final List<Object> data;
+  final void Function(AdminViewModel entity) onOpen;
+  final void Function(AdminViewModel entity) onEdit;
+  final void Function(AdminViewModel entity) onDelete;
+  final List<AdminViewModel> data;
 
   AdminDataTableSource({
     this.onOpen,
@@ -57,46 +60,34 @@ class AdminDataTableSource extends DataTableSource {
   @override
   DataRow getRow(int index) => DataRow.byIndex(index: index, cells: [
         DataCell(Text('${index + 1}')),
-        DataCell(CircleAvatar(
-          backgroundImage:
-              AssetImage('images/1.png'), //TODO replace with actual data
-        )),
         DataCell(Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Mikiyas Tesfaye'),
-            2.vSpace,
-            Text(
-              'Cashier',
-              style: TextStyle(color: Colors.grey),
-            )
+            Text(data[index].phoneNumber),
           ],
         )),
         DataCell(Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('+251 941135730'),
-            2.vSpace,
-            Text('Mikiyas721@gmail.com', style: TextStyle(color: Colors.grey))
+            Text(data[index].privilegeType),
+          ],
+        )),
+        DataCell(Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(data[index].password),
           ],
         )),
         DataCell(Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('3000ETB'),
+              Text(data[index].createdAt),
               2.vSpace,
-              Text('Full time', style: TextStyle(color: Colors.grey))
-            ])),
-        DataCell(Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('05/04/21'),
-              2.vSpace,
-              Text('05/06/21', style: TextStyle(color: Colors.grey))
+              Text(data[index].updatedAt, style: TextStyle(color: Colors.grey))
             ])),
         DataCell(Row(
             mainAxisSize: MainAxisSize.min,
@@ -139,7 +130,7 @@ class AdminDataTableSource extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => 50; // TODO replace with data.length
+  int get rowCount => data.length;
 
   @override
   int get selectedRowCount => 0;
