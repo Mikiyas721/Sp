@@ -8,5 +8,8 @@ abstract class IAvailableProductsRepo{
   Future<Either<Failure, List<Product>>> fetchNearExpiration();
   Future<Either<Failure, List<Product>>> fetchByCategory(String value);
   Future<Either<Failure, Product>> update(Product product);
-  Future<Either<Failure, Product>> delete(Product product);
+  Future<Either<Failure, List<Product>>> searchAvailableProduct(
+      String prop, String value);
+  Future<Either<Failure, Product>> addProduct(Product product);
+  Future<Either<Failure, Product>> sellProduct(Product product);
 }

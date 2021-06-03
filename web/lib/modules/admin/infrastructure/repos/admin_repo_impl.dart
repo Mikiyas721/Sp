@@ -17,7 +17,6 @@ class AdminRepoImpl extends IAdminRepo {
   Future<Either<Failure, Admin>> create(Admin admin) async {
     final response =
         await _adminCrudDatasource.create(AdminDto.fromDomain(admin));
-    //TODO add a remote method on the api that checks if employee exists before adding
     return response.either.fold(
         (l) => left(l),
         (r) => r.toDomain().fold(

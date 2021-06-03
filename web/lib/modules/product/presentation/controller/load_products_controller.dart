@@ -9,7 +9,7 @@ import 'package:sp_web/modules/product/domain/use_cases/fetch_by_category.dart';
 import 'package:sp_web/modules/product/domain/use_cases/fetch_most_sold.dart';
 import 'package:sp_web/modules/product/domain/use_cases/fetch_near_expiration.dart';
 import 'package:sp_web/modules/product/domain/use_cases/fetch_running_low.dart';
-import 'package:sp_web/modules/product/domain/use_cases/search_product.dart';
+import 'package:sp_web/modules/product/domain/use_cases/search_available_products.dart';
 import 'package:sp_web/modules/product/presentation/models/product_view_model.dart';
 import '../../application/load_products/load_products_bloc.dart';
 import '../../../../common/extensions.dart';
@@ -89,7 +89,7 @@ class LoadProductsController extends BlocViewModelController<
     bloc.add(LoadProductsSearchTextChanged(value));
     DeBouncer().run(() async {
       final response = await getIt
-          .get<SearchProduct>()
+          .get<SearchAvailableProducts>()
           .execute(bloc.state.searchFilter, value);
       response.fold((l) {
         bloc.add(LoadProductsFilterFailedEvent(l));

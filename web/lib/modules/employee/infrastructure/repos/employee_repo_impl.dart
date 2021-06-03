@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sp_web/common/dto.dart';
 import 'package:sp_web/common/failure.dart';
 import 'package:sp_web/modules/employee/domain/entities/employee.dart';
@@ -6,6 +7,7 @@ import 'package:sp_web/modules/employee/domain/ports/employee_repo.dart';
 import 'package:sp_web/modules/employee/infrastructure/datasources/employee_datasource.dart';
 import 'package:sp_web/modules/employee/infrastructure/dtos/employee_dto.dart';
 
+@LazySingleton(as: IEmployeeRepo)
 class EmployeeRepoImpl extends IEmployeeRepo {
   final EmployeeCrudDatasource _employeeCrudDatasource;
 

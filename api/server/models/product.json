@@ -28,7 +28,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "availableProducts": {
+      "type": "hasOne",
+      "model": "availableProduct",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "soldProducts": {
+      "type": "hasOne",
+      "model": "soldProduct",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

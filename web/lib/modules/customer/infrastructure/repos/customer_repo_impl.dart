@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sp_web/common/dto.dart';
 import 'package:sp_web/common/failure.dart';
 import 'package:sp_web/modules/customer/domain/entities/customer.dart';
@@ -6,6 +7,7 @@ import 'package:sp_web/modules/customer/domain/ports/customer_repo.dart';
 import 'package:sp_web/modules/customer/infrastructure/datasources/customer_datasource.dart';
 import 'package:sp_web/modules/customer/infrastructure/dtos/customer_dto.dart';
 
+@LazySingleton(as: ICustomerRepo)
 class CustomerRepoImpl extends ICustomerRepo {
   final CustomerCrudDatasource _customerCrudDatasource;
 
