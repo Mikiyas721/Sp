@@ -16,10 +16,11 @@ class LongPasswordFailure extends PasswordFailure {
 class WeakPasswordFailure extends PasswordFailure {
   @override
   String get message =>
-      "Password must contain combination of uppercase, lowercase and special characters";
+      "Weak password";
 }
 
-const passwordRegExp = r'';
+const passwordRegExp =
+    r'^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{6,12}$';
 
 class Password {
   final String password;
@@ -27,10 +28,10 @@ class Password {
   Password._(this.password);
 
   static Either<PasswordFailure, Password> create(String password) {
-    if (password.length < 6) left(ShortPasswordFailure());
-    if (password.length > 12) left(LongPasswordFailure());
+    /*if (password.length < 6) return left(ShortPasswordFailure());
+    if (password.length > 12) return left(LongPasswordFailure());
     if (!RegExp(passwordRegExp).hasMatch(password))
-      return left(WeakPasswordFailure());
+      return left(WeakPasswordFailure());*/
     return right(Password._(password));
   }
 }

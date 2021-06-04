@@ -8,10 +8,12 @@ import 'package:sp_web/modules/employee/presentation/pages/employees_page.dart';
 import 'package:sp_web/modules/customer/presentation/pages/feedback_page.dart';
 import 'package:sp_web/modules/product/presentation/pages/products_page.dart';
 
+import 'injection.dart';
 import 'modules/admin/presentation/pages/login_page.dart';
 import 'modules/product/presentation/pages/add_product_page.dart';
 
 void main() {
+  configureDependencies();
   runApp(MyApp());
 }
 
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 final routes = {
-  '/': (BuildContext context) => LoginPage(),
+  '/': (BuildContext context) => DashboardPage(),
   '/dashboard': (BuildContext context) => DashboardPage(),
   '/employees': (BuildContext context) => EmployeesPage(),
   '/admins': (BuildContext context) => AdminsPage(),

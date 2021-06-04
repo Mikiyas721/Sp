@@ -3,7 +3,7 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/admin/presentation/models/admin_view_model.dart';
 import '../../../../common/extensions.dart';
 
-class AdminView extends PaginatedDataTableView<AdminsViewModel> {
+class AdminView extends PaginatedDataTableView<AdminsViewModel,AdminViewModel> {
   AdminView({
     @required AdminsViewModel adminsViewModel,
     @required void Function(String filter) onFilterChanged,

@@ -22,7 +22,7 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
             : null,
         password: s.password.getOrElse(() => null)?.password,
         passwordError: s.hasSubmitted
-            ? s.phoneNumber.fold((l) => l.message, (r) => null)
+            ? s.password.fold((l) => l.message, (r) => null)
             : null,
         isLoading: s.hasRequested,
         hasSubmitted: s.hasSubmitted);
@@ -48,6 +48,7 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
       final response = await getIt.get<Login>().execute(a);
       response.fold((l) {
         bloc.add(LoginRequestFailedEvent(l));
+        print(l.message);
         toastError(l.message);
       }, (r) {
         bloc.add(LoginRequestSucceededEvent(r));

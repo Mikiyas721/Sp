@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/customer/presentation/models/customer_view_model.dart';
 
-class CustomersView extends PaginatedDataTableView<CustomersViewModel> {
+class CustomersView extends PaginatedDataTableView<CustomersViewModel,CustomerViewModel> {
   CustomersView({
     @required CustomersViewModel clientViewModel,
     @required void Function(String filter) onFilterChanged,

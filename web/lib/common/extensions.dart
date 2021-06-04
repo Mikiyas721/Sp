@@ -47,7 +47,7 @@ extension CategoryExtension on ProductCategory {
 
 extension AdminPrivilegeTypeExtension on AdminPrivilegeType {
   Option<String> getString() {
-    if (this == AdminPrivilegeType.ALL_FEATURES) return some('All_Features');
+    if (this == AdminPrivilegeType.ALL_FEATURES) return some('All Features');
     return none();
   }
 

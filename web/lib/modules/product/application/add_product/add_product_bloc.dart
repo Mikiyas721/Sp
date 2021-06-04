@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sp_web/common/bloc/bloc_helpers.dart';
 import 'package:sp_web/common/enums/product_category.dart';
 import 'package:sp_web/common/failure.dart';
@@ -17,6 +18,7 @@ part 'add_product_state.dart';
 
 part 'add_product_bloc.freezed.dart';
 
+@injectable
 class AddProductBloc extends Bloc<AddProductEvent, AddProductState> {
   AddProductBloc() : super(AddProductState.initial());
 

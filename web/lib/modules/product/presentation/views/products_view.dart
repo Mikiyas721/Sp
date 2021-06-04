@@ -25,11 +25,20 @@ class ProductListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (productListViewModel.isLoading) return Center(child: MyLoadingView());
+    if (productListViewModel.error != null)
+      return Center(
+          child: EmptyErrorView.defaultError(
+        onAction: onReload,
+        description: productListViewModel.error,
+      ));
+    if (productListViewModel.isEmpty)
+      return Center(child: EmptyErrorView.defaultEmpty());
     return Card(
       elevation: 5,
-      margin: EdgeInsets.only(top:60),
+      margin: EdgeInsets.only(top: 60),
       child: Container(
-        padding: EdgeInsets.only(left: 20,right: 15,top: 20),
+        padding: EdgeInsets.only(left: 20, right: 15, top: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -46,9 +55,9 @@ class ProductListView extends StatelessWidget {
                   child: productListViewModel.isPerformingQuery
                       ? CircularProgressIndicator()
                       : Container(
-                    height: 0,
-                    width: 0,
-                  ),
+                          height: 0,
+                          width: 0,
+                        ),
                 ),
                 5.hSpace,
                 BorderTextField(
@@ -89,8 +98,8 @@ class ProductListView extends StatelessWidget {
                 },
                 errorView: Center(
                     child: EmptyErrorView.defaultError(
-                      onAction: onReload,
-                    )),
+                  onAction: onReload,
+                )),
                 loadingView: Center(child: MyLoadingView()),
                 emptyView: Center(
                   child: EmptyErrorView.defaultEmpty(),

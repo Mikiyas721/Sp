@@ -3,7 +3,7 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/employee/presentation/models/employees_view_model.dart';
 import '../../../../common/extensions.dart';
 
-class EmployeesView extends PaginatedDataTableView<EmployeesViewModel> {
+class EmployeesView extends PaginatedDataTableView<EmployeesViewModel,EmployeeViewModel> {
   EmployeesView({
     EmployeesViewModel employeesViewModel,
     void Function(String filter) onFilterChanged,

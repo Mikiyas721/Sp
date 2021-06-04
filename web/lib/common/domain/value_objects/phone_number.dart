@@ -19,6 +19,6 @@ class PhoneNumber {
     final match = RegExp(ethiopianPhoneNumberRegExp).firstMatch(phoneNumber);
     if (match == null)
       return left(InvalidPhoneNumberFailure());
-    return right(PhoneNumber._(phoneNumber));
+    return right(PhoneNumber._("+2519${match.group(2)}"));
   }
 }

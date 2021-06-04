@@ -21,7 +21,7 @@ abstract class LoadProductsState extends BlocState with _$LoadProductsState {
         category: ProductCategory.FOOD.getString().getOrElse(() => null),
         searchString: '',
         searchFilter: '',
-        filterString: '',
+        filterString: 'in stock',
         isLoading: false,
         isFiltering: false,
       );

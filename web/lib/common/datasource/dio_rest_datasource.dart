@@ -18,7 +18,7 @@ class DioRestDataSource implements RestDataSource {
             receiveTimeout: 10000,
             baseUrl: 'localhost:3000/api',
           ),
-        ) {}
+        );
 
   Future<RestResponseWithFailure> _request(Future<Response> request) async {
     try {

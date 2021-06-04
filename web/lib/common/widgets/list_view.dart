@@ -142,7 +142,7 @@ class SimpleGridView<T> extends StatelessWidget {
   }
 }
 
-class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
+class PaginatedDataTableView<T extends PaginatedDataTableViewModel, E extends ViewModel>
     extends StatelessWidget {
   final T viewModel;
   final List<DataColumn> columns;
@@ -153,10 +153,10 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
   final void Function(String filter) onFilterChanged;
   final void Function(String filter) onSearchFilterChanged;
   final void Function(String text) onSearch;
-  final void Function(Object entity) onAction1;
-  final void Function(Object entity) onAction2;
-  final void Function(Object entity) onAction3;
-  final void Function(Object entity) onAction4;
+  final void Function(E entity) onAction1;
+  final void Function(E entity) onAction2;
+  final void Function(E entity) onAction3;
+  final void Function(E entity) onAction4;
   final VoidCallback onReload;
 
   const PaginatedDataTableView(
@@ -190,13 +190,13 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel>
               child: EmptyErrorView.defaultError(
             onAction: onReload,
           )));
-    /*if (viewModel.isEmpty)
+    if (viewModel.isEmpty)
       return Container(
           width: MediaQuery.of(context).size.width * 0.78,
           child: Center(
               child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
-          )));*/
+          )));
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
