@@ -3,7 +3,8 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/admin/presentation/models/admin_view_model.dart';
 import '../../../../common/extensions.dart';
 
-class AdminView extends PaginatedDataTableView<AdminsViewModel,AdminViewModel> {
+class AdminView
+    extends PaginatedDataTableView<AdminsViewModel, AdminViewModel> {
   AdminView({
     @required AdminsViewModel adminsViewModel,
     @required void Function(String filter) onFilterChanged,
@@ -19,21 +20,19 @@ class AdminView extends PaginatedDataTableView<AdminsViewModel,AdminViewModel> {
               DataColumn(label: Text('#')),
               DataColumn(label: Text('Contact')),
               DataColumn(label: Text('Privilege Type')),
+              DataColumn(label: Text('Password')),
               DataColumn(label: Text('Registered')),
               DataColumn(label: Text('Actions')),
             ],
-            filters: [
-              'Current',
-              'All'
-            ],
-            // Use different privileges for admin
+            filters: AdminPrivilegeTypeExtension.adminPrivilegeTypeList,
             source: AdminDataTableSource(
-              onOpen: onOpen,
-              onEdit: onEdit,
-              onDelete: onDelete,
-            ),
+                onOpen: onOpen,
+                onEdit: onEdit,
+                onDelete: onDelete,
+                data: adminsViewModel.data),
             headerTitle: 'Admins',
             hint: 'filter',
+            emptyMessage: 'No Admins',
             viewModel: adminsViewModel,
             onFilterChanged: onFilterChanged,
             onSearchFilterChanged: onSearchFilterChanged,
@@ -51,10 +50,10 @@ class AdminDataTableSource extends DataTableSource {
   final List<AdminViewModel> data;
 
   AdminDataTableSource({
-    this.onOpen,
-    this.onEdit,
-    this.onDelete,
-    this.data,
+    @required this.onOpen,
+    @required this.onEdit,
+    @required this.onDelete,
+    @required this.data,
   });
 
   @override
@@ -86,7 +85,7 @@ class AdminDataTableSource extends DataTableSource {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(data[index].createdAt),
-              2.vSpace,
+              2.0.vSpace,
               Text(data[index].updatedAt, style: TextStyle(color: Colors.grey))
             ])),
         DataCell(Row(

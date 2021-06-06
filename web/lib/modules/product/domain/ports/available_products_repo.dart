@@ -10,6 +10,6 @@ abstract class IAvailableProductsRepo{
   Future<Either<Failure, Product>> update(Product product);
   Future<Either<Failure, List<Product>>> searchAvailableProduct(
       String prop, String value);
-  Future<Either<Failure, Product>> addProduct(Product product);
+  Future<Either<Failure, dynamic>> addProduct(Product product);
   Future<Either<Failure, Product>> sellProduct(Product product);
 }

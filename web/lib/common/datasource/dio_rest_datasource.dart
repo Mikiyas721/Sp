@@ -16,7 +16,7 @@ class DioRestDataSource implements RestDataSource {
           BaseOptions(
             connectTimeout: 10000,
             receiveTimeout: 10000,
-            baseUrl: 'localhost:3000/api',
+            baseUrl: 'http://192.168.1.4:3000/api',
           ),
         );
 
@@ -37,9 +37,9 @@ class DioRestDataSource implements RestDataSource {
             left(
               ErrorResponseFailure(
                 RestResponseError(
-                  statusCode: e.response.statusCode,
+                  statusCode: e.response?.statusCode,
                   message: e.message,
-                  extra: e.response.data,
+                  extra: e.response?.data,
                 ),
               ),
             ),

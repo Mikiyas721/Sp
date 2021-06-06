@@ -8,7 +8,7 @@ part 'product_dto.g.dart';
 
 @JsonSerializable(nullable: false)
 class ProductDto extends Dto<Product> implements TimeStampedDto {
-  final String id;
+  @JsonKey(nullable: true,includeIfNull: false)final String id;
   final String productName;
   final String brandName;
   final String category;
@@ -16,8 +16,8 @@ class ProductDto extends Dto<Product> implements TimeStampedDto {
   final String description;
   final DateTime manDate;
   final DateTime expDate;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  @JsonKey(nullable: true,includeIfNull: false)final DateTime createdAt;
+  @JsonKey(nullable: true,includeIfNull: false)final DateTime updatedAt;
 
   ProductDto({
     this.id,
@@ -34,6 +34,21 @@ class ProductDto extends Dto<Product> implements TimeStampedDto {
 
   factory ProductDto.fromJson(Map<String, dynamic> map) =>
       _$ProductDtoFromJson(map);
+
+  factory ProductDto.fromAvailableJson(Map<String, dynamic> map){
+    return ProductDto(
+      id: map['id'] as String,
+      productName: map['product']['productName'] as String,
+      brandName: map['product']['brandName'] as String,
+      category: map['product']['category'] as String,
+      quantity: map['quantity'] as int,
+      description: map['product']['description'] as String,
+      manDate: DateTime.parse(map['manDate'] as String),
+      expDate: DateTime.parse(map['expDate'] as String),
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
+    );
+  }
 
   Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
 

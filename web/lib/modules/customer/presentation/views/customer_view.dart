@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/customer/presentation/models/customer_view_model.dart';
 
-class CustomersView extends PaginatedDataTableView<CustomersViewModel,CustomerViewModel> {
+class CustomersView
+    extends PaginatedDataTableView<CustomersViewModel, CustomerViewModel> {
   CustomersView({
     @required CustomersViewModel clientViewModel,
     @required void Function(String filter) onFilterChanged,
@@ -11,31 +12,36 @@ class CustomersView extends PaginatedDataTableView<CustomersViewModel,CustomerVi
     @required void Function(CustomerViewModel filter) onViewComments,
     @required void Function(CustomerViewModel filter) onBlock,
     @required VoidCallback onReload,
-
   }) : super(
-          columns: [
-            DataColumn(label: Text('#')),
-            DataColumn(label: Text('Picture')),
-            DataColumn(label: Text('Name')),
-            DataColumn(label: Text('Phone number')),
-            DataColumn(label: Text('Email')),
-            DataColumn(label: Text('Joined')),
-            DataColumn(label: Text('Actions')),
-          ],
-          filters: ['All', 'Active', 'New'],
-          source: ClientDataTableSource(
-            onViewComments: onViewComments,
-            onBlock: onBlock,
-          ),
-          headerTitle: 'Clients',
-          hint: 'filter',
-          viewModel: clientViewModel,
-          onFilterChanged: onFilterChanged,
-          onSearchFilterChanged: onSearchFilterChanged,
-          onSearch: onSearch,
-          onAction1: onViewComments,
-          onAction2: onBlock,
-        );
+            columns: [
+              DataColumn(label: Text('#')),
+              DataColumn(label: Text('Picture')),
+              DataColumn(label: Text('Name')),
+              DataColumn(label: Text('Phone number')),
+              DataColumn(label: Text('Email')),
+              DataColumn(label: Text('Joined')),
+              DataColumn(label: Text('Actions')),
+            ],
+            filters: [
+              'All',
+              'Active',
+              'New'
+            ],
+            source: ClientDataTableSource(
+              onViewComments: onViewComments,
+              onBlock: onBlock,
+              data: clientViewModel.data,
+            ),
+            headerTitle: 'Clients',
+            hint: 'filter',
+            emptyMessage: 'You have no customers',
+            viewModel: clientViewModel,
+            onFilterChanged: onFilterChanged,
+            onSearchFilterChanged: onSearchFilterChanged,
+            onSearch: onSearch,
+            onAction1: onViewComments,
+            onAction2: onBlock,
+            onReload: onReload);
 }
 
 class ClientDataTableSource extends DataTableSource {
@@ -44,17 +50,16 @@ class ClientDataTableSource extends DataTableSource {
   final List<CustomerViewModel> data;
 
   ClientDataTableSource({
-    this.onViewComments,
-    this.onBlock,
-    this.data,
+    @required this.onViewComments,
+    @required this.onBlock,
+    @required this.data,
   });
 
   @override
   DataRow getRow(int index) => DataRow.byIndex(index: index, cells: [
         DataCell(Text('${index + 1}')),
         DataCell(CircleAvatar(
-          backgroundImage:
-              AssetImage('images/1.png'), //TODO replace
+          backgroundImage: AssetImage('images/1.png'), //TODO replace
         )),
         DataCell(
           Text(data[index].name),

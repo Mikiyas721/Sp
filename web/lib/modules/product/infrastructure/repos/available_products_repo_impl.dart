@@ -13,9 +13,25 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
 
   AvailableProductsRepoImpl(this._availableProductsCrudDatasource);
 
+  static const includeProductMap = {
+    "relation": "product",
+    "scope": {
+      "fields": [
+        "productName",
+        "brandName",
+        "category",
+        "description",
+      ]
+    }
+  };
+
   @override
   Future<Either<Failure, List<Product>>> fetchAll() async {
-    final response = await _availableProductsCrudDatasource.find();
+    final response = await _availableProductsCrudDatasource.find(options: {
+      "filter": {
+        "include": includeProductMap,
+      }
+    });
     return response.either.fold(
         (l) => left(l),
         (r) => Dto.toDomainList<Product, ProductDto>(r).fold(
@@ -28,6 +44,7 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
   Future<Either<Failure, List<Product>>> fetchNearExpiration() async {
     final response = await _availableProductsCrudDatasource.find(options: {
       "filter": {
+        "include": includeProductMap,
         "where": {
           "manDate": {
             "gt":
@@ -48,6 +65,7 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
   Future<Either<Failure, List<Product>>> fetchRunningLow() async {
     final response = await _availableProductsCrudDatasource.find(options: {
       "filter": {
+        "include": includeProductMap,
         "where": {
           "quantity": {"lt": 100}
         }
@@ -76,6 +94,7 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
   Future<Either<Failure, List<Product>>> fetchByCategory(String value) async {
     final response = await _availableProductsCrudDatasource.find(options: {
       "filter": {
+        "include": includeProductMap,
         "where": {"productCategory": "$value"}
       }
     });
@@ -92,6 +111,7 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
       String prop, String value) async {
     final response = await _availableProductsCrudDatasource.find(options: {
       "filter": {
+        "include": includeProductMap,
         "where": {"$prop": "$value"}
       }
     });
@@ -103,22 +123,21 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
   }
 
   @override
-  Future<Either<Failure, Product>> addProduct(Product product) async {
+  Future<Either<Failure, dynamic>> addProduct(Product product) async {
     final response = await _availableProductsCrudDatasource.addProduct(product);
+    return response.fold(
+        (l) => left(l),
+        (r) =>right(r.value));
+  }
+
+  @override
+  Future<Either<Failure, Product>> sellProduct(Product product) async {
+    final response =
+        await _availableProductsCrudDatasource.sellProduct(product);
     return response.fold(
         (l) => left(l),
         (r) => ProductDto.fromJson(r.value).toDomain().fold(
             () => left(SimpleFailure("Error:parsing product map to domain")),
             (a) => right(a)));
-  }
-
-  @override
-  Future<Either<Failure, Product>> sellProduct(Product product) async{
-    final response = await _availableProductsCrudDatasource.sellProduct(product);
-    return response.fold(
-            (l) => left(l),
-            (r) => ProductDto.fromJson(r.value).toDomain().fold(
-                () => left(SimpleFailure("Error:parsing product map to domain")),
-                (a) => right(a)));
   }
 }

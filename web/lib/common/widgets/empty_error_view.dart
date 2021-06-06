@@ -61,7 +61,7 @@ class EmptyErrorView extends StatelessWidget {
             fit: BoxFit.contain,
             height: 200,
           ),
-        24.vSpace,
+        24.0.vSpace,
         Text(
           title,
           textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class EmptyErrorView extends StatelessWidget {
           ),
         ),
         if(description!=null)
-        12.vSpace,
+        12.0.vSpace,
         if(description!=null)
         Text(
           description,
@@ -80,7 +80,7 @@ class EmptyErrorView extends StatelessWidget {
             color: Colors.grey.shade600,
           ),
         ),
-        24.vSpace,
+        24.0.vSpace,
         if (actionLabel != null && onAction != null)
           OutlinedButton(
             onPressed: onAction,

@@ -18,23 +18,35 @@ EmployeeDto _$EmployeeDtoFromJson(Map<String, dynamic> json) {
     employeeType: json['employeeType'] as String,
     photoUrl: json['photoUrl'] as String,
     docUrl: json['docUrl'] as String,
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    updatedAt: DateTime.parse(json['updatedAt'] as String),
+    createdAt: json['createdAt'] == null
+        ? null
+        : DateTime.parse(json['createdAt'] as String),
+    updatedAt: json['updatedAt'] == null
+        ? null
+        : DateTime.parse(json['updatedAt'] as String),
   );
 }
 
-Map<String, dynamic> _$EmployeeDtoToJson(EmployeeDto instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'phoneNumber': instance.phoneNumber,
-      'email': instance.email,
-      'employeePosition': instance.employeePosition,
-      'salary': instance.salary,
-      'employeeType': instance.employeeType,
-      'photoUrl': instance.photoUrl,
-      'docUrl': instance.docUrl,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
-    };
+Map<String, dynamic> _$EmployeeDtoToJson(EmployeeDto instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['firstName'] = instance.firstName;
+  val['lastName'] = instance.lastName;
+  val['phoneNumber'] = instance.phoneNumber;
+  val['email'] = instance.email;
+  val['employeePosition'] = instance.employeePosition;
+  val['salary'] = instance.salary;
+  val['employeeType'] = instance.employeeType;
+  val['photoUrl'] = instance.photoUrl;
+  val['docUrl'] = instance.docUrl;
+  writeNotNull('createdAt', instance.createdAt?.toIso8601String());
+  writeNotNull('updatedAt', instance.updatedAt?.toIso8601String());
+  return val;
+}

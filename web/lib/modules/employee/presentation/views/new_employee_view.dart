@@ -43,45 +43,45 @@ class NewEmployeeView extends StatelessWidget {
       child: Container(
         width: 380,
         height: 600,
-        padding: 65.hPadding,
+        padding: 65.0.hPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            15.vSpace,
+            15.0.vSpace,
             Text(
               'New Employee',
               style: context.headline6,
             ),
-            30.vSpace,
+            30.0.vSpace,
             BorderTextField(
               errorMessage: addEmployeeViewModel.firstNameError,
               labelText: 'first name',
               icon: Icons.person,
               onChanged: onFirstName,
             ),
-            15.vSpace,
+            15.0.vSpace,
             BorderTextField(
               errorMessage: addEmployeeViewModel.lastNameError,
               labelText: 'last name',
               icon: Icons.person,
               onChanged: onLastName,
             ),
-            15.vSpace,
+            15.0.vSpace,
             BorderTextField(
               errorMessage: addEmployeeViewModel.phoneNumberError,
               labelText: 'phone number',
               icon: Icons.phone,
               onChanged: onPhoneNumber,
             ),
-            15.vSpace,
+            15.0.vSpace,
             BorderTextField(
               errorMessage: addEmployeeViewModel.emailError,
               labelText: 'email',
               icon: Icons.email,
               onChanged: onEmail,
             ),
-            15.vSpace,
+            15.0.vSpace,
             BorderTextField(
               errorMessage: addEmployeeViewModel.emailError,
               labelText: 'dob',
@@ -89,7 +89,7 @@ class NewEmployeeView extends StatelessWidget {
               readOnly: true,
               onChanged: onEmail,
             ),
-            15.vSpace,
+            15.0.vSpace,
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -99,14 +99,14 @@ class NewEmployeeView extends StatelessWidget {
                     backgroundImage: AssetImage('images/1.png'),
                   ),
                 ),
-                10.hSpace,
+                10.0.hSpace,
                 Text(
                   'Please click the avatar to\nenter employee photo',
                   style: context.caption,
                 )
               ],
             ),
-            15.vSpace,
+            15.0.vSpace,
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -127,20 +127,20 @@ class NewEmployeeView extends StatelessWidget {
                     ),
                   ),
                 ),
-                10.hSpace,
+                10.0.hSpace,
                 Text(
                   'Please enter the relevant\nemployee document here',
                   style: context.caption,
                 )
               ],
             ),
-            30.vSpace,
+            30.0.vSpace,
             MyActionButton(
               label: 'Add',
-              isLoading: false,
+              isLoading: addEmployeeViewModel.isAdding,
               onPressed: onAdd,
             ),
-            40.vSpace,
+            40.0.vSpace,
           ],
         ),
       ),

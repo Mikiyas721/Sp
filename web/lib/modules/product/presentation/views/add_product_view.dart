@@ -62,7 +62,7 @@ class AddProductView extends StatelessWidget {
             BorderTextField(
               errorMessage: addProductViewModel.productNameError,
               labelText: 'Brand Name',
-              onChanged: onProductName,
+              onChanged: onBrandName,
             ),
             15.vSpace,
             Row(
@@ -134,7 +134,10 @@ class AddProductView extends StatelessWidget {
               ),
             ),
             50.vSpace,
-            MyActionButton(label: 'Add', onPressed: onAdd),
+            MyActionButton(
+                label: 'Add',
+                isLoading: addProductViewModel.isAdding,
+                onPressed: onAdd),
             30.vSpace
           ],
         ),

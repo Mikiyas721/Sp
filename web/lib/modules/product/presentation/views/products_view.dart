@@ -33,7 +33,11 @@ class ProductListView extends StatelessWidget {
         description: productListViewModel.error,
       ));
     if (productListViewModel.isEmpty)
-      return Center(child: EmptyErrorView.defaultEmpty());
+      return Center(
+          child: EmptyErrorView.defaultEmpty(
+        onAction: onReload,
+        description: 'You have no products',
+      ));
     return Card(
       elevation: 5,
       margin: EdgeInsets.only(top: 60),
@@ -140,7 +144,7 @@ class ProductView extends StatelessWidget {
                 height: 250,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(productViewModel.imageUrl),
+                        image: AssetImage(/*productViewModel.imageUrl*/'assets/images/1.png'),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(15),

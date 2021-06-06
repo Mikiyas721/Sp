@@ -19,7 +19,7 @@ abstract class LoadAdminsState extends BlocState with _$LoadAdminsState {
         filterFailure: none(),
         searchString: '',
         searchFilter: '',
-        filterString: "",
+        filterString: "All Features",
         isLoading: false,
         isFiltering: false,
       );

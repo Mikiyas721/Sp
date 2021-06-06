@@ -8,6 +8,8 @@ import 'package:sp_web/common/widgets/my_drawer.dart';
 import '../../../../common/extensions.dart';
 
 class EmployeesPage extends StatelessWidget {
+  final ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +24,13 @@ class EmployeesPage extends StatelessWidget {
               Scrollbar(
                   isAlwaysShown: true,
                   showTrackOnHover: true,
-                  controller: ScrollController(),
+                  controller: scrollController,
                   child: SingleChildScrollView(
+                    controller: scrollController,
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
-                        40.vSpace,
+                        40.0.vSpace,
                         ViewModelBuilder.withController<EmployeesViewModel,
                                 LoadEmployeesController>(
                             create: () => LoadEmployeesController(context),

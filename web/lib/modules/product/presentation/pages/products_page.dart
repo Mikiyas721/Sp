@@ -8,11 +8,13 @@ import 'package:sp_web/modules/product/presentation/models/product_view_model.da
 import 'package:sp_web/modules/product/presentation/views/products_view.dart';
 
 class ProductsPage extends StatelessWidget {
+  final ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyDrawer(
             index: 4,
@@ -20,7 +22,9 @@ class ProductsPage extends StatelessWidget {
           Stack(
             children: [
               Scrollbar(
+                controller: scrollController,
                 child: SingleChildScrollView(
+                  controller: scrollController,
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
                     width: (MediaQuery.of(context).size.width) * 0.78,

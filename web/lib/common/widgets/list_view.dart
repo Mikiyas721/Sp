@@ -142,14 +142,15 @@ class SimpleGridView<T> extends StatelessWidget {
   }
 }
 
-class PaginatedDataTableView<T extends PaginatedDataTableViewModel, E extends ViewModel>
-    extends StatelessWidget {
+class PaginatedDataTableView<T extends PaginatedDataTableViewModel,
+    E extends ViewModel> extends StatelessWidget {
   final T viewModel;
   final List<DataColumn> columns;
   final List<String> filters;
   final DataTableSource source;
   final String headerTitle;
   final String hint;
+  final String emptyMessage;
   final void Function(String filter) onFilterChanged;
   final void Function(String filter) onSearchFilterChanged;
   final void Function(String text) onSearch;
@@ -160,20 +161,21 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel, E extends Vi
   final VoidCallback onReload;
 
   const PaginatedDataTableView(
-      {this.columns,
-      this.filters,
-      this.source,
-      this.headerTitle,
-      this.hint,
-      this.viewModel,
-      this.onFilterChanged,
-      this.onSearchFilterChanged,
-      this.onSearch,
-      this.onAction1,
-      this.onAction2,
+      {@required this.columns,
+      @required this.filters,
+      @required this.source,
+      @required this.headerTitle,
+      @required this.hint,
+      @required this.emptyMessage,
+      @required this.viewModel,
+      @required this.onFilterChanged,
+      @required this.onSearchFilterChanged,
+      @required this.onSearch,
+      @required this.onAction1,
+      @required this.onAction2,
       this.onAction3,
       this.onAction4,
-      this.onReload,
+      @required this.onReload,
       Key key})
       : super(key: key);
 
@@ -189,6 +191,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel, E extends Vi
           child: Center(
               child: EmptyErrorView.defaultError(
             onAction: onReload,
+            description: viewModel.error,
           )));
     if (viewModel.isEmpty)
       return Container(
@@ -196,11 +199,12 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel, E extends Vi
           child: Center(
               child: EmptyErrorView.defaultEmpty(
             onAction: onReload,
+            description: emptyMessage,
           )));
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Card(
-        margin: 20.allPadding,
+        margin: 20.0.allPadding,
         elevation: 5,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.78,

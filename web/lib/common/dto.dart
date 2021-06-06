@@ -5,6 +5,8 @@ import 'package:sp_web/common/entity.dart';
 abstract class Dto<T> extends Equatable {
   String get id;
 
+  Map<String, dynamic> toJson();
+
   @override
   List<Object> get props => [id];
 
@@ -14,6 +16,7 @@ abstract class Dto<T> extends Equatable {
       List<D> dtoList) {
     List<E> domainList = [];
     for (D d in dtoList) {
+      /*print(d.toJson());*/
       final result = d.toDomain();
       if (result.isNone()) return none();
       domainList.add(result.getOrElse(() => null));

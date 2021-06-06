@@ -37,7 +37,7 @@ class MyImageView extends StatelessWidget {
     if (image is Uint8List) return MemoryImage(image);
     if (image is File) return FileImage(image);
     String imageUrl = image;
-    if (imageUrl.startsWith("assets")) return AssetImage(imageUrl);
+    if (imageUrl.startsWith("images")) return AssetImage(imageUrl);
 
     return NetworkImage(imageUrl);
   }

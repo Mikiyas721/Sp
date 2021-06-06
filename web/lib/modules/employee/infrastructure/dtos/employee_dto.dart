@@ -8,7 +8,7 @@ part 'employee_dto.g.dart';
 
 @JsonSerializable(nullable: false)
 class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
-  final String id;
+  @JsonKey(nullable: true,includeIfNull: false) final String id;
   final String firstName;
   final String lastName;
   final String phoneNumber;
@@ -18,8 +18,8 @@ class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
   final String employeeType;
   final String photoUrl;
   final String docUrl;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  @JsonKey(nullable: true,includeIfNull: false) final DateTime createdAt;
+  @JsonKey(nullable: true,includeIfNull: false) final DateTime updatedAt;
 
   EmployeeDto({
     this.id,

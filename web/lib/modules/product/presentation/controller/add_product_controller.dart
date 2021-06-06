@@ -41,6 +41,7 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
           : null,
       expDate: s.expDate.getOrElse(() => null),
       manDate: s.manDate.getOrElse(() => null),
+      isAdding: s.hasRequested
     );
   }
 

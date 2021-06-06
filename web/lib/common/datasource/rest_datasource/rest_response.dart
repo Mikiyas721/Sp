@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import '../../failure.dart';
 import '../value_with_failure.dart';
 
-
 class RestResponseError {
   final int statusCode;
   final String message;
@@ -16,7 +15,9 @@ class RestResponseError {
 
   @override
   String toString() {
-    return 'RestResponseError{statusCode: $statusCode, message: $message, extra: $extra}';
+    return statusCode == null
+        ? 'RestResponseError{message: $message}'
+        : 'RestResponseError{statusCode: $statusCode, message: $message, extra: $extra}';
   }
 }
 
@@ -57,7 +58,8 @@ class RestResponse {
   }
 }
 
-class RestResponseWithFailure extends ValueWithFailure<RestResponseFailure, RestResponse> {
+class RestResponseWithFailure
+    extends ValueWithFailure<RestResponseFailure, RestResponse> {
   RestResponseWithFailure(
     Either<RestResponseFailure, RestResponse> either,
   ) : super(either);

@@ -6,6 +6,8 @@ import 'package:sp_web/modules/customer/presentation/views/customer_view.dart';
 import 'package:sp_web/common/widgets/my_drawer.dart';
 
 class CustomerPage extends StatelessWidget {
+  final ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,9 @@ class CustomerPage extends StatelessWidget {
             index: 3,
           ),
           Scrollbar(
+            controller: scrollController,
               child: SingleChildScrollView(
+                controller: scrollController,
             child: ViewModelBuilder.withController<CustomersViewModel,
                     LoadCustomersController>(
                 create: () => LoadCustomersController(context),

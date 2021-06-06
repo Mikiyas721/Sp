@@ -9,7 +9,7 @@ class AddProduct{
   final IAvailableProductsRepo _iAvailableProductsRepo;
 
   const AddProduct(this._iAvailableProductsRepo);
-  Future<Either<Failure, Product>>execute(Product product){
+  Future<Either<Failure, dynamic>>execute(Product product){
     return _iAvailableProductsRepo.addProduct(product);
   }
 }

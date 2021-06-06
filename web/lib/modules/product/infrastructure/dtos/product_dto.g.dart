@@ -16,21 +16,33 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
     description: json['description'] as String,
     manDate: DateTime.parse(json['manDate'] as String),
     expDate: DateTime.parse(json['expDate'] as String),
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    updatedAt: DateTime.parse(json['updatedAt'] as String),
+    createdAt: json['createdAt'] == null
+        ? null
+        : DateTime.parse(json['createdAt'] as String),
+    updatedAt: json['updatedAt'] == null
+        ? null
+        : DateTime.parse(json['updatedAt'] as String),
   );
 }
 
-Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'productName': instance.productName,
-      'brandName': instance.brandName,
-      'category': instance.category,
-      'quantity': instance.quantity,
-      'description': instance.description,
-      'manDate': instance.manDate.toIso8601String(),
-      'expDate': instance.expDate.toIso8601String(),
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
-    };
+Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['productName'] = instance.productName;
+  val['brandName'] = instance.brandName;
+  val['category'] = instance.category;
+  val['quantity'] = instance.quantity;
+  val['description'] = instance.description;
+  val['manDate'] = instance.manDate.toIso8601String();
+  val['expDate'] = instance.expDate.toIso8601String();
+  writeNotNull('createdAt', instance.createdAt?.toIso8601String());
+  writeNotNull('updatedAt', instance.updatedAt?.toIso8601String());
+  return val;
+}

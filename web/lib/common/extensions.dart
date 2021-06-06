@@ -6,15 +6,15 @@ import 'package:sp_web/common/enums/employee_position.dart';
 import 'package:sp_web/common/enums/employee_type.dart';
 
 extension SpacingExtension on num {
-  Widget get vSpace => SizedBox(height: this);
+  Widget get vSpace => SizedBox(height: this.toDouble());
 
-  Widget get hSpace => SizedBox(width: this);
+  Widget get hSpace => SizedBox(width: this.toDouble());
 
-  EdgeInsets get vPadding => EdgeInsets.symmetric(vertical: this);
+  EdgeInsets get vPadding => EdgeInsets.symmetric(vertical: this.toDouble());
 
-  EdgeInsets get hPadding => EdgeInsets.symmetric(horizontal: this);
+  EdgeInsets get hPadding => EdgeInsets.symmetric(horizontal: this.toDouble());
 
-  EdgeInsets get allPadding => EdgeInsets.all(this);
+  EdgeInsets get allPadding => EdgeInsets.all(this.toDouble());
 }
 
 extension BuildContextExtension on BuildContext {
@@ -51,7 +51,7 @@ extension AdminPrivilegeTypeExtension on AdminPrivilegeType {
     return none();
   }
 
-  List<String> get adminPrivilegeTypeList => AdminPrivilegeType.values
+  static List<String> get adminPrivilegeTypeList => AdminPrivilegeType.values
       .map((e) => e.getString().getOrElse(() => null))
       .toList();
 }
@@ -70,8 +70,8 @@ extension EmployeePositionExtension on EmployeePosition {
 
 extension EmployeeTypeExtension on EmployeeType {
   Option<String> getString() {
-    if (this == EmployeeType.FULL_TIME) return some('Full_Time');
-    if (this == EmployeeType.PART_TIME) return some('Part_Time');
+    if (this == EmployeeType.FULL_TIME) return some('Full Time');
+    if (this == EmployeeType.PART_TIME) return some('Part Time');
     return none();
   }
 
@@ -90,19 +90,19 @@ extension StringExtension on String {
   }
 
   Option<AdminPrivilegeType> toAdminPrivilegeType() {
-    if (this == 'All_Features') return some(AdminPrivilegeType.ALL_FEATURES);
+    if (this == 'All Features') return some(AdminPrivilegeType.ALL_FEATURES);
     return none();
   }
 
   Option<EmployeePosition> toEmployeePosition() {
-    if (this == 'General_Manager')
+    if (this == 'General Manager')
       return some(EmployeePosition.GENERAL_MANAGER);
     return none();
   }
 
   Option<EmployeeType> toEmployeeType() {
-    if (this == 'Full_Time') return some(EmployeeType.FULL_TIME);
-    if (this == 'Part_Time') return some(EmployeeType.PART_TIME);
+    if (this == 'Full Time') return some(EmployeeType.FULL_TIME);
+    if (this == 'Part Time') return some(EmployeeType.PART_TIME);
     return none();
   }
 }

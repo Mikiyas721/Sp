@@ -54,7 +54,7 @@ class _MyDrawer extends State<MyDrawer> {
                       radius: 25,
                       backgroundImage: AssetImage('images/1.png'),
                     ),
-                    10.hSpace,
+                    10.0.hSpace,
                     Text(
                       'Gebeya',
                       style: context.headline6,

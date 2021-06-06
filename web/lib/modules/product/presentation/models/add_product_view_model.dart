@@ -13,6 +13,7 @@ class AddProductViewModel extends ViewModel {
   final String quantityError;
   final DateTime expDate;
   final DateTime manDate;
+  final bool isAdding;
 
   AddProductViewModel({
     this.imageUrl,
@@ -27,6 +28,7 @@ class AddProductViewModel extends ViewModel {
     this.quantityError,
     this.expDate,
     this.manDate,
+    this.isAdding
   });
 
   @override
@@ -43,5 +45,6 @@ class AddProductViewModel extends ViewModel {
         quantityError,
         expDate,
         manDate,
+        isAdding,
       ];
 }

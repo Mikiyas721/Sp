@@ -3,19 +3,20 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/modules/employee/presentation/models/employees_view_model.dart';
 import '../../../../common/extensions.dart';
 
-class EmployeesView extends PaginatedDataTableView<EmployeesViewModel,EmployeeViewModel> {
-  EmployeesView({
-    EmployeesViewModel employeesViewModel,
-    void Function(String filter) onFilterChanged,
-    void Function(String filter) onSearchFilterChanged,
-    void Function(String filter) onSearch,
-    void Function(EmployeeViewModel filter) onOpen,
-    void Function(EmployeeViewModel filter) onEdit,
-    void Function(EmployeeViewModel filter) onDelete,
-    void Function(EmployeeViewModel filter) onAdd,
-    VoidCallback onReload
-  }) : super(columns:
-          [
+class EmployeesView
+    extends PaginatedDataTableView<EmployeesViewModel, EmployeeViewModel> {
+  EmployeesView(
+      {EmployeesViewModel employeesViewModel,
+      void Function(String filter) onFilterChanged,
+      void Function(String filter) onSearchFilterChanged,
+      void Function(String filter) onSearch,
+      void Function(EmployeeViewModel filter) onOpen,
+      void Function(EmployeeViewModel filter) onEdit,
+      void Function(EmployeeViewModel filter) onDelete,
+      void Function(EmployeeViewModel filter) onAdd,
+      VoidCallback onReload})
+      : super(
+          columns: [
             DataColumn(label: Text('#')),
             DataColumn(label: Text('Picture')),
             DataColumn(label: Text('Name')),
@@ -24,24 +25,26 @@ class EmployeesView extends PaginatedDataTableView<EmployeesViewModel,EmployeeVi
             DataColumn(label: Text('Registered')),
             DataColumn(label: Text('Actions')),
           ],
-          filters:EmployeePositionExtension.employeePositionList,
-          source:EmployeeDataTableSource(
+          filters: EmployeePositionExtension.employeePositionList,
+          source: EmployeeDataTableSource(
             data: employeesViewModel.data,
             onOpen: onOpen,
             onEdit: onEdit,
             onDelete: onDelete,
             onAdd: onAdd,
           ),
-          headerTitle:'Employees',
+          headerTitle: 'Employees',
           hint: 'filter',
-          viewModel:employeesViewModel,
-          onFilterChanged:onFilterChanged,
-          onSearchFilterChanged:onSearchFilterChanged,
-          onSearch:onSearch,
-          onAction1:onOpen,
-          onAction2:onEdit,
-          onAction3:onDelete,
-          onAction4:onAdd,
+          emptyMessage: 'You have no employees',
+          viewModel: employeesViewModel,
+          onFilterChanged: onFilterChanged,
+          onSearchFilterChanged: onSearchFilterChanged,
+          onSearch: onSearch,
+          onAction1: onOpen,
+          onAction2: onEdit,
+          onAction3: onDelete,
+          onAction4: onAdd,
+          onReload: onReload,
         );
 }
 
@@ -64,8 +67,7 @@ class EmployeeDataTableSource extends DataTableSource {
   DataRow getRow(int index) => DataRow.byIndex(index: index, cells: [
         DataCell(Text('${index + 1}')),
         DataCell(CircleAvatar(
-          backgroundImage:
-              AssetImage('images/1.png'), //TODO replace
+          backgroundImage: AssetImage('images/1.png'), //TODO replace
         )),
         DataCell(Column(
           mainAxisSize: MainAxisSize.min,
@@ -94,7 +96,8 @@ class EmployeeDataTableSource extends DataTableSource {
             children: [
               Text(data[index].salary),
               2.vSpace,
-              Text(data[index].employeeType, style: TextStyle(color: Colors.grey))
+              Text(data[index].employeeType,
+                  style: TextStyle(color: Colors.grey))
             ])),
         DataCell(Column(
             mainAxisSize: MainAxisSize.min,
