@@ -55,5 +55,9 @@
   "soldProduct": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "container": {
+    "dataSource": "file_storage_mongo",
+    "public": true
   }
 }

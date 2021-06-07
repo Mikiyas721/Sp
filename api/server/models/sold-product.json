@@ -30,7 +30,7 @@
       "model": "product",
       "foreignKey": ""
     }
-},
+  },
   "acls": [],
   "methods": {}
 }

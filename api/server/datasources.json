@@ -13,5 +13,17 @@
     "user": "",
     "useNewUrlParser": true,
     "connector": "mongodb"
+  },
+  "file_storage_mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "gebeya",
+    "password": "",
+    "name": "file_storage_mongo",
+    "provider": "filestore-mongo",
+    "user": "",
+    "useNewUrlParser": true,
+    "connector": "loopback-component-storage-mongo"
   }
 }
