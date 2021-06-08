@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 import 'package:sp_web/common/controller/controller.dart';
 import 'package:sp_web/common/mixins/toast_mixin.dart';
 import 'package:sp_web/injection.dart';
@@ -8,6 +9,8 @@ import 'package:sp_web/modules/product/presentation/models/add_product_view_mode
 
 import '../../application/add_product/add_product_bloc.dart';
 import '../../../../common/extensions.dart';
+import 'dart:typed_data';
+
 
 class AddProductController extends BlocViewModelController<AddProductBloc,
     AddProductEvent, AddProductState, AddProductViewModel> with ToastMixin {
@@ -19,6 +22,7 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
   AddProductViewModel mapStateToViewModel(AddProductState s) {
     return AddProductViewModel(
       imageUrl: s.imageUrl.getOrElse(() => null),
+      imageData: s.imageData.getOrElse(() => null),
       productName: s.productName.getOrElse(() => null)?.name,
       productNameError: s.hasSubmitted
           ? s.productName.fold((l) => l.message, (r) => null)
@@ -41,7 +45,7 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
           : null,
       expDate: s.expDate.getOrElse(() => null),
       manDate: s.manDate.getOrElse(() => null),
-      isAdding: s.hasRequested
+      isAdding: s.hasRequested,
     );
   }
 
@@ -73,8 +77,9 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
     bloc.add(AddProductManDateChangedEvent(value));
   }
 
-  void onAddImage() {
-//TODO
+  void onAddImage() async{
+   Uint8List fromPicker = await ImagePickerWeb.getImage(outputType: ImageType.bytes);   
+   bloc.add(AddProductImageChangedEvent(DateTime.now().toIso8601String(),fromPicker));   
   }
 
   void onAdd() {

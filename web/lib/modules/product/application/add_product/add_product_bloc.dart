@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:dartz/dartz.dart';
@@ -11,6 +10,7 @@ import 'package:sp_web/modules/product/domain/value_objects/description.dart';
 import 'package:sp_web/modules/product/domain/value_objects/product_name.dart';
 import 'package:sp_web/modules/product/domain/value_objects/quantity.dart';
 import '../../../../common/extensions.dart';
+import 'dart:typed_data';
 
 part 'add_product_event.dart';
 

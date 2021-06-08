@@ -21,11 +21,11 @@ class ToastMixin {
     );
   }
 
-  toastSuccess(String message) {
+  toastSuccess(String message,{int timeInSecForIosWeb= 2,}) {
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_LONG,
-      timeInSecForIosWeb: 2,
+      timeInSecForIosWeb: timeInSecForIosWeb,
       backgroundColor: Colors.green,
       webBgColor: "linear-gradient(to right,#00b09b,#96c93d)",
       textColor: Colors.white,

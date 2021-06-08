@@ -1,7 +1,9 @@
 import 'package:sp_web/common/view_model.dart';
+import 'dart:typed_data';
 
 class AddProductViewModel extends ViewModel {
   final String imageUrl;
+  final Uint8List imageData;
   final String productName;
   final String productNameError;
   final String brandName;
@@ -17,6 +19,7 @@ class AddProductViewModel extends ViewModel {
 
   AddProductViewModel({
     this.imageUrl,
+    this.imageData,
     this.productName,
     this.productNameError,
     this.brandName,
@@ -34,6 +37,7 @@ class AddProductViewModel extends ViewModel {
   @override
   List<Object> get props => [
         imageUrl,
+        imageData,
         productName,
         productNameError,
         brandName,

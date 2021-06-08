@@ -6,6 +6,8 @@ import 'package:sp_web/common/widgets/my_dropdown.dart';
 import 'package:sp_web/common/widgets/picker.dart';
 import '../../../../common/common.dart';
 
+import 'dart:io';
+
 class AddProductView extends StatelessWidget {
   final AddProductViewModel addProductViewModel;
   final void Function(String value) onProductName;
@@ -113,7 +115,16 @@ class AddProductView extends StatelessWidget {
             ),
             Padding(
               padding: 20.vPadding,
-              child: Row(
+              child: addProductViewModel.imageData==null?CircleAvatar(
+                    backgroundColor: Colors.black26,
+                    child: InkWell(
+                      onTap: onAddImage,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ):Row(
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.black26,
@@ -125,14 +136,16 @@ class AddProductView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  10.hSpace,
-                  Text(
-                    'Please enter product image here',
-                    style: context.caption,
-                  )
+                  20.hSpace,  
+                  CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)                
                 ],
               ),
             ),
+            10.vSpace,
+            Text(
+                    'Please enter product image here',
+                    style: context.caption,
+                  ),
             50.vSpace,
             MyActionButton(
                 label: 'Add',

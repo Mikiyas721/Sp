@@ -23,6 +23,7 @@ class _$AddProductStateTearOff {
       Option<DateTime> manDate,
       Option<DateTime> expDate,
       Option<String> imageUrl,
+      Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -36,6 +37,7 @@ class _$AddProductStateTearOff {
       manDate: manDate,
       expDate: expDate,
       imageUrl: imageUrl,
+      imageData: imageData,
       requestFailure: requestFailure,
       hasSubmitted: hasSubmitted,
       hasRequested: hasRequested,
@@ -58,6 +60,7 @@ mixin _$AddProductState {
   Option<DateTime> get manDate;
   Option<DateTime> get expDate;
   Option<String> get imageUrl;
+  Option<Uint8List> get imageData;
   Option<Failure> get requestFailure;
   bool get hasSubmitted;
   bool get hasRequested;
@@ -81,6 +84,7 @@ abstract class $AddProductStateCopyWith<$Res> {
       Option<DateTime> manDate,
       Option<DateTime> expDate,
       Option<String> imageUrl,
+      Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -106,6 +110,7 @@ class _$AddProductStateCopyWithImpl<$Res>
     Object manDate = freezed,
     Object expDate = freezed,
     Object imageUrl = freezed,
+    Object imageData = freezed,
     Object requestFailure = freezed,
     Object hasSubmitted = freezed,
     Object hasRequested = freezed,
@@ -133,6 +138,9 @@ class _$AddProductStateCopyWithImpl<$Res>
           expDate == freezed ? _value.expDate : expDate as Option<DateTime>,
       imageUrl:
           imageUrl == freezed ? _value.imageUrl : imageUrl as Option<String>,
+      imageData: imageData == freezed
+          ? _value.imageData
+          : imageData as Option<Uint8List>,
       requestFailure: requestFailure == freezed
           ? _value.requestFailure
           : requestFailure as Option<Failure>,
@@ -163,6 +171,7 @@ abstract class _$AddProductStateCopyWith<$Res>
       Option<DateTime> manDate,
       Option<DateTime> expDate,
       Option<String> imageUrl,
+      Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -190,6 +199,7 @@ class __$AddProductStateCopyWithImpl<$Res>
     Object manDate = freezed,
     Object expDate = freezed,
     Object imageUrl = freezed,
+    Object imageData = freezed,
     Object requestFailure = freezed,
     Object hasSubmitted = freezed,
     Object hasRequested = freezed,
@@ -217,6 +227,9 @@ class __$AddProductStateCopyWithImpl<$Res>
           expDate == freezed ? _value.expDate : expDate as Option<DateTime>,
       imageUrl:
           imageUrl == freezed ? _value.imageUrl : imageUrl as Option<String>,
+      imageData: imageData == freezed
+          ? _value.imageData
+          : imageData as Option<Uint8List>,
       requestFailure: requestFailure == freezed
           ? _value.requestFailure
           : requestFailure as Option<Failure>,
@@ -242,6 +255,7 @@ class _$_AddProductState implements _AddProductState {
       this.manDate,
       this.expDate,
       this.imageUrl,
+      this.imageData,
       this.requestFailure,
       this.hasSubmitted,
       this.hasRequested,
@@ -264,6 +278,8 @@ class _$_AddProductState implements _AddProductState {
   @override
   final Option<String> imageUrl;
   @override
+  final Option<Uint8List> imageData;
+  @override
   final Option<Failure> requestFailure;
   @override
   final bool hasSubmitted;
@@ -274,7 +290,7 @@ class _$_AddProductState implements _AddProductState {
 
   @override
   String toString() {
-    return 'AddProductState(productName: $productName, brandName: $brandName, productCategory: $productCategory, quantity: $quantity, description: $description, manDate: $manDate, expDate: $expDate, imageUrl: $imageUrl, requestFailure: $requestFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, hasCompletedRequest: $hasCompletedRequest)';
+    return 'AddProductState(productName: $productName, brandName: $brandName, productCategory: $productCategory, quantity: $quantity, description: $description, manDate: $manDate, expDate: $expDate, imageUrl: $imageUrl, imageData: $imageData, requestFailure: $requestFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, hasCompletedRequest: $hasCompletedRequest)';
   }
 
   @override
@@ -305,6 +321,9 @@ class _$_AddProductState implements _AddProductState {
             (identical(other.imageUrl, imageUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrl, imageUrl)) &&
+            (identical(other.imageData, imageData) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageData, imageData)) &&
             (identical(other.requestFailure, requestFailure) ||
                 const DeepCollectionEquality()
                     .equals(other.requestFailure, requestFailure)) &&
@@ -330,6 +349,7 @@ class _$_AddProductState implements _AddProductState {
       const DeepCollectionEquality().hash(manDate) ^
       const DeepCollectionEquality().hash(expDate) ^
       const DeepCollectionEquality().hash(imageUrl) ^
+      const DeepCollectionEquality().hash(imageData) ^
       const DeepCollectionEquality().hash(requestFailure) ^
       const DeepCollectionEquality().hash(hasSubmitted) ^
       const DeepCollectionEquality().hash(hasRequested) ^
@@ -351,6 +371,7 @@ abstract class _AddProductState implements AddProductState {
       Option<DateTime> manDate,
       Option<DateTime> expDate,
       Option<String> imageUrl,
+      Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
       bool hasRequested,
@@ -372,6 +393,8 @@ abstract class _AddProductState implements AddProductState {
   Option<DateTime> get expDate;
   @override
   Option<String> get imageUrl;
+  @override
+  Option<Uint8List> get imageData;
   @override
   Option<Failure> get requestFailure;
   @override

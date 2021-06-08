@@ -93,15 +93,17 @@ class AddProductExpDateChangedEvent extends AddProductEvent {
   }
 }
 
-class AddProductImageUrlChangedEvent extends AddProductEvent {
+class AddProductImageChangedEvent extends AddProductEvent {
   final String url;
+  final Uint8List data;
 
-  AddProductImageUrlChangedEvent(this.url);
+  AddProductImageChangedEvent(this.url, this.data);
 
   @override
   Stream<AddProductState> handle(AddProductState currentState) async* {
     yield currentState.copyWith(
       imageUrl: Failure.getOption<String>(url),
+      imageData:Failure.getOption(data),
     );
   }
 }
