@@ -28,35 +28,3 @@ class SimpleListViewModel<T> extends EmptyErrorLoadingViewModel<List<T>> {
           data == null || data.isEmpty,
         );
 }
-
-class PaginatedDataTableViewModel<T>
-    extends EmptyErrorLoadingViewModel<List<T>> {
-  final String listFilter;
-  final String searchFilter;
-  final bool isPerformingQuery;
-
-  PaginatedDataTableViewModel({
-    String error,
-    List<T> data,
-    bool isLoading = false,
-    this.listFilter,
-    this.searchFilter,
-    this.isPerformingQuery = false,
-  }) : super(
-          error,
-          data,
-          isLoading,
-          data == null || data.isEmpty,
-        );
-
-  @override
-  List<Object> get props => [
-        error,
-        data,
-        isLoading,
-        isEmpty,
-        listFilter,
-        searchFilter,
-        isPerformingQuery
-      ];
-}

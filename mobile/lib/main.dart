@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sp_client/presentation/pages/item_list_page.dart';
-import './presentation/pages/item_request_page.dart';
-import './presentation/pages/login_page.dart';
-import './presentation/pages/sign_up_page.dart';
-import './presentation/pages/home_page.dart';
+import 'package:sp_client/modules/customer/presentation/pages/login_page.dart';
+import 'package:sp_client/modules/product/presentation/pages/item_list_page.dart';
+import 'modules/product/presentation/pages/item_request_page.dart';
+import 'modules/customer/presentation/pages/sign_up_page.dart';
+import 'modules/product/presentation/pages/home_page.dart';
 import 'modules/product/presentation/pages/product_details_page.dart';
-import './dummy_data.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,16 +21,17 @@ class MyApp extends StatelessWidget {
             headline1: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             headline6: TextStyle(fontSize: 16)),
       ),
-      home: ItemListPage(dummyItems),
-      routes: {
-        LoginPage.routeName: (ctx) => LoginPage(),
-        SignUpPage.routeName: (ctx) => SignUpPage(),
-        ItemRequestPage.routeName: (ctx) => ItemRequestPage(),
-        HomePage.routeName: (ctx) => HomePage(),
-        ProductDetailsPage.routeName: (ctx) =>
-            ProductDetailsPage(dummyProductDetails[0]),
-        ItemListPage.routeName: (ctx) => ItemListPage(dummyItems)
-      },
+      initialRoute: LoginPage.routeName,
+      routes: routes,
     );
   }
 }
+
+final routes = {
+  LoginPage.routeName: (ctx) => LoginPage(),
+  SignUpPage.routeName: (ctx) => SignUpPage(),
+  ItemRequestPage.routeName: (ctx) => ItemRequestPage(),
+  HomePage.routeName: (ctx) => HomePage(),
+  ProductDetailsPage.routeName: (ctx) => ProductDetailsPage(),
+  ItemListPage.routeName: (ctx) => ItemListPage([])
+};

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../model/item_request_view_model.dart';
-import '../view/item_request_view.dart';
-import '../../common/extensions.dart';
+import '../views/item_request_view.dart';
+import '../../../../common/extensions.dart';
 
 class ItemRequestPage extends StatelessWidget {
-  static final String routeName = "/item-request-page";
+  static final String routeName = "/itemRequestPage";
 
   @override
   Widget build(BuildContext context) {

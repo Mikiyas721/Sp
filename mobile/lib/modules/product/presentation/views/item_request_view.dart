@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sp_client/presentation/widget/my_action_button.dart';
+import 'package:sp_client/common/widget/my_action_button.dart';
+import 'package:sp_client/common/widget/my_text_field.dart';
 import '../model/item_request_view_model.dart';
-import '../widget/my_text_field.dart';
-import '../../common/extensions.dart';
+import '../../../../common/extensions.dart';
 
 class ItemRequestView extends StatelessWidget {
   final ItemRequestViewModel itemRequestViewModel;

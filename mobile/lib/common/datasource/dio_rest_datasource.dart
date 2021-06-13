@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sp_client/config/config.definition.dart';
 import 'rest_datasource/rest_datasource.dart';
 import 'rest_datasource/rest_request.dart';
 import 'rest_datasource/rest_response.dart';
@@ -11,12 +13,12 @@ import 'rest_datasource/rest_response.dart';
 class DioRestDataSource implements RestDataSource {
   final Dio dio;
 
-  DioRestDataSource()
+  DioRestDataSource(ConfigDefinition configDefinition)
       : dio = Dio(
           BaseOptions(
             connectTimeout: 10000,
             receiveTimeout: 10000,
-            baseUrl: 'localhost:3000/api',
+            baseUrl: configDefinition.apiUrl,
           ),
         ) {}
 
@@ -132,5 +134,13 @@ class DioRestDataSource implements RestDataSource {
         ),
       ),
     );
+  }
+
+  @override
+  Future<Response> addCustomerFile(
+      String imageName,Uint8List file) async {
+    FormData formData = FormData.fromMap(
+        {"file": MultipartFile.fromBytes(file, filename: imageName)});
+    return await dio.post('/containers/customer/upload', data: formData);
   }
 }

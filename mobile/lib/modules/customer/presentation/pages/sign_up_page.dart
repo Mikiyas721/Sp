@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../model/sign_up_view_model.dart';
-import '../view/sign_up_view.dart';
-import '../../common/extensions.dart';
+import '../models/sign_up_view_model.dart';
+import '../views/sign_up_view.dart';
+import '../../../../common/extensions.dart';
 
 class SignUpPage extends StatelessWidget {
   static const String routeName = "sign-up-page";

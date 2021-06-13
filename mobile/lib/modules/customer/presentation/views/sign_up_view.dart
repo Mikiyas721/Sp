@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../model/sign_up_view_model.dart';
-import '../widget/my_action_button.dart';
-import '../widget/my_text_field.dart';
-import '../../common/extensions.dart';
+import 'package:sp_client/common/widget/my_action_button.dart';
+import 'package:sp_client/common/widget/my_text_field.dart';
+import '../models/sign_up_view_model.dart';
+import '../../../../common/extensions.dart';
 
 class SignUpView extends StatelessWidget {
   final SignUpViewModel signUpViewModel;

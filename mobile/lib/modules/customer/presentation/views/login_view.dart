@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../presentation/widget/my_action_button.dart';
+import 'package:sp_client/common/widget/my_action_button.dart';
+import 'package:sp_client/common/widget/my_text_field.dart';
 import '../models/login_view_model.dart';
-import '../../../../presentation/widget/my_text_field.dart';
 import '../../../../common/extensions.dart';
 
 class LoginView extends StatelessWidget {

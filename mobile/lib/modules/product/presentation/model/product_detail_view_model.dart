@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:equatable/equatable.dart';
 import '../../../../common/view_model.dart';
 
 class ProductDetailViewModel extends ViewModel {

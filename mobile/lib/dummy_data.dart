@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import './presentation/model/categories_view_item_model.dart';
-import './presentation/model/latest_view_item_model.dart';
+import 'modules/product/presentation/model/latest_products_view_model.dart';
 import 'modules/product/presentation/model/product_detail_view_model.dart';
-import './presentation/model/item_view_model.dart';
 
+/*
 const Dummy_Categories = const [
   CategoryViewItemModel(
       id: "A1", title: "Beverage", icon: Icon(Icons.emoji_food_beverage)),
@@ -76,3 +75,4 @@ var dummyItems = [
       imageUrl:
           'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg')
 ];
+*/

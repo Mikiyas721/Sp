@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sp_client/presentation/model/item_view_model.dart';
-import '../../common/extensions.dart';
+import 'package:sp_client/modules/product/presentation/model/item_view_model.dart';
+import '../../../../common/extensions.dart';
 
 class ItemListPage extends StatelessWidget {
-  static final String routeName = "/item-list-page";
+  static final String routeName = "/itemListPage";
   final List<ItemViewModel> dummyItems;
 
+//CategoryPage
   ItemListPage(this.dummyItems);
 
   AppBar get appBar => AppBar(

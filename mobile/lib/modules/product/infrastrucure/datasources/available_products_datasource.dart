@@ -15,6 +15,6 @@ class AvailableProductsLoopbackDatasource
           '/availableProducts',
           restDataSource,
           (available) => available.toJson(),
-          (map) => ProductDto.fromJson(map),
+          (map) => ProductDto.fromAvailableJson(map),
         );
 }

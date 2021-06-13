@@ -4,7 +4,7 @@ import '../views/login_view.dart';
 import '../models/login_view_model.dart';
 
 class LoginPage extends StatelessWidget {
-  static const String routeName = "/login-page";
+  static const String routeName = "/loginPage";
 
   void registerHandler() {}
 

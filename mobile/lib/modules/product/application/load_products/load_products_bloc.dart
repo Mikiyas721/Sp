@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 import 'dart:async';
@@ -15,6 +16,7 @@ part 'load_products_event.dart';
 part 'load_products_state.dart';
 part 'load_products_bloc.freezed.dart';
 
+@injectable
 class LoadProductsBloc extends Bloc<LoadProductsEvent, LoadProductsState> {
   LoadProductsBloc() : super(LoadProductsState.initial());
 

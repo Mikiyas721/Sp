@@ -12,18 +12,6 @@ class ProductRepoImpl extends IProductRepo {
   ProductRepoImpl(this._productCrudDatasource);
 
   @override
-  Future<Either<Failure, Product>> create(Product product) async{
-    final response =
-        await _productCrudDatasource.create(ProductDto.fromDomain(product));
-    //TODO use a remote method instead
-    return response.either.fold(
-            (l) => left(l),
-            (r) => r.toDomain().fold(
-                () => left(SimpleFailure("Unable to parse product dto")),
-                (a) => right(a)));
-  }
-
-  @override
   Future<Either<Failure, List<Product>>> searchProduct(
       String prop, String value) async {
     final response = await _productCrudDatasource.find(options: {
@@ -35,17 +23,6 @@ class ProductRepoImpl extends IProductRepo {
         (l) => left(l),
         (r) => Dto.toDomainList<Product, ProductDto>(r).fold(
             () => left(SimpleFailure("Error:parsing product dto list")),
-            (a) => right(a)));
-  }
-
-  @override
-  Future<Either<Failure, Product>> update(Product product) async {
-    final response =
-        await _productCrudDatasource.update(ProductDto.fromDomain(product));
-    return response.either.fold(
-        (l) => left(l),
-        (r) => r.toDomain().fold(
-            () => left(SimpleFailure("Unable to parse product dto")),
             (a) => right(a)));
   }
 }

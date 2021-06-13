@@ -4,13 +4,12 @@ import '../model/product_detail_view_model.dart';
 import '../../../../common/extensions.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  static const String routeName = "/product-detail-page";
-  final ProductDetailViewModel productDetail;
-
-  ProductDetailsPage(this.productDetail);
+  static const String routeName = "/productDetailPage";
 
   @override
   Widget build(BuildContext context) {
+    final ProductDetailViewModel productDetail =
+        ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body: Container(
         height: context.screenHeight - (context.paddingTop + 20),
@@ -45,9 +44,9 @@ class ProductDetailsPage extends StatelessWidget {
                     children: [
                       Text("Quantity"),
                       Text(productDetail.quantity.toString()),
-                      Text("Manufactured Date"),
+                      Text("Man Date"),
                       Text(DateFormat.yMd().format(productDetail.manDate)),
-                      Text("Expiration Date"),
+                      Text("Exp Date"),
                       Text(DateFormat.yMd().format(productDetail.expDate)),
                     ],
                   ),
