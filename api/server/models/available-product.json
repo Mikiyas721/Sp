@@ -10,7 +10,11 @@
     "Stamp": {}
   },
   "properties": {
-    "quantity": {
+    "price": {
+      "type": "number",
+      "required": true
+    },
+	"quantity": {
       "type": "number",
       "required": true
     },

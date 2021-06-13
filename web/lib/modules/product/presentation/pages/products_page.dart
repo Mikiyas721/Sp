@@ -6,10 +6,9 @@ import 'package:sp_web/common/widgets/my_drawer.dart';
 import 'package:sp_web/modules/product/presentation/controller/load_products_controller.dart';
 import 'package:sp_web/modules/product/presentation/models/product_view_model.dart';
 import 'package:sp_web/modules/product/presentation/views/products_view.dart';
+import 'package:sp_web/common/widgets/multiScroller.dart';
 
 class ProductsPage extends StatelessWidget {
-  final ScrollController scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,11 +20,7 @@ class ProductsPage extends StatelessWidget {
           ),
           Stack(
             children: [
-              Scrollbar(
-                controller: scrollController,
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: Container(
+              MultiScroller(child:Container(
                     margin: EdgeInsets.only(left: 20),
                     width: (MediaQuery.of(context).size.width) * 0.78,
                     child: ViewModelBuilder.withController<ProductListViewModel,
@@ -41,9 +36,7 @@ class ProductsPage extends StatelessWidget {
                             onReload: controller.loadInitial,
                           );
                         }),
-                  ),
-                ),
-              ),
+                  )),
               Positioned(
                 right: 0,
                 top: 20,

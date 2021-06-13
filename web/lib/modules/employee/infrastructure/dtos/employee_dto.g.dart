@@ -16,8 +16,7 @@ EmployeeDto _$EmployeeDtoFromJson(Map<String, dynamic> json) {
     employeePosition: json['employeePosition'] as String,
     salary: (json['salary'] as num).toDouble(),
     employeeType: json['employeeType'] as String,
-    photoUrl: json['photoUrl'] as String,
-    docUrl: json['docUrl'] as String,
+    imageName: json['imageName'] as String,
     createdAt: json['createdAt'] == null
         ? null
         : DateTime.parse(json['createdAt'] as String),
@@ -37,6 +36,7 @@ Map<String, dynamic> _$EmployeeDtoToJson(EmployeeDto instance) {
   }
 
   writeNotNull('id', instance.id);
+  val['imageName'] = instance.imageName;
   val['firstName'] = instance.firstName;
   val['lastName'] = instance.lastName;
   val['phoneNumber'] = instance.phoneNumber;
@@ -44,8 +44,6 @@ Map<String, dynamic> _$EmployeeDtoToJson(EmployeeDto instance) {
   val['employeePosition'] = instance.employeePosition;
   val['salary'] = instance.salary;
   val['employeeType'] = instance.employeeType;
-  val['photoUrl'] = instance.photoUrl;
-  val['docUrl'] = instance.docUrl;
   writeNotNull('createdAt', instance.createdAt?.toIso8601String());
   writeNotNull('updatedAt', instance.updatedAt?.toIso8601String());
   return val;

@@ -9,6 +9,7 @@ part 'employee_dto.g.dart';
 @JsonSerializable(nullable: false)
 class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
   @JsonKey(nullable: true,includeIfNull: false) final String id;
+  final String imageName;
   final String firstName;
   final String lastName;
   final String phoneNumber;
@@ -16,8 +17,7 @@ class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
   final String employeePosition;
   final double salary;
   final String employeeType;
-  final String photoUrl;
-  final String docUrl;
+  /*final String docName;*/
   @JsonKey(nullable: true,includeIfNull: false) final DateTime createdAt;
   @JsonKey(nullable: true,includeIfNull: false) final DateTime updatedAt;
 
@@ -30,8 +30,7 @@ class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
     this.employeePosition,
     this.salary,
     this.employeeType,
-    this.photoUrl,
-    this.docUrl,
+    this.imageName,
     this.createdAt,
     this.updatedAt,
   });
@@ -52,8 +51,7 @@ class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
       employeePosition: employeePosition,
       salary: salary,
       employeeType: employeeType,
-      photoUrl: photoUrl,
-      docUrl: docUrl,
+      imageName: imageName,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -70,8 +68,7 @@ class EmployeeDto extends Dto<Employee> implements TimeStampedDto {
           employee.employeePosition.getString().getOrElse(() => null),
       salary: employee.salary.salary,
       employeeType: employee.employeeType.getString().getOrElse(() => null),
-      photoUrl: employee.photoUrl.imageUrl,
-      docUrl: employee.docUrl.imageUrl,
+      imageName: employee.imageName.imageName,
       createdAt: employee.createdAt,
       updatedAt: employee.updatedAt,
     );

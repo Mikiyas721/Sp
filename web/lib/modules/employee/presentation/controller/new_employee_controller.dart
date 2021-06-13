@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 import 'package:sp_web/common/controller/controller.dart';
 import 'package:sp_web/common/mixins/toast_mixin.dart';
 import 'package:sp_web/injection.dart';
@@ -44,8 +47,7 @@ class NewEmployeeController extends BlocViewModelController<NewEmployeeBloc,
           .getOrElse(() => null)
           ?.getString()
           ?.getOrElse(() => null),
-      imageUrl: s.photoUrl.getOrElse(() => null)?.imageUrl,
-      fileUrl: s.docUrl.getOrElse(() => null)?.imageUrl,
+      imageName: s.imageName.getOrElse(() => null)?.imageName,
       hasSubmitted: s.hasSubmitted,
       isAdding: s.hasRequested,
     );
@@ -79,12 +81,9 @@ class NewEmployeeController extends BlocViewModelController<NewEmployeeBloc,
     bloc.add(NewEmployeeEmployeeTypeChangedEvent(value));
   }
 
-  void onImage() {
-    //TODO
-  }
-
-  void onDocument() {
-    //TODO
+  void onImage()async {
+    Uint8List fromPickerBytes = await ImagePickerWeb.getImage(outputType: ImageType.bytes);
+    bloc.add(NewEmployeeImageChangedEvent('${DateTime.now().toIso8601String().split('.')[0]}.jpg',fromPickerBytes));
   }
 
   void onAdd() {
@@ -97,8 +96,7 @@ class NewEmployeeController extends BlocViewModelController<NewEmployeeBloc,
       employeePosition: bloc.state.employeePosition.getOrElse(() => null),
       salary: bloc.state.salary.getOrElse(() => null),
       employeeType: bloc.state.employeeType.getOrElse(() => null),
-      photoUrl: bloc.state.photoUrl.getOrElse(() => null),
-      docUrl: bloc.state.docUrl.getOrElse(() => null),
+      imageName: bloc.state.imageName.getOrElse(() => null),
     );
     employee.fold(() {
       toastError("Invalid Inputs");

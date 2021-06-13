@@ -13,26 +13,30 @@ class AddProductViewModel extends ViewModel {
   final String descriptionError;
   final int quantity;
   final String quantityError;
+  final double price;
+  final String priceError;
+
   final DateTime expDate;
   final DateTime manDate;
   final bool isAdding;
 
-  AddProductViewModel({
-    this.imageUrl,
-    this.imageData,
-    this.productName,
-    this.productNameError,
-    this.brandName,
-    this.brandNameError,
-    this.category,
-    this.description,
-    this.descriptionError,
-    this.quantity,
-    this.quantityError,
-    this.expDate,
-    this.manDate,
-    this.isAdding
-  });
+  AddProductViewModel(
+      {this.imageUrl,
+      this.imageData,
+      this.productName,
+      this.productNameError,
+      this.brandName,
+      this.brandNameError,
+      this.category,
+      this.description,
+      this.descriptionError,
+      this.quantity,
+      this.quantityError,
+      this.price,
+      this.priceError,
+      this.expDate,
+      this.manDate,
+      this.isAdding});
 
   @override
   List<Object> get props => [
@@ -47,6 +51,8 @@ class AddProductViewModel extends ViewModel {
         descriptionError,
         quantity,
         quantityError,
+        price,
+        priceError,
         expDate,
         manDate,
         isAdding,

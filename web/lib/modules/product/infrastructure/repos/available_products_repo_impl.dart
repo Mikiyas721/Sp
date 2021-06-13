@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sp_web/common/datasource/rest_datasource/rest_datasource.dart';
 import 'package:sp_web/common/dto.dart';
 import 'package:sp_web/common/failure.dart';
+import 'package:sp_web/injection.dart';
 import 'package:sp_web/modules/product/domain/entities/product.dart';
 import 'package:sp_web/modules/product/domain/ports/available_products_repo.dart';
 import 'package:sp_web/modules/product/infrastructure/datasources/available_products_datasource.dart';
@@ -17,6 +19,7 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
     "relation": "product",
     "scope": {
       "fields": [
+        "imageName",
         "productName",
         "brandName",
         "category",
@@ -124,10 +127,12 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
 
   @override
   Future<Either<Failure, dynamic>> addProduct(Product product) async {
+    final imageResponse = await getIt
+        .get<RestDataSource>()
+        .addProductFile(product.imageName.imageName, product.imageFile);
+    print(product.imageName.imageName);
     final response = await _availableProductsCrudDatasource.addProduct(product);
-    return response.fold(
-        (l) => left(l),
-        (r) =>right(r.value));
+    return response.fold((l) => left(l), (r) => right(r.value));
   }
 
   @override

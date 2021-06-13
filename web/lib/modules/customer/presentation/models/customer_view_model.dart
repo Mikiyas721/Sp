@@ -24,30 +24,30 @@ class CustomersViewModel
 
 class CustomerViewModel extends ViewModel {
   final String id;
+  final String imageName;
   final String name;
   final String phoneNumber;
   final String email;
-  final String photoUrl;
   final String createdAt;
   final String updatedAt;
 
   CustomerViewModel({
-    this.id,
-    this.name,
-    this.phoneNumber,
-    this.email,
-    this.photoUrl,
-    this.createdAt,
-    this.updatedAt,
+    @required this.id,
+    @required this.imageName,
+    @required this.name,
+    @required this.phoneNumber,
+    @required this.email,
+    @required this.createdAt,
+    @required this.updatedAt,
   });
 
   @override
   List<Object> get props => [
         id,
+        imageName,
         name,
         phoneNumber,
         email,
-        photoUrl,
         createdAt,
         updatedAt,
       ];

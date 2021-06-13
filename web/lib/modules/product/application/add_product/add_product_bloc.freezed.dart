@@ -19,10 +19,11 @@ class _$AddProductStateTearOff {
       Either<ProductNameFailure, ProductName> brandName,
       Option<ProductCategory> productCategory,
       Either<QuantityFailure, Quantity> quantity,
+      Either<PriceFailure, Price> price,
       Either<DescriptionFailure, Description> description,
       Option<DateTime> manDate,
       Option<DateTime> expDate,
-      Option<String> imageUrl,
+      Either<ImageNameFailure, ImageName> imageName,
       Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
@@ -33,10 +34,11 @@ class _$AddProductStateTearOff {
       brandName: brandName,
       productCategory: productCategory,
       quantity: quantity,
+      price: price,
       description: description,
       manDate: manDate,
       expDate: expDate,
-      imageUrl: imageUrl,
+      imageName: imageName,
       imageData: imageData,
       requestFailure: requestFailure,
       hasSubmitted: hasSubmitted,
@@ -56,10 +58,11 @@ mixin _$AddProductState {
   Either<ProductNameFailure, ProductName> get brandName;
   Option<ProductCategory> get productCategory;
   Either<QuantityFailure, Quantity> get quantity;
+  Either<PriceFailure, Price> get price;
   Either<DescriptionFailure, Description> get description;
   Option<DateTime> get manDate;
   Option<DateTime> get expDate;
-  Option<String> get imageUrl;
+  Either<ImageNameFailure, ImageName> get imageName;
   Option<Uint8List> get imageData;
   Option<Failure> get requestFailure;
   bool get hasSubmitted;
@@ -80,10 +83,11 @@ abstract class $AddProductStateCopyWith<$Res> {
       Either<ProductNameFailure, ProductName> brandName,
       Option<ProductCategory> productCategory,
       Either<QuantityFailure, Quantity> quantity,
+      Either<PriceFailure, Price> price,
       Either<DescriptionFailure, Description> description,
       Option<DateTime> manDate,
       Option<DateTime> expDate,
-      Option<String> imageUrl,
+      Either<ImageNameFailure, ImageName> imageName,
       Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
@@ -106,10 +110,11 @@ class _$AddProductStateCopyWithImpl<$Res>
     Object brandName = freezed,
     Object productCategory = freezed,
     Object quantity = freezed,
+    Object price = freezed,
     Object description = freezed,
     Object manDate = freezed,
     Object expDate = freezed,
-    Object imageUrl = freezed,
+    Object imageName = freezed,
     Object imageData = freezed,
     Object requestFailure = freezed,
     Object hasSubmitted = freezed,
@@ -129,6 +134,9 @@ class _$AddProductStateCopyWithImpl<$Res>
       quantity: quantity == freezed
           ? _value.quantity
           : quantity as Either<QuantityFailure, Quantity>,
+      price: price == freezed
+          ? _value.price
+          : price as Either<PriceFailure, Price>,
       description: description == freezed
           ? _value.description
           : description as Either<DescriptionFailure, Description>,
@@ -136,8 +144,9 @@ class _$AddProductStateCopyWithImpl<$Res>
           manDate == freezed ? _value.manDate : manDate as Option<DateTime>,
       expDate:
           expDate == freezed ? _value.expDate : expDate as Option<DateTime>,
-      imageUrl:
-          imageUrl == freezed ? _value.imageUrl : imageUrl as Option<String>,
+      imageName: imageName == freezed
+          ? _value.imageName
+          : imageName as Either<ImageNameFailure, ImageName>,
       imageData: imageData == freezed
           ? _value.imageData
           : imageData as Option<Uint8List>,
@@ -167,10 +176,11 @@ abstract class _$AddProductStateCopyWith<$Res>
       Either<ProductNameFailure, ProductName> brandName,
       Option<ProductCategory> productCategory,
       Either<QuantityFailure, Quantity> quantity,
+      Either<PriceFailure, Price> price,
       Either<DescriptionFailure, Description> description,
       Option<DateTime> manDate,
       Option<DateTime> expDate,
-      Option<String> imageUrl,
+      Either<ImageNameFailure, ImageName> imageName,
       Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
@@ -195,10 +205,11 @@ class __$AddProductStateCopyWithImpl<$Res>
     Object brandName = freezed,
     Object productCategory = freezed,
     Object quantity = freezed,
+    Object price = freezed,
     Object description = freezed,
     Object manDate = freezed,
     Object expDate = freezed,
-    Object imageUrl = freezed,
+    Object imageName = freezed,
     Object imageData = freezed,
     Object requestFailure = freezed,
     Object hasSubmitted = freezed,
@@ -218,6 +229,9 @@ class __$AddProductStateCopyWithImpl<$Res>
       quantity: quantity == freezed
           ? _value.quantity
           : quantity as Either<QuantityFailure, Quantity>,
+      price: price == freezed
+          ? _value.price
+          : price as Either<PriceFailure, Price>,
       description: description == freezed
           ? _value.description
           : description as Either<DescriptionFailure, Description>,
@@ -225,8 +239,9 @@ class __$AddProductStateCopyWithImpl<$Res>
           manDate == freezed ? _value.manDate : manDate as Option<DateTime>,
       expDate:
           expDate == freezed ? _value.expDate : expDate as Option<DateTime>,
-      imageUrl:
-          imageUrl == freezed ? _value.imageUrl : imageUrl as Option<String>,
+      imageName: imageName == freezed
+          ? _value.imageName
+          : imageName as Either<ImageNameFailure, ImageName>,
       imageData: imageData == freezed
           ? _value.imageData
           : imageData as Option<Uint8List>,
@@ -251,10 +266,11 @@ class _$_AddProductState implements _AddProductState {
       this.brandName,
       this.productCategory,
       this.quantity,
+      this.price,
       this.description,
       this.manDate,
       this.expDate,
-      this.imageUrl,
+      this.imageName,
       this.imageData,
       this.requestFailure,
       this.hasSubmitted,
@@ -270,13 +286,15 @@ class _$_AddProductState implements _AddProductState {
   @override
   final Either<QuantityFailure, Quantity> quantity;
   @override
+  final Either<PriceFailure, Price> price;
+  @override
   final Either<DescriptionFailure, Description> description;
   @override
   final Option<DateTime> manDate;
   @override
   final Option<DateTime> expDate;
   @override
-  final Option<String> imageUrl;
+  final Either<ImageNameFailure, ImageName> imageName;
   @override
   final Option<Uint8List> imageData;
   @override
@@ -290,7 +308,7 @@ class _$_AddProductState implements _AddProductState {
 
   @override
   String toString() {
-    return 'AddProductState(productName: $productName, brandName: $brandName, productCategory: $productCategory, quantity: $quantity, description: $description, manDate: $manDate, expDate: $expDate, imageUrl: $imageUrl, imageData: $imageData, requestFailure: $requestFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, hasCompletedRequest: $hasCompletedRequest)';
+    return 'AddProductState(productName: $productName, brandName: $brandName, productCategory: $productCategory, quantity: $quantity, price: $price, description: $description, manDate: $manDate, expDate: $expDate, imageName: $imageName, imageData: $imageData, requestFailure: $requestFailure, hasSubmitted: $hasSubmitted, hasRequested: $hasRequested, hasCompletedRequest: $hasCompletedRequest)';
   }
 
   @override
@@ -309,6 +327,8 @@ class _$_AddProductState implements _AddProductState {
             (identical(other.quantity, quantity) ||
                 const DeepCollectionEquality()
                     .equals(other.quantity, quantity)) &&
+            (identical(other.price, price) ||
+                const DeepCollectionEquality().equals(other.price, price)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -318,9 +338,9 @@ class _$_AddProductState implements _AddProductState {
             (identical(other.expDate, expDate) ||
                 const DeepCollectionEquality()
                     .equals(other.expDate, expDate)) &&
-            (identical(other.imageUrl, imageUrl) ||
+            (identical(other.imageName, imageName) ||
                 const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
+                    .equals(other.imageName, imageName)) &&
             (identical(other.imageData, imageData) ||
                 const DeepCollectionEquality()
                     .equals(other.imageData, imageData)) &&
@@ -345,10 +365,11 @@ class _$_AddProductState implements _AddProductState {
       const DeepCollectionEquality().hash(brandName) ^
       const DeepCollectionEquality().hash(productCategory) ^
       const DeepCollectionEquality().hash(quantity) ^
+      const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(manDate) ^
       const DeepCollectionEquality().hash(expDate) ^
-      const DeepCollectionEquality().hash(imageUrl) ^
+      const DeepCollectionEquality().hash(imageName) ^
       const DeepCollectionEquality().hash(imageData) ^
       const DeepCollectionEquality().hash(requestFailure) ^
       const DeepCollectionEquality().hash(hasSubmitted) ^
@@ -367,10 +388,11 @@ abstract class _AddProductState implements AddProductState {
       Either<ProductNameFailure, ProductName> brandName,
       Option<ProductCategory> productCategory,
       Either<QuantityFailure, Quantity> quantity,
+      Either<PriceFailure, Price> price,
       Either<DescriptionFailure, Description> description,
       Option<DateTime> manDate,
       Option<DateTime> expDate,
-      Option<String> imageUrl,
+      Either<ImageNameFailure, ImageName> imageName,
       Option<Uint8List> imageData,
       Option<Failure> requestFailure,
       bool hasSubmitted,
@@ -386,13 +408,15 @@ abstract class _AddProductState implements AddProductState {
   @override
   Either<QuantityFailure, Quantity> get quantity;
   @override
+  Either<PriceFailure, Price> get price;
+  @override
   Either<DescriptionFailure, Description> get description;
   @override
   Option<DateTime> get manDate;
   @override
   Option<DateTime> get expDate;
   @override
-  Option<String> get imageUrl;
+  Either<ImageNameFailure, ImageName> get imageName;
   @override
   Option<Uint8List> get imageData;
   @override

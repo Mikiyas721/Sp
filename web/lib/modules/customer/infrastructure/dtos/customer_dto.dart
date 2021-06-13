@@ -9,10 +9,10 @@ part 'customer_dto.g.dart';
 class CustomerDto extends Dto<Customer> implements TimeStampedDto {
   @JsonKey(nullable: true, includeIfNull: false)
   final String id;
+  final String imageName;
   final String name;
   final String phoneNumber;
   final String email;
-  final String photoUrl;
   @JsonKey(nullable: true, includeIfNull: false)
   final DateTime createdAt;
   @JsonKey(nullable: true, includeIfNull: false)
@@ -23,7 +23,7 @@ class CustomerDto extends Dto<Customer> implements TimeStampedDto {
     this.name,
     this.phoneNumber,
     this.email,
-    this.photoUrl,
+    this.imageName,
     this.createdAt,
     this.updatedAt,
   });
@@ -40,7 +40,7 @@ class CustomerDto extends Dto<Customer> implements TimeStampedDto {
       name: name,
       phoneNumber: phoneNumber,
       email: email,
-      photoUrl: photoUrl,
+      imageName: imageName,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -52,7 +52,7 @@ class CustomerDto extends Dto<Customer> implements TimeStampedDto {
       name: customer.name.name,
       phoneNumber: customer.phoneNumber.phoneNumber,
       email: customer.email.email,
-      photoUrl: customer.photoUrl.imageUrl,
+      imageName: customer.imageName.imageName,
       createdAt: customer.createdAt,
       updatedAt: customer.updatedAt,
     );

@@ -4,6 +4,8 @@ import 'package:sp_web/common/widgets/list_view.dart';
 import 'package:sp_web/common/widgets/my_loading_view.dart';
 import 'package:sp_web/common/widgets/border_text_field.dart';
 import 'package:sp_web/common/widgets/my_dropdown.dart';
+import 'package:sp_web/config/config.definition.dart';
+import 'package:sp_web/injection.dart';
 import 'package:sp_web/modules/product/presentation/models/product_view_model.dart';
 import '../../../../common/common.dart';
 
@@ -44,7 +46,7 @@ class ProductListView extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(left: 20, right: 15, top: 20),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Row(
               children: [
@@ -144,7 +146,8 @@ class ProductView extends StatelessWidget {
                 height: 250,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(/*productViewModel.imageUrl*/'assets/images/1.png'),
+                        image: NetworkImage(
+                            '${getIt.get<ConfigDefinition>().apiUrl}/containers/product/download/${productViewModel.imageName}'),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(15),

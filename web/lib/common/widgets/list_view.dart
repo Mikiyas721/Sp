@@ -232,7 +232,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel,
                 onChanged: onFilterChanged,
                 currentItem: viewModel.listFilter,
                 items: filters,
-                width: 100,
+                width: 130,
                 hint: hint,
               )
             ],

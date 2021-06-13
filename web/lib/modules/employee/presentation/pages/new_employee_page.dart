@@ -38,7 +38,6 @@ class NewEmployeePage extends StatelessWidget {
                       onSalary: controller.onSalary,
                       onEmployeeType: controller.onEmployeeType,
                       onImage: controller.onImage,
-                      onDocument: controller.onDocument,
                       onAdd: controller.onAdd,
                     );
                   }),

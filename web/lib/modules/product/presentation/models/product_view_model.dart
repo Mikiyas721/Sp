@@ -24,11 +24,12 @@ class ProductListViewModel extends SimpleListViewModel<ProductViewModel> {
 
 class ProductViewModel extends ViewModel {
   final String id;
-  final String imageUrl;
+  final String imageName;
   final String productName;
   final String brandName;
   final String category;
   final String quantity;
+  final String price;
   final String description;
   final String manDate;
   final String expDate;
@@ -37,11 +38,12 @@ class ProductViewModel extends ViewModel {
 
   ProductViewModel({
     @required this.id,
-    @required this.imageUrl,
+    @required this.imageName,
     @required this.productName,
     @required this.brandName,
     @required this.category,
     @required this.quantity,
+	@required this.price,
     @required this.description,
     @required this.manDate,
     @required this.expDate,
@@ -52,10 +54,12 @@ class ProductViewModel extends ViewModel {
   @override
   List<Object> get props => [
         id,
+        imageName,
         productName,
         brandName,
         category,
         quantity,
+		price,
         description,
         manDate,
         expDate,

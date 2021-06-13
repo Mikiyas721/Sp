@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sp_web/common/widgets/list_view.dart';
+import 'package:sp_web/config/config.definition.dart';
+import 'package:sp_web/injection.dart';
 import 'package:sp_web/modules/employee/presentation/models/employees_view_model.dart';
 import '../../../../common/extensions.dart';
 
@@ -67,7 +69,7 @@ class EmployeeDataTableSource extends DataTableSource {
   DataRow getRow(int index) => DataRow.byIndex(index: index, cells: [
         DataCell(Text('${index + 1}')),
         DataCell(CircleAvatar(
-          backgroundImage: AssetImage('images/1.png'), //TODO replace
+          backgroundImage: NetworkImage('${getIt.get<ConfigDefinition>().apiUrl}/containers/employee/download/${data[index].imageName}'),
         )),
         DataCell(Column(
           mainAxisSize: MainAxisSize.min,

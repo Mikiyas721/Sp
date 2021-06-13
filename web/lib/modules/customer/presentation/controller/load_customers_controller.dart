@@ -31,7 +31,7 @@ class LoadCustomersController extends BlocViewModelController<
                 name: e.name.name,
                 phoneNumber: e.phoneNumber.phoneNumber,
                 email: e.email.email,
-                photoUrl: e.photoUrl.imageUrl,
+                imageName: e.imageName.imageName,
                 createdAt: getShortDateString(e.createdAt),
                 updatedAt: getShortDateString(e.updatedAt),
               ))

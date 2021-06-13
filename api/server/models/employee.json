@@ -37,10 +37,7 @@
       "type": "string",
       "required": true
     },
-    "photoUrl": {
-      "type": "string"
-    },
-    "docUrl": {
+    "imageName": {
       "type": "string"
     }
   },

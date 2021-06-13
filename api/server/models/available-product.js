@@ -2,7 +2,8 @@
 
 module.exports = function (Availableproduct) {
   const productObject = {
-    "quantity": "number",
+    "price": "number",
+	"quantity": "number",
     "manDate": "date",
     "expDate": "date",
     "id": "string",
@@ -18,7 +19,8 @@ module.exports = function (Availableproduct) {
     if (checkResponse === null) {
       checkResponse = await productModel.create(
         {
-          "productName": `${product.productName}`,
+          "imageName": `${product.imageName}`,
+		  "productName": `${product.productName}`,
           "brandName": `${product.brandName}`,
           "category": `${product.category}`,
           "description": `${product.description}`,
@@ -34,6 +36,7 @@ module.exports = function (Availableproduct) {
     return await Availableproduct.update(
       {
         "quantity": availableProduct.quantity + product.quantity,
+		"price": product.price,
         "manDate": `${product.manDate}`,
         "expDate": `${product.manDate}`,
         "productId": `${checkResponse.id}`,
@@ -87,7 +90,8 @@ module.exports = function (Availableproduct) {
   const createAvailable = async function (product, checkResponse) {
     return Availableproduct.create(
       {
-        "quantity": product.quantity,
+        "price": product.price,
+		"quantity": product.quantity,
         "manDate": `${product.manDate}`,
         "expDate": `${product.manDate}`,
         "productId": `${checkResponse.id}`,

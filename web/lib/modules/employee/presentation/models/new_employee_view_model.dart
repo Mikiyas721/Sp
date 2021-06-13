@@ -13,8 +13,8 @@ class NewEmployeeViewModel extends ViewModel {
   final double salary;
   final String salaryError;
   final String employeeType;
-  final String imageUrl;
-  final String fileUrl;
+  final String imageName;
+  final String docName;
   final bool hasSubmitted;
   final bool isAdding;
 
@@ -31,8 +31,8 @@ class NewEmployeeViewModel extends ViewModel {
     this.salary,
     this.salaryError,
     this.employeeType,
-    this.imageUrl,
-    this.fileUrl,
+    this.imageName,
+    this.docName,
     this.hasSubmitted,
     this.isAdding,
   });
@@ -51,8 +51,8 @@ class NewEmployeeViewModel extends ViewModel {
         salary,
         salaryError,
         employeeType,
-        imageUrl,
-        fileUrl,
+        imageName,
+        docName,
         hasSubmitted,
         isAdding
       ];

@@ -32,11 +32,12 @@ class LoadProductsController extends BlocViewModelController<
       data: s.products
           .map<ProductViewModel>((e) => ProductViewModel(
                 id: e.id,
-                imageUrl: e.imageUrl?.imageUrl,
+                imageName: e.imageName.imageName,
                 productName: e.productName.name,
                 brandName: e.brandName.name,
                 category: e.category.getString().getOrElse(() => null),
                 quantity: e.quantity.quantity.toString(),
+				price: e.price.price.toString(),
                 description: e.description.description,
                 manDate: getShortDateString(e.manDate),
                 expDate: getShortDateString(e.expDate),

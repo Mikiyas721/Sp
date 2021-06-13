@@ -9,7 +9,7 @@ class Customer extends Entity implements TimeStampedEntity {
   final PersonName name;
   final PhoneNumber phoneNumber;
   final Email email;
-  final ImageUrl photoUrl;
+  final ImageName imageName;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -18,7 +18,7 @@ class Customer extends Entity implements TimeStampedEntity {
     this.name,
     this.phoneNumber,
     this.email,
-    this.photoUrl,
+    this.imageName,
     this.createdAt,
     this.updatedAt,
   }):super(id);
@@ -28,11 +28,11 @@ class Customer extends Entity implements TimeStampedEntity {
     String name,
     String phoneNumber,
     String email,
-    String photoUrl,
+    String imageName,
     DateTime createdAt,
     DateTime updatedAt,
   }) {
-    if ([id, name, phoneNumber, email, photoUrl, createdAt, updatedAt]
+    if ([id, name, phoneNumber, email, imageName, createdAt, updatedAt]
         .any((element) => element == null)) return none();
     final nameObject = PersonName.create(name);
     if (nameObject.isLeft()) return none();
@@ -43,7 +43,7 @@ class Customer extends Entity implements TimeStampedEntity {
     final emailObject = Email.create(email);
     if (emailObject.isLeft()) return none();
 
-    final photoUrlObject = ImageUrl.create(photoUrl);
+    final photoUrlObject = ImageName.create(imageName);
     if (photoUrlObject.isLeft()) return none();
 
     return Some(Customer._(
@@ -51,7 +51,7 @@ class Customer extends Entity implements TimeStampedEntity {
       name: nameObject.getOrElse(() => null),
       phoneNumber: phoneNumberObject.getOrElse(() => null),
       email: emailObject.getOrElse(() => null),
-      photoUrl: photoUrlObject.getOrElse(() => null),
+      imageName: photoUrlObject.getOrElse(() => null),
       createdAt: createdAt,
       updatedAt: updatedAt,
     ));

@@ -6,14 +6,13 @@ import 'package:sp_web/common/widgets/my_dropdown.dart';
 import 'package:sp_web/common/widgets/picker.dart';
 import '../../../../common/common.dart';
 
-import 'dart:io';
-
 class AddProductView extends StatelessWidget {
   final AddProductViewModel addProductViewModel;
   final void Function(String value) onProductName;
   final void Function(String value) onBrandName;
   final void Function(String value) onCategory;
   final void Function(String value) onQuantity;
+  final void Function(String value) onPrice;
   final void Function(String value) onDescription;
   final void Function(DateTime dateTime) onManDate;
   final void Function(DateTime dateTime) onExpDate;
@@ -27,6 +26,7 @@ class AddProductView extends StatelessWidget {
     @required this.onBrandName,
     @required this.onCategory,
     @required this.onQuantity,
+    @required this.onPrice,
     @required this.onDescription,
     @required this.onExpDate,
     @required this.onManDate,
@@ -43,7 +43,7 @@ class AddProductView extends StatelessWidget {
       elevation: 5,
       child: Container(
         width: 380,
-        height: 600,
+        height: 650,
         padding: 65.hPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,7 +62,7 @@ class AddProductView extends StatelessWidget {
             ),
             15.vSpace,
             BorderTextField(
-              errorMessage: addProductViewModel.productNameError,
+              errorMessage: addProductViewModel.brandNameError,
               labelText: 'Brand Name',
               onChanged: onBrandName,
             ),
@@ -70,12 +70,13 @@ class AddProductView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MyDropdown(
-                  items: categoryList,
-                  onChanged: onCategory,
-                  currentItem: addProductViewModel.category,
-                  hint: 'category',
-                ),
+                BorderTextField(
+              errorMessage: addProductViewModel.priceError,
+              keyBoardType: TextInputType.numberWithOptions(decimal: true),
+              labelText: 'price',
+              onChanged: onPrice,
+              width: 120,
+            ),
                 5.hSpace,
                 BorderTextField(
                   errorMessage: addProductViewModel.quantityError,
@@ -87,11 +88,19 @@ class AddProductView extends StatelessWidget {
               ],
             ),
             15.vSpace,
+			MyDropdown(
+                  items: categoryList,
+                  onChanged: onCategory,
+                  currentItem: addProductViewModel.category,
+                  hint: 'category',
+                ),            
+			15.vSpace,
             BorderTextField(
               errorMessage: addProductViewModel.descriptionError,
               labelText: 'Description',
+              keyBoardType: TextInputType.multiline,
               onChanged: onDescription,
-              maxLines: 5,
+              minLines: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,17 +124,13 @@ class AddProductView extends StatelessWidget {
             ),
             Padding(
               padding: 20.vPadding,
-              child: addProductViewModel.imageData==null?CircleAvatar(
-                    backgroundColor: Colors.black26,
-                    child: InkWell(
-                      onTap: onAddImage,
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ):Row(
+              child: Row(
                 children: [
+				Text(
+                    'Select\nimage',
+                    style: context.caption,
+                  ),
+				  10.hSpace,
                   CircleAvatar(
                     backgroundColor: Colors.black26,
                     child: InkWell(
@@ -137,15 +142,10 @@ class AddProductView extends StatelessWidget {
                     ),
                   ),
                   20.hSpace,  
-                  CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)                
+                  /*addProductViewModel.imageData==null?Container(height:0.0,width:0.0):CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)*/                
                 ],
               ),
             ),
-            10.vSpace,
-            Text(
-                    'Please enter product image here',
-                    style: context.caption,
-                  ),
             50.vSpace,
             MyActionButton(
                 label: 'Add',

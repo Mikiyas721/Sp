@@ -7,10 +7,10 @@ import 'package:sp_web/modules/product/domain/entities/product.dart';
 import 'package:sp_web/modules/product/domain/use_cases/add_product.dart';
 import 'package:sp_web/modules/product/presentation/models/add_product_view_model.dart';
 
+
 import '../../application/add_product/add_product_bloc.dart';
 import '../../../../common/extensions.dart';
 import 'dart:typed_data';
-
 
 class AddProductController extends BlocViewModelController<AddProductBloc,
     AddProductEvent, AddProductState, AddProductViewModel> with ToastMixin {
@@ -21,7 +21,7 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
   @override
   AddProductViewModel mapStateToViewModel(AddProductState s) {
     return AddProductViewModel(
-      imageUrl: s.imageUrl.getOrElse(() => null),
+      imageUrl: s.imageName.getOrElse(() => null)?.imageName,
       imageData: s.imageData.getOrElse(() => null),
       productName: s.productName.getOrElse(() => null)?.name,
       productNameError: s.hasSubmitted
@@ -42,6 +42,10 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
       quantity: s.quantity.getOrElse(() => null)?.quantity,
       quantityError: s.hasSubmitted
           ? s.quantity.fold((l) => l.message, (r) => null)
+          : null,
+      price: s.price.getOrElse(()=>null)?.price,
+      priceError: s.hasSubmitted
+          ? s.price.fold((l) => l.message, (r) => null)
           : null,
       expDate: s.expDate.getOrElse(() => null),
       manDate: s.manDate.getOrElse(() => null),
@@ -64,6 +68,9 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
   void onQuantity(String value) {
     bloc.add(AddProductQuantityChangedEvent(value));
   }
+  void onPrice(String value) {
+    bloc.add(AddProductPriceChangedEvent(value));
+  }
 
   void onDescription(String value) {
     bloc.add(AddProductDescriptionChangedEvent(value));
@@ -78,17 +85,20 @@ class AddProductController extends BlocViewModelController<AddProductBloc,
   }
 
   void onAddImage() async{
-   Uint8List fromPicker = await ImagePickerWeb.getImage(outputType: ImageType.bytes);   
-   bloc.add(AddProductImageChangedEvent(DateTime.now().toIso8601String(),fromPicker));   
+   Uint8List fromPickerBytes = await ImagePickerWeb.getImage(outputType: ImageType.bytes);
+   bloc.add(AddProductImageChangedEvent('${DateTime.now().toIso8601String().split('.')[0]}.jpg',fromPickerBytes));
   }
 
   void onAdd() {
     bloc.add(AddProductHasSubmittedEvent());
     final product = Product.createForAdd(
+      imageName:bloc.state.imageName.getOrElse(() => null),
+      imageFile: bloc.state.imageData.getOrElse(() => null),
       productName: bloc.state.productName.getOrElse(() => null),
       brandName: bloc.state.productName.getOrElse(() => null),
       category: bloc.state.productCategory.getOrElse(() => null),
       quantity: bloc.state.quantity.getOrElse(() => null),
+	  price: bloc.state.price.getOrElse(()=>null),
       description: bloc.state.description.getOrElse(() => null),
       manDate: bloc.state.manDate.getOrElse(() => null),
       expDate: bloc.state.expDate.getOrElse(() => null),

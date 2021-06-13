@@ -14,11 +14,13 @@ class MultiScroller extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scrollbar(
         controller: verticalScrollController,
-        child: SingleChildScrollView(
-            controller: verticalScrollController,
-            child: Scrollbar(
+		isAlwaysShown:true,
+        child: Scrollbar(
                 controller: horizontalScrollController,
+				isAlwaysShown:true,
                 child: SingleChildScrollView(
+            controller: verticalScrollController,
+            child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   controller: horizontalScrollController,
                   child: child,

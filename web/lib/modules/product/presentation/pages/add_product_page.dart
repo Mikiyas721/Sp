@@ -34,6 +34,7 @@ class AddProductPage extends StatelessWidget {
                       onBrandName: controller.onBrandName,
                       onCategory: controller.onCategory,
                       onQuantity: controller.onQuantity,
+                      onPrice: controller.onPrice,
                       onDescription: controller.onDescription,
                       onExpDate: controller.onExpDate,
                       onManDate: controller.onManDate,

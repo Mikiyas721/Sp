@@ -24,6 +24,7 @@ class EmployeesViewModel
 
 class EmployeeViewModel extends ViewModel {
   final String id;
+  final String imageName;
   final String firstName;
   final String lastName;
   final String phoneNumber;
@@ -31,13 +32,12 @@ class EmployeeViewModel extends ViewModel {
   final String employeePosition;
   final String salary;
   final String employeeType;
-  final String photoUrl;
-  final String docUrl;
   final String createdAt;
   final String updatedAt;
 
   EmployeeViewModel({
     this.id,
+    this.imageName,
     this.firstName,
     this.lastName,
     this.phoneNumber,
@@ -45,8 +45,6 @@ class EmployeeViewModel extends ViewModel {
     this.employeePosition,
     this.salary,
     this.employeeType,
-    this.photoUrl,
-    this.docUrl,
     this.createdAt,
     this.updatedAt,
   });
@@ -54,6 +52,7 @@ class EmployeeViewModel extends ViewModel {
   @override
   List<Object> get props => [
         id,
+        imageName,
         firstName,
         lastName,
         phoneNumber,
@@ -61,8 +60,6 @@ class EmployeeViewModel extends ViewModel {
         employeePosition,
         salary,
         employeeType,
-        photoUrl,
-        docUrl,
         createdAt,
         updatedAt,
       ];

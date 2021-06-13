@@ -1,6 +1,6 @@
 part of 'add_product_bloc.dart';
 
-abstract class AddProductEvent extends BlocEvent<AddProductState>{}
+abstract class AddProductEvent extends BlocEvent<AddProductState> {}
 
 class AddProductProductNameChangedEvent extends AddProductEvent {
   final String productName;
@@ -53,6 +53,18 @@ class AddProductQuantityChangedEvent extends AddProductEvent {
     );
   }
 }
+class AddProductPriceChangedEvent extends AddProductEvent {
+  final String price;
+
+  AddProductPriceChangedEvent(this.price);
+
+  @override
+  Stream<AddProductState> handle(AddProductState currentState) async* {
+    yield currentState.copyWith(
+      price: Price.createFromString(price),
+    );
+  }
+}
 
 class AddProductDescriptionChangedEvent extends AddProductEvent {
   final String description;
@@ -94,16 +106,16 @@ class AddProductExpDateChangedEvent extends AddProductEvent {
 }
 
 class AddProductImageChangedEvent extends AddProductEvent {
-  final String url;
+  final String name;
   final Uint8List data;
 
-  AddProductImageChangedEvent(this.url, this.data);
+  AddProductImageChangedEvent(this.name, this.data);
 
   @override
   Stream<AddProductState> handle(AddProductState currentState) async* {
     yield currentState.copyWith(
-      imageUrl: Failure.getOption<String>(url),
-      imageData:Failure.getOption(data),
+      imageName: ImageName.create(name),
+      imageData: Failure.getOption(data),
     );
   }
 }
@@ -139,10 +151,12 @@ class AddProductRequestedFailedEvent extends AddProductEvent {
     );
   }
 }
+
 class AddProductRequestedSucceededEvent extends AddProductEvent {
   @override
   Stream<AddProductState> handle(AddProductState currentState) async* {
     yield currentState.copyWith(
+      imageName: ImageName.create(''),
       productName: ProductName.create(''),
       brandName: ProductName.create(''),
       productCategory: none(),
@@ -150,7 +164,6 @@ class AddProductRequestedSucceededEvent extends AddProductEvent {
       description: Description.create(''),
       manDate: none(),
       expDate: none(),
-      imageUrl: none(),
       requestFailure: none(),
       hasSubmitted: false,
       hasRequested: false,

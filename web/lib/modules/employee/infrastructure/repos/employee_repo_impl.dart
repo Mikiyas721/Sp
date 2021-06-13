@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sp_web/common/datasource/rest_datasource/rest_datasource.dart';
 import 'package:sp_web/common/dto.dart';
 import 'package:sp_web/common/failure.dart';
+import 'package:sp_web/injection.dart';
 import 'package:sp_web/modules/employee/domain/entities/employee.dart';
 import 'package:sp_web/modules/employee/domain/ports/employee_repo.dart';
 import 'package:sp_web/modules/employee/infrastructure/datasources/employee_datasource.dart';
@@ -15,6 +17,9 @@ class EmployeeRepoImpl extends IEmployeeRepo {
 
   @override
   Future<Either<Failure, Employee>> create(Employee employee) async {
+    final imageResponse = await getIt
+        .get<RestDataSource>()
+        .addEmployeeFile(employee.imageName.imageName, employee.imageFile);
     final response =
         await _employeeCrudDatasource.create(EmployeeDto.fromDomain(employee));
     return response.either.fold(

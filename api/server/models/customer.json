@@ -21,7 +21,7 @@
     "email": {
       "type": "string"
     },
-    "photoUrl": {
+    "imageName": {
       "type": "string"
     }
   },

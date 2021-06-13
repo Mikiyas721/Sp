@@ -1,21 +1,21 @@
 import 'package:dartz/dartz.dart';
 import 'package:sp_web/common/failure.dart';
 
-abstract class ImageUrlFailure extends Failure {}
+abstract class ImageNameFailure extends Failure {}
 
-class EmptyImageUrlFailure extends ImageUrlFailure {
+class EmptyImageNameFailure extends ImageNameFailure {
   @override
   String get message => 'Image is required';
 }
 
-class ImageUrl {
-  final String imageUrl;
+class ImageName {
+  final String imageName;
 
-  ImageUrl._(this.imageUrl);
+  ImageName._(this.imageName);
 
-  static Either<ImageUrlFailure, ImageUrl> create(String imageUrl) {
-    if (imageUrl == null || imageUrl.isEmpty)
-      return left(EmptyImageUrlFailure());
-    return right(ImageUrl._(imageUrl));
+  static Either<ImageNameFailure, ImageName> create(String imageName) {
+    if (imageName == null || imageName.isEmpty)
+      return left(EmptyImageNameFailure());
+    return right(ImageName._(imageName));
   }
 }

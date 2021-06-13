@@ -14,7 +14,6 @@ class NewEmployeeView extends StatelessWidget {
   final void Function(String salary) onSalary;
   final void Function(String employeeType) onEmployeeType;
   final VoidCallback onImage;
-  final VoidCallback onDocument;
   final VoidCallback onAdd;
 
   const NewEmployeeView({
@@ -28,7 +27,6 @@ class NewEmployeeView extends StatelessWidget {
     @required this.onSalary,
     @required this.onEmployeeType,
     @required this.onImage,
-    @required this.onDocument,
     @required this.onAdd,
   }) : super(key: key);
 
@@ -90,51 +88,26 @@ class NewEmployeeView extends StatelessWidget {
               onChanged: onEmail,
             ),
             15.0.vSpace,
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                InkWell(
-                  onTap: onImage,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('images/1.png'),
-                  ),
-                ),
-                10.0.hSpace,
-                Text(
-                  'Please click the avatar to\nenter employee photo',
-                  style: context.caption,
-                )
-              ],
-            ),
-            15.0.vSpace,
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  child: InkWell(
-                    onTap: onDocument,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    child: Container(
-                      width: 40,
-                      height: 40,
+            Padding(
+              padding: 20.vPadding,
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.black26,
+                    child: InkWell(
+                      onTap: onImage,
                       child: Icon(
-                        Icons.description,
-                        size: 16,
+                        Icons.add,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                ),
-                10.0.hSpace,
-                Text(
-                  'Please enter the relevant\nemployee document here',
-                  style: context.caption,
-                )
-              ],
+                  20.hSpace,
+                  /*addProductViewModel.imageData==null?Container(height:0.0,width:0.0):CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)*/
+                ],
+              ),
             ),
-            30.0.vSpace,
+            15.0.vSpace,
             MyActionButton(
               label: 'Add',
               isLoading: addEmployeeViewModel.isAdding,

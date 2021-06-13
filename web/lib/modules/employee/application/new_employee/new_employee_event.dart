@@ -93,28 +93,17 @@ class NewEmployeeEmployeeTypeChangedEvent extends NewEmployeeEvent {
   }
 }
 
-class NewEmployeePhotoUrlChangedEvent extends NewEmployeeEvent {
-  final String photoUrl;
+class NewEmployeeImageChangedEvent extends NewEmployeeEvent {
+  final String name;
+  final Uint8List data;
 
-  NewEmployeePhotoUrlChangedEvent(this.photoUrl);
-
-  @override
-  Stream<NewEmployeeState> handle(NewEmployeeState currentState) async* {
-    yield currentState.copyWith(
-      photoUrl: ImageUrl.create(photoUrl),
-    );
-  }
-}
-
-class NewEmployeeDocUrlChangedEvent extends NewEmployeeEvent {
-  final String docUrl;
-
-  NewEmployeeDocUrlChangedEvent(this.docUrl);
+  NewEmployeeImageChangedEvent(this.name, this.data);
 
   @override
   Stream<NewEmployeeState> handle(NewEmployeeState currentState) async* {
     yield currentState.copyWith(
-      docUrl: ImageUrl.create(docUrl),
+      imageName: ImageName.create(name),
+      imageData:Failure.getOption(data)
     );
   }
 }
@@ -162,8 +151,7 @@ class NewEmployeeRequestSucceedEvent extends NewEmployeeEvent {
       employeePosition: none(),
       salary: Salary.create(0),
       employeeType: none(),
-      photoUrl: ImageUrl.create(''),
-      docUrl: ImageUrl.create(''),
+      imageName: ImageName.create(''),
       requestFailure: none(),
       hasSubmitted: false,
       hasRequested: false,

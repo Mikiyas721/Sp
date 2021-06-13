@@ -37,8 +37,7 @@ class LoadEmployeesController extends BlocViewModelController<
                     e.employeePosition.getString().getOrElse(() => null),
                 salary: e.salary.salary.toString(),
                 employeeType: e.employeeType.getString().getOrElse(() => null),
-                photoUrl: e.photoUrl.imageUrl,
-                docUrl: e.docUrl.imageUrl,
+                imageName: e.imageName.imageName,
                 createdAt: getShortDateString(e.createdAt),
                 updatedAt: getShortDateString(e.updatedAt),
               ))

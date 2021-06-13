@@ -10,6 +10,10 @@
     "Stamp": {}
   },
   "properties": {
+    "imageName": {
+      "type": "string",
+      "required": true
+    },
     "productName": {
       "type": "string",
       "required": true

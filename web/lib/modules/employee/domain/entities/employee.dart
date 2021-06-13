@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:dartz/dartz.dart';
 import 'package:sp_web/common/domain/value_objects/email.dart';
 import 'package:sp_web/common/entity.dart';
@@ -10,6 +12,8 @@ import 'package:sp_web/modules/employee/domain/value_objects/salary.dart';
 import '../../../../common/extensions.dart';
 
 class Employee extends Entity implements TimeStampedEntity {
+  final ImageName imageName;
+  final Uint8List imageFile;
   final PersonName firstName;
   final PersonName lastName;
   final PhoneNumber phoneNumber;
@@ -17,13 +21,15 @@ class Employee extends Entity implements TimeStampedEntity {
   final EmployeePosition employeePosition;
   final Salary salary;
   final EmployeeType employeeType;
-  final ImageUrl photoUrl;
-  final ImageUrl docUrl;
+
+  /*final ImageName docName;*/
   final DateTime createdAt;
   final DateTime updatedAt;
 
   Employee._({
     String id,
+    this.imageName,
+    this.imageFile,
     this.firstName,
     this.lastName,
     this.phoneNumber,
@@ -31,14 +37,13 @@ class Employee extends Entity implements TimeStampedEntity {
     this.employeePosition,
     this.salary,
     this.employeeType,
-    this.photoUrl,
-    this.docUrl,
     this.createdAt,
     this.updatedAt,
-  }):super(id);
+  }) : super(id);
 
   static Option<Employee> create({
     String id,
+    String imageName,
     String firstName,
     String lastName,
     String phoneNumber,
@@ -46,13 +51,12 @@ class Employee extends Entity implements TimeStampedEntity {
     String employeePosition,
     double salary,
     String employeeType,
-    String photoUrl,
-    String docUrl,
     DateTime createdAt,
     DateTime updatedAt,
   }) {
     if ([
       id,
+      imageName,
       firstName,
       lastName,
       phoneNumber,
@@ -60,8 +64,6 @@ class Employee extends Entity implements TimeStampedEntity {
       employeePosition,
       salary,
       employeeType,
-      photoUrl,
-      docUrl,
       createdAt,
       updatedAt
     ].any((element) => element == null)) return none();
@@ -85,14 +87,12 @@ class Employee extends Entity implements TimeStampedEntity {
     final employeeTypeObject = employeeType.toEmployeeType();
     if (employeeTypeObject.isNone()) return none();
 
-    final photoUrlObject = ImageUrl.create(photoUrl);
-    if (photoUrlObject.isLeft()) return none();
-
-    final docUrlObject = ImageUrl.create(docUrl);
-    if (docUrlObject.isLeft()) return none();
+    final imageNameObject = ImageName.create(imageName);
+    if (imageNameObject.isLeft()) return none();
 
     return Some(Employee._(
       id: id,
+      imageName: imageNameObject.getOrElse(() => null),
       firstName: firstNameObject.getOrElse(() => null),
       lastName: lastNameObject.getOrElse(() => null),
       phoneNumber: phoneNumberObject.getOrElse(() => null),
@@ -100,12 +100,13 @@ class Employee extends Entity implements TimeStampedEntity {
       employeePosition: employeePositionObject.getOrElse(() => null),
       salary: salaryObject.getOrElse(() => null),
       employeeType: employeeTypeObject.getOrElse(() => null),
-      photoUrl: photoUrlObject.getOrElse(() => null),
-      docUrl: docUrlObject.getOrElse(() => null),
       createdAt: createdAt,
     ));
   }
+
   static Option<Employee> createForNew({
+    ImageName imageName,
+    Uint8List imageFile,
     PersonName firstName,
     PersonName lastName,
     PhoneNumber phoneNumber,
@@ -113,10 +114,11 @@ class Employee extends Entity implements TimeStampedEntity {
     EmployeePosition employeePosition,
     Salary salary,
     EmployeeType employeeType,
-    ImageUrl photoUrl,
-    ImageUrl docUrl,
+    ImageName docName,
   }) {
     if ([
+      imageName,
+      imageFile,
       firstName,
       lastName,
       phoneNumber,
@@ -124,11 +126,12 @@ class Employee extends Entity implements TimeStampedEntity {
       employeePosition,
       salary,
       employeeType,
-      photoUrl,
-      docUrl,
+      docName,
     ].any((element) => element == null)) return none();
 
     return Some(Employee._(
+      imageName: imageName,
+      imageFile: imageFile,
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
@@ -136,8 +139,6 @@ class Employee extends Entity implements TimeStampedEntity {
       employeePosition: employeePosition,
       salary: salary,
       employeeType: employeeType,
-      photoUrl: photoUrl,
-      docUrl: docUrl,
     ));
   }
 }

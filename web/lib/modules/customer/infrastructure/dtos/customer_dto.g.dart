@@ -12,7 +12,7 @@ CustomerDto _$CustomerDtoFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     phoneNumber: json['phoneNumber'] as String,
     email: json['email'] as String,
-    photoUrl: json['photoUrl'] as String,
+    imageName: json['imageName'] as String,
     createdAt: json['createdAt'] == null
         ? null
         : DateTime.parse(json['createdAt'] as String),
@@ -32,10 +32,10 @@ Map<String, dynamic> _$CustomerDtoToJson(CustomerDto instance) {
   }
 
   writeNotNull('id', instance.id);
+  val['imageName'] = instance.imageName;
   val['name'] = instance.name;
   val['phoneNumber'] = instance.phoneNumber;
   val['email'] = instance.email;
-  val['photoUrl'] = instance.photoUrl;
   writeNotNull('createdAt', instance.createdAt?.toIso8601String());
   writeNotNull('updatedAt', instance.updatedAt?.toIso8601String());
   return val;
