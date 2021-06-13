@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sp_web/common/widgets/my_dropdown.dart';
 import 'package:sp_web/modules/employee/presentation/models/new_employee_view_model.dart';
 import 'package:sp_web/common/widgets/border_text_field.dart';
 import 'package:sp_web/common/widgets/my_action_button.dart';
@@ -81,13 +82,30 @@ class NewEmployeeView extends StatelessWidget {
             ),
             15.0.vSpace,
             BorderTextField(
-              errorMessage: addEmployeeViewModel.emailError,
-              labelText: 'dob',
-              icon: Icons.date_range,
-              readOnly: true,
-              onChanged: onEmail,
+              errorMessage: addEmployeeViewModel.salaryError,
+              labelText: 'salary',
+              icon: Icons.attach_money,
+              onChanged: onSalary,
             ),
             15.0.vSpace,
+            Row(
+              children: [
+                MyDropdown(
+                  items: EmployeeTypeExtension.employeeTypeList,
+                  onChanged: onEmployeeType,
+                  currentItem: addEmployeeViewModel.employeeType,
+                  hint: 'employee type',
+                ),
+                10.hSpace,
+                MyDropdown(
+                  items: EmployeePositionExtension.employeePositionList,
+                  onChanged: onEmployeePosition,
+                  currentItem: addEmployeeViewModel.employeePosition,
+                  hint: 'employee position',
+                )
+              ],
+            ),
+            15.vSpace,
             Padding(
               padding: 20.vPadding,
               child: Row(

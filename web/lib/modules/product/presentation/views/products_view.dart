@@ -86,7 +86,7 @@ class ProductListView extends StatelessWidget {
                 10.hSpace,
                 MyDropdown(
                   hint: 'category',
-                  items: categoryList,
+                  items: CategoryExtension.categoryList,
                   currentItem: productListViewModel.category,
                   onChanged: onCategoryChanged,
                 ),

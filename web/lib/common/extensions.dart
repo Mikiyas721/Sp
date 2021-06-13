@@ -40,7 +40,7 @@ extension CategoryExtension on ProductCategory {
     return none();
   }
 
-  List<String> get categoryList => ProductCategory.values
+  static List<String> get categoryList => ProductCategory.values
       .map((e) => e.getString().getOrElse(() => null))
       .toList();
 }
@@ -75,7 +75,7 @@ extension EmployeeTypeExtension on EmployeeType {
     return none();
   }
 
-  List<String> get employeeTypeList => EmployeeType.values
+  static List<String> get employeeTypeList => EmployeeType.values
       .map((e) => e.getString().getOrElse(() => null))
       .toList();
 }

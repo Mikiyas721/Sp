@@ -71,12 +71,12 @@ class AddProductView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 BorderTextField(
-              errorMessage: addProductViewModel.priceError,
-              keyBoardType: TextInputType.numberWithOptions(decimal: true),
-              labelText: 'price',
-              onChanged: onPrice,
-              width: 120,
-            ),
+                  errorMessage: addProductViewModel.priceError,
+                  keyBoardType: TextInputType.numberWithOptions(decimal: true),
+                  labelText: 'price',
+                  onChanged: onPrice,
+                  width: 120,
+                ),
                 5.hSpace,
                 BorderTextField(
                   errorMessage: addProductViewModel.quantityError,
@@ -88,13 +88,13 @@ class AddProductView extends StatelessWidget {
               ],
             ),
             15.vSpace,
-			MyDropdown(
-                  items: categoryList,
-                  onChanged: onCategory,
-                  currentItem: addProductViewModel.category,
-                  hint: 'category',
-                ),            
-			15.vSpace,
+            MyDropdown(
+              items: CategoryExtension.categoryList,
+              onChanged: onCategory,
+              currentItem: addProductViewModel.category,
+              hint: 'category',
+            ),
+            15.vSpace,
             BorderTextField(
               errorMessage: addProductViewModel.descriptionError,
               labelText: 'Description',
@@ -126,11 +126,11 @@ class AddProductView extends StatelessWidget {
               padding: 20.vPadding,
               child: Row(
                 children: [
-				Text(
+                  Text(
                     'Select\nimage',
                     style: context.caption,
                   ),
-				  10.hSpace,
+                  10.hSpace,
                   CircleAvatar(
                     backgroundColor: Colors.black26,
                     child: InkWell(
@@ -141,8 +141,8 @@ class AddProductView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  20.hSpace,  
-                  /*addProductViewModel.imageData==null?Container(height:0.0,width:0.0):CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)*/                
+                  20.hSpace,
+                  /*addProductViewModel.imageData==null?Container(height:0.0,width:0.0):CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)*/
                 ],
               ),
             ),
