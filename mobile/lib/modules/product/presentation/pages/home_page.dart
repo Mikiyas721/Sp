@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 ControllerProvider<NavigationController>(
-                    create: () => NavigationController(),
+                    create: () => NavigationController(context),
                     builder: (context, controller) {
                       return CategoryFilters(
                         onFood: controller.onFood,
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: ControllerProvider<NavigationController>(
-          create: () => NavigationController(),
+          create: () => NavigationController(context),
           builder: (context, controller) {
             return BottomNavigationBar(
               type: BottomNavigationBarType.fixed,

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import '../../../../common/dto.dart';
 import '../../../../common/failure.dart';
 import '../../domain/entities/product.dart';
@@ -6,6 +7,7 @@ import '../../domain/ports/product_repo.dart';
 import '../datasources/product_datasource.dart';
 import '../dtos/product_dto.dart';
 
+@LazySingleton(as: IProductRepo)
 class ProductRepoImpl extends IProductRepo {
   final ProductCrudDatasource _productCrudDatasource;
 

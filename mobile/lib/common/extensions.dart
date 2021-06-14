@@ -40,23 +40,6 @@ extension StringExtension on String {
     if (this == 'Cosmetics') return some(ProductCategory.COSMETICS);
     return none();
   }
-
-//  Option<AdminPrivilegeType> toAdminPrivilegeType() {
-//    if (this == 'All_Features') return some(AdminPrivilegeType.ALL_FEATURES);
-//    return none();
-//  }
-
-//  Option<EmployeePosition> toEmployeePosition() {
-//    if (this == 'General_Manager')
-//      return some(EmployeePosition.GENERAL_MANAGER);
-//    return none();
-//  }
-
-//  Option<EmployeeType> toEmployeeType() {
-//    if (this == 'Full_Time') return some(EmployeeType.FULL_TIME);
-//    if (this == 'Part_Time') return some(EmployeeType.PART_TIME);
-//    return none();
-//  }
 }
 
 extension CategoryExtension on ProductCategory {

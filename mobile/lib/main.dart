@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sp_client/injection.dart';
 import 'package:sp_client/modules/customer/presentation/pages/login_page.dart';
-import 'package:sp_client/modules/product/presentation/pages/item_list_page.dart';
+import 'package:sp_client/modules/product/presentation/pages/products_by_category_page.dart';
 import 'modules/product/presentation/pages/item_request_page.dart';
 import 'modules/customer/presentation/pages/sign_up_page.dart';
 import 'modules/product/presentation/pages/home_page.dart';
 import 'modules/product/presentation/pages/product_details_page.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  configureDependencies();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -33,5 +37,5 @@ final routes = {
   ItemRequestPage.routeName: (ctx) => ItemRequestPage(),
   HomePage.routeName: (ctx) => HomePage(),
   ProductDetailsPage.routeName: (ctx) => ProductDetailsPage(),
-  ItemListPage.routeName: (ctx) => ItemListPage([])
+  ProductsByCategoryPage.routeName: (ctx) => ProductsByCategoryPage(),
 };

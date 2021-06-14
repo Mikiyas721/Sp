@@ -1,8 +1,8 @@
-part of 'load_products_bloc.dart';
+part of 'load_by_category_bloc.dart';
 
 @freezed
-abstract class LoadProductsState extends BlocState with _$LoadProductsState {
-  factory LoadProductsState({
+abstract class LoadByCategoryState extends BlocState with _$LoadByCategoryState {
+  factory LoadByCategoryState({
     List<Product> products,
     Option<Failure> loadFailure,
     Option<Failure> filterFailure,
@@ -10,9 +10,9 @@ abstract class LoadProductsState extends BlocState with _$LoadProductsState {
     String filterString,
     bool isLoading,
     bool isFiltering,
-  }) = _LoadProductsState;
+  }) = _LoadByCategoryState;
 
-  factory LoadProductsState.initial() => LoadProductsState(
+  factory LoadByCategoryState.initial() => LoadByCategoryState(
     products: [],
     loadFailure: none(),
     filterFailure: none(),

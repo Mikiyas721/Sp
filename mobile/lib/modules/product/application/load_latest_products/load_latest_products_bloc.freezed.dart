@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'load_products_bloc.dart';
+part of 'load_latest_products_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,11 +10,11 @@ part of 'load_products_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$LoadProductsStateTearOff {
-  const _$LoadProductsStateTearOff();
+class _$LoadLatestProductsStateTearOff {
+  const _$LoadLatestProductsStateTearOff();
 
 // ignore: unused_element
-  _LoadProductsState call(
+  _LoadLatestProductsState call(
       {List<Product> products,
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
@@ -22,7 +22,7 @@ class _$LoadProductsStateTearOff {
       String filterString,
       bool isLoading,
       bool isFiltering}) {
-    return _LoadProductsState(
+    return _LoadLatestProductsState(
       products: products,
       loadFailure: loadFailure,
       filterFailure: filterFailure,
@@ -36,10 +36,10 @@ class _$LoadProductsStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $LoadProductsState = _$LoadProductsStateTearOff();
+const $LoadLatestProductsState = _$LoadLatestProductsStateTearOff();
 
 /// @nodoc
-mixin _$LoadProductsState {
+mixin _$LoadLatestProductsState {
   List<Product> get products;
   Option<Failure> get loadFailure;
   Option<Failure> get filterFailure;
@@ -49,14 +49,14 @@ mixin _$LoadProductsState {
   bool get isFiltering;
 
   @JsonKey(ignore: true)
-  $LoadProductsStateCopyWith<LoadProductsState> get copyWith;
+  $LoadLatestProductsStateCopyWith<LoadLatestProductsState> get copyWith;
 }
 
 /// @nodoc
-abstract class $LoadProductsStateCopyWith<$Res> {
-  factory $LoadProductsStateCopyWith(
-          LoadProductsState value, $Res Function(LoadProductsState) then) =
-      _$LoadProductsStateCopyWithImpl<$Res>;
+abstract class $LoadLatestProductsStateCopyWith<$Res> {
+  factory $LoadLatestProductsStateCopyWith(LoadLatestProductsState value,
+          $Res Function(LoadLatestProductsState) then) =
+      _$LoadLatestProductsStateCopyWithImpl<$Res>;
   $Res call(
       {List<Product> products,
       Option<Failure> loadFailure,
@@ -68,13 +68,13 @@ abstract class $LoadProductsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoadProductsStateCopyWithImpl<$Res>
-    implements $LoadProductsStateCopyWith<$Res> {
-  _$LoadProductsStateCopyWithImpl(this._value, this._then);
+class _$LoadLatestProductsStateCopyWithImpl<$Res>
+    implements $LoadLatestProductsStateCopyWith<$Res> {
+  _$LoadLatestProductsStateCopyWithImpl(this._value, this._then);
 
-  final LoadProductsState _value;
+  final LoadLatestProductsState _value;
   // ignore: unused_field
-  final $Res Function(LoadProductsState) _then;
+  final $Res Function(LoadLatestProductsState) _then;
 
   @override
   $Res call({
@@ -109,11 +109,11 @@ class _$LoadProductsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LoadProductsStateCopyWith<$Res>
-    implements $LoadProductsStateCopyWith<$Res> {
-  factory _$LoadProductsStateCopyWith(
-          _LoadProductsState value, $Res Function(_LoadProductsState) then) =
-      __$LoadProductsStateCopyWithImpl<$Res>;
+abstract class _$LoadLatestProductsStateCopyWith<$Res>
+    implements $LoadLatestProductsStateCopyWith<$Res> {
+  factory _$LoadLatestProductsStateCopyWith(_LoadLatestProductsState value,
+          $Res Function(_LoadLatestProductsState) then) =
+      __$LoadLatestProductsStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<Product> products,
@@ -126,15 +126,16 @@ abstract class _$LoadProductsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LoadProductsStateCopyWithImpl<$Res>
-    extends _$LoadProductsStateCopyWithImpl<$Res>
-    implements _$LoadProductsStateCopyWith<$Res> {
-  __$LoadProductsStateCopyWithImpl(
-      _LoadProductsState _value, $Res Function(_LoadProductsState) _then)
-      : super(_value, (v) => _then(v as _LoadProductsState));
+class __$LoadLatestProductsStateCopyWithImpl<$Res>
+    extends _$LoadLatestProductsStateCopyWithImpl<$Res>
+    implements _$LoadLatestProductsStateCopyWith<$Res> {
+  __$LoadLatestProductsStateCopyWithImpl(_LoadLatestProductsState _value,
+      $Res Function(_LoadLatestProductsState) _then)
+      : super(_value, (v) => _then(v as _LoadLatestProductsState));
 
   @override
-  _LoadProductsState get _value => super._value as _LoadProductsState;
+  _LoadLatestProductsState get _value =>
+      super._value as _LoadLatestProductsState;
 
   @override
   $Res call({
@@ -146,7 +147,7 @@ class __$LoadProductsStateCopyWithImpl<$Res>
     Object isLoading = freezed,
     Object isFiltering = freezed,
   }) {
-    return _then(_LoadProductsState(
+    return _then(_LoadLatestProductsState(
       products:
           products == freezed ? _value.products : products as List<Product>,
       loadFailure: loadFailure == freezed
@@ -169,8 +170,8 @@ class __$LoadProductsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_LoadProductsState implements _LoadProductsState {
-  _$_LoadProductsState(
+class _$_LoadLatestProductsState implements _LoadLatestProductsState {
+  _$_LoadLatestProductsState(
       {this.products,
       this.loadFailure,
       this.filterFailure,
@@ -196,13 +197,13 @@ class _$_LoadProductsState implements _LoadProductsState {
 
   @override
   String toString() {
-    return 'LoadProductsState(products: $products, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
+    return 'LoadLatestProductsState(products: $products, loadFailure: $loadFailure, filterFailure: $filterFailure, searchString: $searchString, filterString: $filterString, isLoading: $isLoading, isFiltering: $isFiltering)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadProductsState &&
+        (other is _LoadLatestProductsState &&
             (identical(other.products, products) ||
                 const DeepCollectionEquality()
                     .equals(other.products, products)) &&
@@ -239,19 +240,20 @@ class _$_LoadProductsState implements _LoadProductsState {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadProductsStateCopyWith<_LoadProductsState> get copyWith =>
-      __$LoadProductsStateCopyWithImpl<_LoadProductsState>(this, _$identity);
+  _$LoadLatestProductsStateCopyWith<_LoadLatestProductsState> get copyWith =>
+      __$LoadLatestProductsStateCopyWithImpl<_LoadLatestProductsState>(
+          this, _$identity);
 }
 
-abstract class _LoadProductsState implements LoadProductsState {
-  factory _LoadProductsState(
+abstract class _LoadLatestProductsState implements LoadLatestProductsState {
+  factory _LoadLatestProductsState(
       {List<Product> products,
       Option<Failure> loadFailure,
       Option<Failure> filterFailure,
       String searchString,
       String filterString,
       bool isLoading,
-      bool isFiltering}) = _$_LoadProductsState;
+      bool isFiltering}) = _$_LoadLatestProductsState;
 
   @override
   List<Product> get products;
@@ -269,5 +271,5 @@ abstract class _LoadProductsState implements LoadProductsState {
   bool get isFiltering;
   @override
   @JsonKey(ignore: true)
-  _$LoadProductsStateCopyWith<_LoadProductsState> get copyWith;
+  _$LoadLatestProductsStateCopyWith<_LoadLatestProductsState> get copyWith;
 }

@@ -1,16 +1,38 @@
+import 'package:flutter/cupertino.dart';
 import 'package:sp_client/common/controller/controller.dart';
+import 'package:sp_client/modules/product/presentation/pages/item_request_page.dart';
+import 'package:sp_client/modules/product/presentation/pages/products_by_category_page.dart';
 
 class NavigationController extends Controller {
-  void onFood() {}
+  final BuildContext context;
 
-  void onUtility() {}
+  NavigationController(this.context);
 
-  void onBeverage() {}
+  void onFood() {
+    Navigator.pushReplacementNamed(context, ProductsByCategoryPage.routeName,
+        arguments: 'Food');
+  }
 
-  void onCosmetics() {}
+  void onUtility() {
+    Navigator.pushReplacementNamed(context, ProductsByCategoryPage.routeName,
+        arguments: 'Utility');
+  }
 
-  void onNavigate(int value){
+  void onBeverage() {
+    Navigator.pushReplacementNamed(context, ProductsByCategoryPage.routeName,
+        arguments: 'Beverage');
+  }
 
+  void onCosmetics() {
+    Navigator.pushReplacementNamed(context, ProductsByCategoryPage.routeName,
+        arguments: 'Cosmetics');
+  }
+
+  void onNavigate(int value) {
+    if (value == 0) {
+    } else if (value == 1) {
+      Navigator.pushReplacementNamed(context, ItemRequestPage.routeName);
+    } else if (value == 2) {}
   }
 
   @override
