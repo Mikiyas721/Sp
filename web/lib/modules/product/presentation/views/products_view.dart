@@ -44,6 +44,7 @@ class ProductListView extends StatelessWidget {
       elevation: 5,
       margin: EdgeInsets.only(top: 60),
       child: Container(
+	    constraints:BoxConstraints(minHeight:700),
         padding: EdgeInsets.only(left: 20, right: 15, top: 20),
         child: Column(
           mainAxisSize: MainAxisSize.max,

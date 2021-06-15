@@ -41,7 +41,7 @@ class NewEmployeeView extends StatelessWidget {
       elevation: 5,
       child: Container(
         width: 380,
-        height: 600,
+        height: 700,
         padding: 65.0.hPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,6 +88,13 @@ class NewEmployeeView extends StatelessWidget {
               onChanged: onSalary,
             ),
             15.0.vSpace,
+			Row(children:[MyDropdown(
+                  items: EmployeePositionExtension.employeePositionList,
+                  onChanged: onEmployeePosition,
+                  currentItem: addEmployeeViewModel.employeePosition,
+                  hint: 'employee position',
+                )]),
+			15.vSpace,
             Row(
               children: [
                 MyDropdown(
@@ -95,17 +102,9 @@ class NewEmployeeView extends StatelessWidget {
                   onChanged: onEmployeeType,
                   currentItem: addEmployeeViewModel.employeeType,
                   hint: 'employee type',
-                ),
-                10.hSpace,
-                MyDropdown(
-                  items: EmployeePositionExtension.employeePositionList,
-                  onChanged: onEmployeePosition,
-                  currentItem: addEmployeeViewModel.employeePosition,
-                  hint: 'employee position',
-                )
+                ),                
               ],
             ),
-            15.vSpace,
             Padding(
               padding: 20.vPadding,
               child: Row(
@@ -119,8 +118,7 @@ class NewEmployeeView extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                  ),
-                  20.hSpace,
+                  )
                   /*addProductViewModel.imageData==null?Container(height:0.0,width:0.0):CircleAvatar(backgroundImage: FileImage(File.fromRawPath(addProductViewModel.imageData)),)*/
                 ],
               ),

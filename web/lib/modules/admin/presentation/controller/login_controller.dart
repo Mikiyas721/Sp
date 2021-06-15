@@ -52,7 +52,7 @@ class LoginController extends BlocViewModelController<LoginBloc, LoginEvent,
         toastError(l.message);
       }, (r) {
         bloc.add(LoginRequestSucceededEvent(r));
-        Navigator.pushReplacementNamed(context, '/dashboard');
+        Navigator.pushReplacementNamed(context, '/admins');
       });
     });
   }

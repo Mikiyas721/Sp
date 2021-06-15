@@ -67,7 +67,7 @@ class _MyDrawer extends State<MyDrawer> {
               indent: 20,
               endIndent: 20,
             ),
-            MyListTile(
+            /*MyListTile(
               icon: Icons.dashboard,
               label: 'Dashboard',
               isActive: activeIndex == 0,
@@ -79,20 +79,7 @@ class _MyDrawer extends State<MyDrawer> {
                   }
                 });
               },
-            ),
-            MyListTile(
-              icon: Icons.person_pin_outlined,
-              label: 'Employees',
-              isActive: activeIndex == 1,
-              onTap: () {
-                setState(() {
-                  if (activeIndex != 1) {
-                    activeIndex = 1;
-                    onItemSelected(activeIndex);
-                  }
-                });
-              },
-            ),
+            ),*/
             MyListTile(
               icon: Icons.admin_panel_settings_outlined,
               label: 'Admins',
@@ -106,6 +93,19 @@ class _MyDrawer extends State<MyDrawer> {
                 });
               },
             ),
+			MyListTile(
+              icon: Icons.person_pin_outlined,
+              label: 'Employees',
+              isActive: activeIndex == 1,
+              onTap: () {
+                setState(() {
+                  if (activeIndex != 1) {
+                    activeIndex = 1;
+                    onItemSelected(activeIndex);
+                  }
+                });
+              },
+            ),            
             MyListTile(
               icon: Icons.people,
               label: 'Clients',
@@ -132,7 +132,7 @@ class _MyDrawer extends State<MyDrawer> {
                 });
               },
             ),
-            MyListTile(
+            /*MyListTile(
               icon: Icons.feedback_outlined,
               label: 'Feedbacks',
               isActive: activeIndex == 5,
@@ -144,7 +144,7 @@ class _MyDrawer extends State<MyDrawer> {
                   }
                 });
               },
-            ),
+            ),*/
           ],
         ),
       ),

@@ -42,8 +42,8 @@ class BorderTextField extends StatelessWidget {
       child: TextField(
         readOnly: readOnly,
         enabled: !readOnly,
-        minLines: minLines,
-		maxLines:minLines+1,
+        minLines: obscureText?1:minLines,
+		maxLines:obscureText?1:minLines+1,
         obscureText: obscureText,
         decoration: InputDecoration(
             suffix: suffix,

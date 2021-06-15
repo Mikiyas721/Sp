@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sp_web/modules/employee/presentation/pages/new_employee_page.dart';
 import 'package:sp_web/modules/admin/presentation/pages/admin_page.dart';
+import 'package:sp_web/modules/admin/presentation/pages/login_page.dart';
 import 'package:sp_web/modules/customer/presentation/pages/customer_page.dart';
 import 'package:sp_web/modules/product/presentation/pages/dashboard_page.dart';
 import 'package:sp_web/modules/employee/presentation/pages/employees_page.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
 }
 
 final routes = {
-  '/': (BuildContext context) => DashboardPage(),
+  '/': (BuildContext context) => LoginPage(),
   '/dashboard': (BuildContext context) => DashboardPage(),
   '/employees': (BuildContext context) => EmployeesPage(),
   '/admins': (BuildContext context) => AdminsPage(),
