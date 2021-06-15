@@ -22,6 +22,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+	  60.vSpace,
         MyTextField(
           hintText: "Phone Number",
           errorText: loginViewModel.phoneNumberError,
@@ -33,7 +34,7 @@ class LoginView extends StatelessWidget {
           errorText: loginViewModel.passwordError,
           onChanged: onPasswordChanged,
         ),
-        20.0.vSpace,
+        160.0.vSpace,
         MyActionButton(
           label: 'Login',
           onClick: onLogin,

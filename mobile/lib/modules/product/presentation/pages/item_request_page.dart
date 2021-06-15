@@ -35,7 +35,7 @@ class ItemRequestPage extends StatelessWidget {
                   onItemNameChanged: null,
                   onItemCategoryChanged: null,
                   onItemDescriptionChanged: null,
-                  onSubmit: null)
+                  onSubmit: (){})
             ],
           ),
         ),

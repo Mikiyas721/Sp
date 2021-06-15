@@ -4,7 +4,7 @@ import '../views/sign_up_view.dart';
 import '../../../../common/extensions.dart';
 
 class SignUpPage extends StatelessWidget {
-  static const String routeName = "sign-up-page";
+  static const String routeName = "/signUpPage";
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SignUpPage extends StatelessWidget {
                 'Make product request and suggestion with your free account',
                 style: context.headline6,
               ),
-              15.0.vSpace,
+              80.0.vSpace,
               SignUpView(
                 signUpViewModel: SignUpViewModel(
                   name: null,
@@ -44,7 +44,7 @@ class SignUpPage extends StatelessWidget {
                 onPhoneNumberChanged: null,
                 onEmailChanged: null,
                 onPasswordChanged: null,
-                onSignUp: null,
+                onSignUp: (){},
               )
             ],
           ),

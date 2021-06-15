@@ -20,7 +20,7 @@ class DioRestDataSource implements RestDataSource {
             receiveTimeout: 10000,
             baseUrl: configDefinition.apiUrl,
           ),
-        ) {}
+        );
 
   Future<RestResponseWithFailure> _request(Future<Response> request) async {
     try {
@@ -39,9 +39,9 @@ class DioRestDataSource implements RestDataSource {
             left(
               ErrorResponseFailure(
                 RestResponseError(
-                  statusCode: e.response.statusCode,
+                  statusCode: e.response?.statusCode,
                   message: e.message,
-                  extra: e.response.data,
+                  extra: e.response?.data,
                 ),
               ),
             ),

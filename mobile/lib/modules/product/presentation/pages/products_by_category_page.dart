@@ -11,7 +11,7 @@ class ProductsByCategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String category = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text(category,style: TextStyle(color: Colors.black),),backgroundColor: Colors.white,),
       body: ViewModelBuilder.withController<CategoryProductsViewModel,
               ProductByCategoryController>(
           create: () => ProductByCategoryController(context, category),

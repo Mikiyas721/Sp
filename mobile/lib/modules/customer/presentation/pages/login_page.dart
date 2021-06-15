@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sp_client/common/controller/controller_provider.dart';
+import 'package:sp_client/modules/customer/presentation/controller/login_controller.dart';
 import '../../../../common/extensions.dart';
 import '../views/login_view.dart';
 import '../models/login_view_model.dart';
+import 'sign_up_page.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routeName = "/loginPage";
-
-  void registerHandler() {}
 
   @override
   Widget build(BuildContext context) {
@@ -29,29 +30,26 @@ class LoginPage extends StatelessWidget {
                 style: context.headline6,
               ),
               15.0.vSpace,
-//          There is hardcoding below
-              LoginView(
-                loginViewModel: LoginViewModel(
-                    phoneNumber: null,
-                    phoneNumberError: null,
-                    password: null,
-                    passwordError: null,
-                    hasSubmitted: null,
-                    isLoading: null),
-                onPhoneNoChanged: null,
-                onPasswordChanged: null,
-                onLogin: null,
-              ),
+              ViewModelBuilder.withController<LoginViewModel, LoginController>(
+                  create: () => LoginController(context),
+                  builder: (context, controller, model) {
+                    return LoginView(
+                      loginViewModel: model,
+                      onPhoneNoChanged: controller.onPhoneNumberChanged,
+                      onPasswordChanged: controller.onPasswordChanged,
+                      onLogin: controller.onLogin,
+                    );
+                  }),
               15.0.vSpace,
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   "Don't have an account?",
                   style: TextStyle(color: Colors.grey),
                 ),
                 TextButton(
-                  onPressed: registerHandler,
+                  onPressed: () {
+                    Navigator.pushNamed(context, SignUpPage.routeName);
+                  },
                   child: Text("Register"),
                 )
               ])

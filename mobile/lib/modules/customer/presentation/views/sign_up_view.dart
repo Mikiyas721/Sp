@@ -48,7 +48,7 @@ class SignUpView extends StatelessWidget {
         errorText: signUpViewModel.passwordError,
         onChanged: onPasswordChanged,
       ),
-      20.0.vSpace,
+      100.0.vSpace,
       MyActionButton(
         onClick: onSignUp,
         label: 'Register',

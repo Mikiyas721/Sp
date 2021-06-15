@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:sp_client/common/widget/empty_error_view.dart';
 import 'package:sp_client/common/widget/my_loading_view.dart';
 import 'package:sp_client/common/widget/simple_list_view.dart';
+import 'package:sp_client/config/config.definition.dart';
+import 'package:sp_client/injection.dart';
 import 'package:sp_client/modules/product/presentation/model/latest_products_view_model.dart';
 import '../../../../common/extensions.dart';
 
@@ -19,6 +21,7 @@ class LatestProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleListView<LatestProductViewModel>(
+      physics:NeverScrollableScrollPhysics(),
       model: latestProductsViewModel,
       itemBuilder: (BuildContext context, LatestProductViewModel model) {
         return LatestProductView(latestProductViewModel: model);
@@ -43,7 +46,7 @@ class LatestProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 150,
       child: Card(
         child: LayoutBuilder(builder: (_, constraint) {
           return Row(
@@ -51,7 +54,7 @@ class LatestProductView extends StatelessWidget {
               Container(
                 height: constraint.maxHeight,
                 width: constraint.maxWidth * 0.4,
-                child: Image.network(latestProductViewModel.imageUrl,
+                child: Image.network('${getIt.get<ConfigDefinition>().apiUrl}/containers/product/download/${latestProductViewModel.imageUrl}',
                     fit: BoxFit.cover),
               ),
               10.0.hSpace,
@@ -75,13 +78,18 @@ class LatestProductView extends StatelessWidget {
                       ],
                     ),
                     5.0.vSpace,
-                    Container(
-                      width: constraint.maxWidth * 0.5,
-                      child: Text(
-                        DateFormat.yMd().format(latestProductViewModel.date),
-                        textAlign: TextAlign.end,
-                        style: TextStyle(color: Colors.grey),
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          width: constraint.maxWidth * 0.5,
+                          child: Text(
+                            DateFormat.yMd().format(latestProductViewModel.date),
+                            textAlign: TextAlign.end,
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                      ],
                     )
                   ],
                 ),

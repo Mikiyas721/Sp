@@ -26,9 +26,12 @@ class EmptyErrorLoadingView<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      child: _buildBody(context),
+    return Container(
+      height: MediaQuery.of(context).size.height*0.5,
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: _buildBody(context),
+      ),
     );
   }
 }

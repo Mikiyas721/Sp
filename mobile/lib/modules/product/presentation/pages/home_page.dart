@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           height: context.screenHeight - context.screenTop,
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+          padding: EdgeInsets.only(top: 60, left: 20, right: 20),
           child: LayoutBuilder(builder: (ctx, constraints) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,11 +36,12 @@ class HomePage extends StatelessWidget {
                         onCosmetics: controller.onCosmetics,
                       );
                     }),
-                15.0.vSpace,
+                25.0.vSpace,
                 Text(
                   "Latest",
                   style: context.headline1,
                 ),
+                10.vSpace,
                 ViewModelBuilder.withController<LatestProductsViewModel,
                         LatestProductsController>(
                     create: () => LatestProductsController(context),

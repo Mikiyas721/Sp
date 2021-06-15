@@ -25,7 +25,7 @@ class LatestProductsController extends BlocViewModelController<
             quantity: e.quantity.quantity,
             imageUrl: e.imageName.imageName,
             date: e.createdAt,
-          )),
+          )).toList(),
       loadingError: s.loadFailure.getOrElse(() => null)?.message,
       isLoading: s.isLoading,
     );

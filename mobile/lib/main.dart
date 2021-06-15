@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             headline1: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             headline6: TextStyle(fontSize: 16)),
       ),
-      initialRoute: LoginPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: routes,
     );
   }

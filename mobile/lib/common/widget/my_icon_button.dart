@@ -15,10 +15,13 @@ class MyIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Padding(
+      padding:15.topPadding,
+        child:InkWell(
       onTap: onTap,
       splashColor: context.accentColor,
       child: CircleAvatar(
+        radius:45,
         backgroundColor: context.accentColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,10 +32,11 @@ class MyIconButton extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+            8.vSpace,
             Icon(icon)
           ],
         ),
       ),
-    );
+    ));
   }
 }

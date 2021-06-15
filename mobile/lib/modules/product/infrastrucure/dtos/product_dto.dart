@@ -47,7 +47,7 @@ class ProductDto extends Dto<Product> implements TimeStampedDto {
       brandName: map['product']['brandName'] as String,
       category: map['product']['category'] as String,
       quantity: map['quantity'] as int,
-      price: map['price'] as double,
+      price: (map['price'] as num).toDouble(),
       description: map['product']['description'] as String,
       manDate: DateTime.parse(map['manDate'] as String),
       expDate: DateTime.parse(map['expDate'] as String),

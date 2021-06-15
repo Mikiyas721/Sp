@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import './enums/product_category.dart';
 
 extension SpacingExtension on num {
-  EdgeInsets get padding => EdgeInsets.all(this);
+  EdgeInsets get padding => EdgeInsets.all(this.toDouble());
 
-  EdgeInsets get topPadding => EdgeInsets.only(top: this);
+  EdgeInsets get topPadding => EdgeInsets.only(top: this.toDouble());
 
-  EdgeInsets get hPadding => EdgeInsets.only(left: this, right: this);
+  EdgeInsets get hPadding => EdgeInsets.only(left: this.toDouble(), right: this.toDouble());
 
-  EdgeInsets get margin => EdgeInsets.all(this);
+  EdgeInsets get margin => EdgeInsets.all(this.toDouble());
 
-  Widget get vSpace => SizedBox(height: this);
+  Widget get vSpace => SizedBox(height: this.toDouble());
 
-  Widget get hSpace => SizedBox(width: this);
+  Widget get hSpace => SizedBox(width: this.toDouble());
 }
 
 extension BuildContextExtenstion on BuildContext {
