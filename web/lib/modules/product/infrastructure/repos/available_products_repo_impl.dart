@@ -95,10 +95,17 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
 
   @override
   Future<Either<Failure, List<Product>>> fetchByCategory(String value) async {
+  print(value);
     final response = await _availableProductsCrudDatasource.find(options: {
       "filter": {
-        "include": includeProductMap,
-        "where": {"productCategory": "$value"}
+        "include": {
+          "relation": "product",
+          "scope": {
+            "where": {
+              "category": {"like": "$value"}
+            }
+          }
+        },
       }
     });
     return response.fold(
