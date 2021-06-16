@@ -159,6 +159,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel,
   final void Function(E entity) onAction3;
   final void Function(E entity) onAction4;
   final VoidCallback onReload;
+  final double width;
 
   const PaginatedDataTableView(
       {@required this.columns,
@@ -168,6 +169,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel,
       @required this.hint,
       @required this.emptyMessage,
       @required this.viewModel,
+	  this.width = 130,
       @required this.onFilterChanged,
       @required this.onSearchFilterChanged,
       @required this.onSearch,
@@ -232,7 +234,7 @@ class PaginatedDataTableView<T extends PaginatedDataTableViewModel,
                 onChanged: onFilterChanged,
                 currentItem: viewModel.listFilter,
                 items: filters,
-                width: 130,
+                width: width,
                 hint: hint,
               )
             ],

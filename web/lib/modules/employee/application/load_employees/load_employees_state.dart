@@ -19,7 +19,7 @@ abstract class LoadEmployeesState extends BlocState with _$LoadEmployeesState {
         filterFailure: none(),
         searchString: '',
         searchFilterString: '',
-        filterString: "",
+        filterString: "General Manager",
         isLoading: false,
         isFiltering: false,
       );

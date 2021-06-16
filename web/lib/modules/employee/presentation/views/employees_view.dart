@@ -39,6 +39,7 @@ class EmployeesView
           hint: 'filter',
           emptyMessage: 'You have no employees',
           viewModel: employeesViewModel,
+		  width:170,
           onFilterChanged: onFilterChanged,
           onSearchFilterChanged: onSearchFilterChanged,
           onSearch: onSearch,
@@ -87,27 +88,25 @@ class EmployeeDataTableSource extends DataTableSource {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(data[index].phoneNumber),
+            Text('${data[index].phoneNumber}'),
             2.vSpace,
-            Text(data[index].email, style: TextStyle(color: Colors.grey))
+            Text('${data[index].email}', style: TextStyle(color: Colors.grey))
           ],
         )),
         DataCell(Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(data[index].salary),
+              Text('${data[index].salary}'),
               2.vSpace,
-              Text(data[index].employeeType,
+              Text('${data[index].employeeType}',
                   style: TextStyle(color: Colors.grey))
             ])),
         DataCell(Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(data[index].createdAt),
-              2.vSpace,
-              Text(data[index].updatedAt, style: TextStyle(color: Colors.grey))
+              Text('${data[index].createdAt}')
             ])),
         DataCell(Row(
             mainAxisSize: MainAxisSize.min,

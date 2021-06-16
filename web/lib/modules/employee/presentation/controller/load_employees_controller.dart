@@ -8,6 +8,7 @@ import 'package:sp_web/modules/employee/domain/use_cases/fetch_all_employees.dar
 import 'package:sp_web/modules/employee/domain/use_cases/fetch_filtered_employees.dart';
 import 'package:sp_web/modules/employee/domain/use_cases/search_employee.dart';
 import 'package:sp_web/modules/employee/presentation/models/employees_view_model.dart';
+import '../../infrastructure/dtos/employee_dto.dart';
 
 import '../../application/load_employees/load_employees_bloc.dart';
 import '../../../../common/extensions.dart';
@@ -57,7 +58,7 @@ class LoadEmployeesController extends BlocViewModelController<
       bloc.add(LoadEmployeesFailedEvent(l));
       toastError(l.message);
     }, (r) {
-      bloc.add(LoadEmployeesSucceededEvent(r));
+	    bloc.add(LoadEmployeesSucceededEvent(r));
     });
   }
 
