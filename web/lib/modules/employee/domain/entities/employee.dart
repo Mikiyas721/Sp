@@ -114,7 +114,6 @@ class Employee extends Entity implements TimeStampedEntity {
     EmployeePosition employeePosition,
     Salary salary,
     EmployeeType employeeType,
-    ImageName docName,
   }) {
     if ([
       imageName,
@@ -126,8 +125,7 @@ class Employee extends Entity implements TimeStampedEntity {
       employeePosition,
       salary,
       employeeType,
-      docName,
-    ].any((element) => element == null)) return none();
+    ].any((element) =>element == null)) return none();
 
     return Some(Employee._(
       imageName: imageName,

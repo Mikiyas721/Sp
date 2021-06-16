@@ -89,14 +89,15 @@ class NewEmployeeController extends BlocViewModelController<NewEmployeeBloc,
   void onAdd() {
     bloc.add(NewEmployeeHasSubmittedEvent());
     final employee = Employee.createForNew(
+	imageName: bloc.state.imageName.getOrElse(() => null),
+	imageFile: bloc.state.imageData.getOrElse(()=>null),
       firstName: bloc.state.firstName.getOrElse(() => null),
       lastName: bloc.state.lastName.getOrElse(() => null),
       phoneNumber: bloc.state.phoneNumber.getOrElse(() => null),
       email: bloc.state.email.getOrElse(() => null),
       employeePosition: bloc.state.employeePosition.getOrElse(() => null),
       salary: bloc.state.salary.getOrElse(() => null),
-      employeeType: bloc.state.employeeType.getOrElse(() => null),
-      imageName: bloc.state.imageName.getOrElse(() => null),
+      employeeType: bloc.state.employeeType.getOrElse(() => null),      
     );
     employee.fold(() {
       toastError("Invalid Inputs");

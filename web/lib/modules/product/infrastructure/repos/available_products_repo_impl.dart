@@ -130,7 +130,6 @@ class AvailableProductsRepoImpl extends IAvailableProductsRepo {
     final imageResponse = await getIt
         .get<RestDataSource>()
         .addProductFile(product.imageName.imageName, product.imageFile);
-    print(product.imageName.imageName);
     final response = await _availableProductsCrudDatasource.addProduct(product);
     return response.fold((l) => left(l), (r) => right(r.value));
   }
